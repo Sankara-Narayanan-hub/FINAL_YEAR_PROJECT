@@ -1,0 +1,4 @@
+frame,master_track_id,raw_tracker_id,class_name,occlusion_gap_frames,prediction_error_px,matching_cost,event,color_pre,color_post,color_preserved,size_consistency_pct,shape_consistency_pct
+209,41,48,car,2,1.33,0.0072,MEMORY_RECOVERY_SUCCESS,Black,Black,True,97.87,98.52
+226,37,50,car,10,0.91,0.0064,MEMORY_RECOVERY_SUCCESS,Grey,Orange,False,98.06,97.04
+230,49,51,person,2,3.65,0.0085,MEMORY_RECOVERY_SUCCESS,Black,Black,True,97.75,93.62

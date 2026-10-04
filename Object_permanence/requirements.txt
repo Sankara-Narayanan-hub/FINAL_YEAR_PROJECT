@@ -1,3 +1,6 @@
+norfair>=2.2.0
+filterpy>=1.4.5
+rich>=9.10.0
 ultralytics>=8.0.0
 opencv-python>=4.8.0
 numpy>=1.23.0

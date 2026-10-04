@@ -56,23 +56,42 @@ def process_single_video(
 
     # 2. Object Detector & Tracker Setup
     model_cfg = config.get("model", {})
-    weights = model_cfg.get("yolo_weights", "yolov8x-worldv2.pt")
+    tracker_cfg = config.get("tracker", {})
+    weights = model_cfg.get("yolo_weights", "weights/custom_ball_yolov8n.pt")
+    tracker_type = tracker_cfg.get("type", "norfair")
     tracker_config = model_cfg.get("tracker_config", "bytetrack.yaml")
-    conf_thresh = model_cfg.get("conf_threshold", 0.25)
-    iou_thresh = model_cfg.get("iou_threshold", 0.45)
-    img_size = model_cfg.get("img_size", 1280)
-    device = model_cfg.get("device", "cpu")
-    custom_prompts = prompts or model_cfg.get("custom_prompts", ["ball", "box"])
+    conf_thresh = model_cfg.get("conf_threshold", 0.15)
+    iou_thresh = model_cfg.get("iou_threshold", 0.35)
+    img_size = model_cfg.get("img_size", 640)
+    device = model_cfg.get("device", "0")
+    # Universal Zero-Code Open-World Pipeline: Works on ANY video automatically
+    weights = model_cfg.get("yolo_weights", "weights/yolov8x-worldv2.pt")
+    
+    if prompts:
+        custom_prompts = prompts
+        print(f"[INFO] Using explicit target prompts: {custom_prompts}")
+    elif target_class:
+        custom_prompts = [target_class]
+        print(f"[INFO] Using explicit target class: {custom_prompts}")
+    else:
+        custom_prompts = model_cfg.get("custom_prompts", None)
+        print(f"[INFO] Universal Open-World Mode Active: Model automatically discovers and tracks physical entities.")
 
     detector_tracker = ObjectDetectorTracker(
         weights=weights,
+        tracker_type=tracker_type,
         tracker_config=tracker_config,
         conf_threshold=conf_thresh,
         iou_threshold=iou_thresh,
         img_size=img_size,
         device=device,
         target_class=target_class,
-        custom_prompts=custom_prompts
+        custom_prompts=custom_prompts,
+        norfair_distance_function=tracker_cfg.get("distance_function", "iou"),
+        norfair_distance_threshold=tracker_cfg.get("distance_threshold", 0.7),
+        norfair_hit_counter_max=tracker_cfg.get("hit_counter_max", 15),
+        norfair_initialization_delay=tracker_cfg.get("initialization_delay", 1),
+        norfair_past_detections_length=tracker_cfg.get("past_detections_length", 5)
     )
 
     # 50% Milestone: Initialize Persistent Memory Bank
@@ -93,13 +112,15 @@ def process_single_video(
     output_video_path = os.path.join(annotated_video_dir, f"{video_basename}_annotated.mp4")
     vp.setup_writer(output_video_path)
 
-    print(f"[INFO] Executing YOLO + ByteTrack + Memory Bank on frames...")
+    print(f"[INFO] Executing YOLO + {tracker_type.capitalize()} Tracker + Memory Bank on frames...")
     
     # 3. Frame-by-Frame Detection, Memory State Updating & Rendering
     persistent_detections_history = []
+    last_print_frame = 0
+    prev_recovery_count = 0
 
     for frame_idx, frame in tqdm(vp.read_frames(), total=v_info['total_frames'], desc="Processing"):
-        # Track objects with ByteTrack
+        # Track objects with Norfair / active tracker
         raw_detections = detector_tracker.process_frame(frame, frame_idx)
         
         ghost_predictions = []
@@ -107,8 +128,40 @@ def process_single_video(
             # Memory Bank: track reconciliation, kinematic update, dead-reckoning extrapolation
             frame_detections, ghost_predictions = memory_bank.update(frame_idx, raw_detections)
             persistent_detections_history.extend(frame_detections)
+
+            # Check if a new recovery or plain-sight attribute audit occurred
+            if len(memory_bank.attribute_audits) > prev_recovery_count:
+                latest_audit = memory_bank.attribute_audits[-1]
+                prev_recovery_count = len(memory_bank.attribute_audits)
+                morph_str = "MORPHED! (AI Inconsistency)" if not latest_audit['color_preserved'] else "PRESERVED"
+                gap = latest_audit.get('occlusion_gap_frames', 0)
+                event_name = f"re-identified after {gap} frames of occlusion" if gap > 0 else "verified in plain sight"
+                print(f"\n[ATTRIBUTE AUDIT @ Frame {frame_idx:03d}] ID {latest_audit['master_track_id']} ({latest_audit['class_name']}) {event_name}:")
+                print(f"   Scale: {latest_audit['pre_size']} -> {latest_audit['post_size']} (Consistency: {latest_audit['size_consistency_pct']}%)")
+                print(f"   Shape: {latest_audit['pre_shape']} -> {latest_audit['post_shape']} (Consistency: {latest_audit['shape_consistency_pct']}%)")
+                print(f"   Color: {latest_audit['pre_color']} -> {latest_audit['post_color']} [{morph_str}]")
+                print(f"   Overall Attribute Score: {latest_audit['overall_attribute_score_pct']}%\n")
         else:
             frame_detections = raw_detections
+
+        # Print periodic attribute snapshot to console
+        if frame_idx == 1 or (frame_idx - last_print_frame >= 30 and frame_detections):
+            last_print_frame = frame_idx
+            rows = []
+            for d in frame_detections:
+                rows.append(
+                    f"   [ID {d.get('track_id', '?')}] {d.get('class_name', 'obj'):<6} "
+                    f"Conf: {d.get('confidence', 0)*100:>4.1f}% | "
+                    f"Size: {d.get('width', 0):>3.0f}x{d.get('height', 0):<3.0f} ({d.get('area', 0):>6.0f}px) | "
+                    f"AR: {d.get('aspect_ratio', 1.0):>4.2f} ({d.get('shape_type', 'N/A'):<17}) | "
+                    f"Color: {d.get('color', 'N/A'):<7} | "
+                    f"Pos: ({d.get('center_x', 0):>4.0f}, {d.get('center_y', 0):>4.0f})"
+                )
+            if rows:
+                print(f"\n--- [Frame {frame_idx:03d}/{v_info['total_frames']}] Active Entity Attributes ---")
+                for r in rows:
+                    print(r)
+                print("-" * 80)
 
         # Render annotated frame with active detections and dead-reckoned ghost boxes
         draw_ghosts = ghost_predictions if render_ghost_boxes else None
@@ -129,18 +182,25 @@ def process_single_video(
 
     # 4b. Export Memory Bank Lifecycle & Recoveries CSVs
     memory_metrics = None
+    attribute_audits_csv = None
     if memory_bank is not None:
         lifecycle_csv = os.path.join(reports_dir, f"{video_basename}_memory_lifecycle.csv")
         recoveries_csv = os.path.join(reports_dir, f"{video_basename}_memory_recoveries.csv")
         
         lifecycle_df = memory_bank.get_lifecycle_dataframe()
         recoveries_df = memory_bank.get_recoveries_dataframe()
+        attribute_audits_df = memory_bank.get_attribute_audits_dataframe()
         
         lifecycle_df.to_csv(lifecycle_csv, index=False)
         recoveries_df.to_csv(recoveries_csv, index=False)
         print(f"[INFO] Memory Bank lifecycle log saved to: {lifecycle_csv} ({len(lifecycle_df)} records)")
         print(f"[INFO] Memory Bank recoveries log saved to: {recoveries_csv} ({len(recoveries_df)} recoveries)")
         
+        if not attribute_audits_df.empty:
+            attribute_audits_csv = os.path.join(reports_dir, f"{video_basename}_attribute_consistency.csv")
+            attribute_audits_df.to_csv(attribute_audits_csv, index=False)
+            print(f"[INFO] Attribute consistency audit saved to: {attribute_audits_csv} ({len(attribute_audits_df)} events)")
+            
         memory_metrics = memory_bank.compute_50_percent_metrics()
 
     # 5. Permanence & Identity Switch Analysis
@@ -192,6 +252,21 @@ def process_single_video(
         print(f"  Memory Recovery Rate:   {memory_metrics['memory_recovery_rate_pct']:.2f}%")
         print(f"  Mean Dead-Reckon Error: {memory_metrics['mean_trajectory_prediction_error_px']:.2f} px")
         print(f"  Max Occlusion Survived: {memory_metrics['max_occlusion_gap_survived_frames']} frames")
+        print(f"  Mean Attribute Stability: {memory_metrics.get('mean_attribute_stability_pct', 100.0):.2f}%")
+
+    if memory_bank is not None:
+        summaries = memory_bank.get_entity_attribute_summaries()
+        if summaries:
+            print("\n" + "=" * 105)
+            print("                       OBJECT PHYSICAL ATTRIBUTE STABILITY & CONTINUITY REPORT")
+            print("=" * 105)
+            print(f"{'ID':<4} | {'Class':<6} | {'Vis':<4} | {'Occ':<3} | {'Initial Size -> Final Size':<26} | {'Shape (AR)':<20} | {'Color Shift':<18} | {'Status'}")
+            print("-" * 105)
+            for s in summaries:
+                col_shift = f"{s['initial_color']} -> {s['final_color']}"
+                print(f"{s['id']:<4} | {s['class_name']:<6} | {s['frames_visible']:<4} | {s['occlusions']:<3} | {s['base_size']:<11} -> {s['final_size']:<11} | {s['base_shape']:<8} -> {s['final_shape']:<8} | {col_shift:<18} | {s['status']}")
+            print("=" * 105)
+
     print(f"\nReports Directory:       {reports_dir}")
     print(f"Plots Directory:         {plots_dir}")
     print(f"========================================\n")
@@ -205,11 +280,14 @@ def main():
     parser.add_argument("--target", type=str, default=None, help="Optional target class filter (e.g. 'car', 'person', 'bottle')")
     parser.add_argument("--prompts", type=str, default=None, help="Comma-separated open-vocabulary text prompts for YOLO-World (e.g. 'ball, box')")
     parser.add_argument("--config", type=str, default="config/config.yaml", help="Path to YAML configuration file")
+    parser.add_argument("--tracker", type=str, default=None, choices=["norfair", "bytetrack"], help="Tracking engine ('norfair' or 'bytetrack')")
 
     args = parser.parse_args()
 
     # Load configuration
     config = load_config(args.config)
+    if args.tracker:
+        config.setdefault("tracker", {})["type"] = args.tracker
 
     parsed_prompts = [p.strip() for p in args.prompts.split(",")] if args.prompts else None
 

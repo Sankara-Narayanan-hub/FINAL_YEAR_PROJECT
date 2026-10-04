@@ -1,26 +1,36 @@
 analysis:
   max_reappearance_gap: 90
   min_missing_frames: 3
-  size_similarity_thresh: 0.6
+  size_similarity_thresh: 0.85
   spatial_proximity_thresh: 0.35
+
+memory_bank:
+  enabled: true
+  max_reappearance_gap: 90
+  render_ghost_boxes: true
+  size_similarity_thresh: 0.85
+  spatial_proximity_thresh: 0.35
+  velocity_smooth_alpha: 0.7
+
+tracker:
+  type: norfair                    # Real-time 2D multi-object tracking via Norfair (no training required)
+  distance_function: iou          # Distance metric: "iou" (bounding box overlap)
+  distance_threshold: 0.7         # Maximum distance threshold (for IoU: 1 - IoU <= 0.7 means >= 0.3 IoU)
+  hit_counter_max: 5              # Fast handover to Memory Bank upon occlusion (5 frames)
+  initialization_delay: 1         # Minimum consecutive detections to establish a confirmed track
+  past_detections_length: 5       # Trajectory point history buffer
+
 model:
-  yolo_weights: "yolov8x-worldv2.pt" # YOLO-World Open-Vocabulary Zero-Shot Model
-  tracker_config: "bytetrack.yaml"    # Built-in ByteTrack tracker
-  conf_threshold: 0.35              # Calibrated confidence threshold
-  iou_threshold: 0.35               # NMS IoU threshold
-  img_size: 1280                    # High-resolution inference (native 1280px resolution)
-  device: 0                         # NVIDIA dGPU (GeForce RTX 4060 Laptop GPU)
-  custom_prompts: ["ball", "box"]   # Open-Vocabulary target prompts
+  yolo_weights: weights/yolov8x-worldv2.pt  # High-capacity open-world vision-language foundation detector
+  conf_threshold: 0.28
+  iou_threshold: 0.35
+  img_size: 640
+  device: 0
+  tracker_config: bytetrack.yaml
+  # Note: When custom_prompts is omitted or null, the Universal Physical Object Vocabulary is used automatically
+
 output:
   save_annotated_video: true
   save_csv_detections: true
   save_plots: true
   save_summary_report: true
-memory_bank:
-  enabled: true
-  max_reappearance_gap: 90
-  spatial_proximity_thresh: 0.35
-  size_similarity_thresh: 0.60
-  velocity_smooth_alpha: 0.70
-  render_ghost_boxes: true
-

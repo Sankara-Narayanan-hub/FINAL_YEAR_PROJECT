@@ -1,0 +1,26 @@
+frame,master_track_id,raw_tracker_id,class_name,occlusion_gap_frames,pre_size,post_size,size_consistency_pct,pre_shape,post_shape,shape_consistency_pct,pre_color,post_color,color_preserved,overall_attribute_score_pct,morphing_detected
+29,9,11,car,6,35.74x48.49 (1733px),50.85x46.41 (2360px),73.44,AR 0.74 (Vertical Oblong),AR 1.10 (Spherical / Regular),67.27,Blue,Blue,True,76.28,True
+72,4,21,car,24,62.01x63.69 (3950px),131.08x21.48 (2815px),71.28,AR 0.97 (Spherical / Regular),AR 6.10 (Horizontal Oblong),15.9,Orange,Grey/Brown,False,34.87,True
+95,16,22,car,54,44.76x207.08 (9269px),22.55x186.25 (4199px),45.31,AR 0.22 (Vertical Oblong),AR 0.12 (Vertical Oblong),54.55,Orange,Blue,False,39.94,True
+98,19,23,car,16,445.61x207.74 (92570px),426.9x160.45 (68496px),73.99,AR 2.15 (Horizontal Oblong),AR 2.66 (Horizontal Oblong),80.83,Blue,Blue,True,81.93,False
+101,8,24,car,53,23.6x58.03 (1370px),61.56x25.11 (1546px),88.61,AR 0.41 (Vertical Oblong),AR 2.45 (Horizontal Oblong),16.73,Red,Orange,False,42.14,True
+110,1,25,car,62,438.45x340.2 (149159px),465.3x397.83 (185110px),80.58,AR 1.29 (Horizontal Oblong),AR 1.17 (Spherical / Regular),90.7,Red,Blue,False,68.51,True
+110,20,26,car,32,289.08x69.62 (20124px),216.75x49.65 (10761px),53.47,AR 4.15 (Horizontal Oblong),AR 4.37 (Horizontal Oblong),94.97,Blue,Orange,False,59.38,True
+110,9,27,car,72,43.62x49.3 (2151px),82.29x31.98 (2631px),81.73,AR 0.88 (Spherical / Regular),AR 2.57 (Horizontal Oblong),34.24,Red,Blue,False,46.39,True
+115,4,28,car,4,113.79x20.31 (2311px),68.21x22.42 (1529px),66.17,AR 5.60 (Horizontal Oblong),AR 3.04 (Horizontal Oblong),54.29,Orange,Orange,True,68.18,True
+125,7,29,car,77,71.59x63.91 (4575px),227.0x30.45 (6913px),66.18,AR 1.12 (Spherical / Regular),AR 7.45 (Horizontal Oblong),15.03,Red,Blue,False,32.48,True
+133,13,30,car,9,430.66x128.2 (55212px),119.44x188.92 (22564px),40.87,AR 3.36 (Horizontal Oblong),AR 0.63 (Vertical Oblong),18.75,Blue,Blue,True,43.85,True
+160,8,33,car,42,66.67x24.26 (1617px),26.01x25.11 (653px),40.39,AR 2.75 (Horizontal Oblong),AR 1.04 (Spherical / Regular),37.82,Orange,Blue,False,31.28,True
+164,19,34,car,43,413.91x233.57 (96675px),244.59x165.1 (40381px),41.77,AR 1.77 (Horizontal Oblong),AR 1.48 (Horizontal Oblong),83.62,Blue,Blue,True,70.16,True
+167,4,35,car,33,68.87x23.02 (1585px),73.53x24.01 (1766px),89.8,AR 2.99 (Horizontal Oblong),AR 3.06 (Horizontal Oblong),97.71,Orange,Orange,True,95.0,False
+174,13,37,car,22,151.38x183.42 (27766px),47.95x248.13 (11898px),42.85,AR 0.83 (Spherical / Regular),AR 0.19 (Vertical Oblong),22.89,Blue,Blue,True,46.3,True
+183,7,42,car,55,226.98x30.45 (6912px),88.22x73.48 (6483px),93.79,AR 7.45 (Horizontal Oblong),AR 1.20 (Spherical / Regular),16.11,Blue,Blue,True,63.96,True
+205,38,68,car,26,280.14x133.13 (37295px),265.83x182.63 (48548px),76.82,AR 2.10 (Horizontal Oblong),AR 1.46 (Horizontal Oblong),69.52,Orange,Blue,False,58.54,True
+205,20,48,car,28,317.37x41.43 (13149px),165.97x105.72 (17546px),74.94,AR 7.66 (Horizontal Oblong),AR 1.57 (Horizontal Oblong),20.5,Orange,Blue,False,38.18,True
+212,8,81,car,1,84.15x14.86 (1250px),34.09x23.99 (818px),65.43,AR 5.66 (Horizontal Oblong),AR 1.42 (Horizontal Oblong),25.09,Orange,Blue,False,36.21,True
+213,69,82,car,3,53.11x31.4 (1667px),40.48x43.8 (1773px),94.05,AR 1.69 (Horizontal Oblong),AR 0.92 (Spherical / Regular),54.44,Red,Blue,False,59.4,True
+218,45,89,car,13,125.28x117.69 (14744px),141.47x102.71 (14530px),98.55,AR 1.06 (Spherical / Regular),AR 1.38 (Horizontal Oblong),76.81,Green,Orange,False,70.14,True
+221,40,105,car,2,138.57x60.25 (8349px),104.09x46.35 (4825px),57.79,AR 2.30 (Horizontal Oblong),AR 2.25 (Horizontal Oblong),97.83,Blue,Blue,True,82.25,True
+229,80,106,car,6,46.21x30.04 (1388px),47.35x36.37 (1722px),80.59,AR 1.54 (Horizontal Oblong),AR 1.30 (Horizontal Oblong),84.42,Orange,Orange,True,86.0,False
+231,43,107,car,12,72.67x36.06 (2620px),55.16x33.18 (1830px),69.85,AR 2.02 (Horizontal Oblong),AR 1.66 (Horizontal Oblong),82.18,Red,Orange,False,60.81,True
+238,78,108,car,20,108.95x48.71 (5307px),87.1x46.75 (4072px),76.73,AR 2.24 (Horizontal Oblong),AR 1.86 (Horizontal Oblong),83.04,Blue,Blue,True,83.91,False

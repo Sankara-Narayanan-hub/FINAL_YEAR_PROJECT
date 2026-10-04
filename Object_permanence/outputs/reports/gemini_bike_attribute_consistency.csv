@@ -1,0 +1,23 @@
+frame,master_track_id,raw_tracker_id,class_name,occlusion_gap_frames,pre_size,post_size,size_consistency_pct,pre_shape,post_shape,shape_consistency_pct,pre_color,post_color,color_preserved,overall_attribute_score_pct,morphing_detected
+19,4,6,car,4,25.81x21.3 (550px),31.12x22.71 (707px),77.79,AR 1.21 (Spherical / Regular),AR 1.37 (Horizontal Oblong),88.32,White,Grey,False,66.44,True
+54,7,8,bicycle,4,610.37x419.21 (255873px),722.72x407.32 (294377px),86.92,AR 1.46 (Horizontal Oblong),AR 1.77 (Horizontal Oblong),82.49,Yellow,Yellow,True,87.76,False
+56,3,9,car,12,41.43x29.08 (1205px),53.4x29.6 (1581px),76.23,AR 1.42 (Horizontal Oblong),AR 1.80 (Horizontal Oblong),78.89,Grey,Grey,True,82.05,False
+59,2,10,car,9,27.89x22.46 (626px),53.02x29.3 (1553px),40.31,AR 1.24 (Spherical / Regular),AR 1.81 (Horizontal Oblong),68.51,Grey,Grey,True,63.53,False
+62,3,11,car,1,53.5x30.08 (1609px),53.14x29.31 (1557px),96.8,AR 1.78 (Horizontal Oblong),AR 1.81 (Horizontal Oblong),98.34,Yellow,Grey,False,78.06,True
+65,2,12,car,1,54.17x29.31 (1588px),56.31x30.65 (1726px),92.01,AR 1.85 (Horizontal Oblong),AR 1.84 (Horizontal Oblong),99.46,Yellow,Grey,False,76.59,True
+67,3,13,car,2,54.31x29.38 (1596px),53.34x30.64 (1634px),97.65,AR 1.85 (Horizontal Oblong),AR 1.74 (Horizontal Oblong),94.05,Yellow,Grey,False,76.68,True
+69,2,14,car,1,57.03x30.58 (1744px),55.5x31.26 (1735px),99.49,AR 1.87 (Horizontal Oblong),AR 1.78 (Horizontal Oblong),95.19,Yellow,Grey,False,77.87,True
+73,2,15,car,1,57.27x31.2 (1787px),47.48x31.65 (1503px),84.11,AR 1.84 (Horizontal Oblong),AR 1.50 (Horizontal Oblong),81.52,Yellow,Grey,False,66.25,True
+88,7,16,bicycle,3,868.61x393.22 (341554px),857.38x395.77 (339328px),99.35,AR 2.21 (Horizontal Oblong),AR 2.17 (Horizontal Oblong),98.19,Green,Green,True,99.02,False
+103,3,18,car,33,55.01x30.71 (1690px),36.85x27.1 (999px),59.11,AR 1.79 (Horizontal Oblong),AR 1.36 (Horizontal Oblong),75.98,Yellow,Grey,False,54.04,True
+111,5,19,can,75,18.94x31.08 (589px),22.28x23.7 (528px),89.69,AR 0.61 (Vertical Oblong),AR 0.94 (Spherical / Regular),64.89,Orange,Green,False,61.83,True
+113,7,20,bicycle,6,802.77x412.76 (331354px),321.0x399.78 (128328px),38.73,AR 1.94 (Horizontal Oblong),AR 0.80 (Spherical / Regular),41.24,Green,Green,True,51.99,True
+119,5,22,can,5,22.64x23.61 (535px),16.76x22.68 (380px),71.08,AR 0.96 (Spherical / Regular),AR 0.74 (Vertical Oblong),77.08,Orange,Green,False,59.26,True
+125,1,25,person,8,201.73x455.6 (91907px),207.22x472.12 (97831px),93.95,AR 0.44 (Vertical Oblong),AR 0.44 (Vertical Oblong),100.0,Black,Black,True,97.58,False
+127,24,26,can,1,16.45x24.22 (398px),17.69x22.7 (401px),99.22,AR 0.68 (Vertical Oblong),AR 0.78 (Vertical Oblong),87.18,Orange,Green,False,74.56,True
+129,23,27,car,4,23.49x16.14 (379px),22.37x15.5 (347px),91.41,AR 1.46 (Horizontal Oblong),AR 1.44 (Horizontal Oblong),98.63,Brown,Grey,False,76.02,True
+135,21,28,car,15,24.34x15.28 (372px),25.04x19.88 (498px),74.71,AR 1.59 (Horizontal Oblong),AR 1.26 (Horizontal Oblong),79.25,Brown,Grey,False,61.58,True
+143,21,29,car,3,24.51x18.83 (462px),25.45x20.39 (519px),88.94,AR 1.30 (Horizontal Oblong),AR 1.25 (Spherical / Regular),96.15,Grey,Grey,True,94.04,False
+202,21,30,car,31,28.78x29.3 (843px),24.25x23.01 (558px),66.17,AR 0.98 (Spherical / Regular),AR 1.05 (Spherical / Regular),93.33,Black,Grey,False,63.8,True
+211,7,31,bicycle,82,227.96x332.49 (75793px),182.15x298.67 (54404px),71.78,AR 0.69 (Vertical Oblong),AR 0.61 (Vertical Oblong),88.41,Green,Orange,False,64.08,True
+232,23,32,car,53,20.58x16.82 (346px),25.87x16.93 (438px),79.04,AR 1.22 (Spherical / Regular),AR 1.53 (Horizontal Oblong),79.74,Grey,Grey,True,83.51,False
