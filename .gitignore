@@ -1,31 +1,61 @@
-# Exclude other projects as requested
-crowcivic_chatbot_backend/
-
-# Virtual Environment (Captured via requirements.txt)
-venv/
-.venv/
-env/
-ENV/
-
-# Large Model Weights (>100MB blocked by GitHub remote limits)
-*.pt
-*.pth
-*.bin
-*.onnx
-*.engine
-*.weights
-*.safetensors
-
-# Python bytecode and caches
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
-.pytest_cache/
-.ipynb_checkpoints/
+*.so
 
-# OS and IDE artifacts
-.DS_Store
-Thumbs.db
+# C/C++ / build outputs
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+
+# IDE / Editor configuration
 .vscode/
 .idea/
-*.tmp
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Root convenience junctions / symlinks (mirrors canonical Object_permanence/ folders)
+/config
+/data
+/outputs
+/src
+/weights
+/scratch
+
+# Model weights & large binary files (GitHub 100MB limit)
+*.pt
+*.pth
+*.onnx
+*.engine
+*.safetensors
+*.bin
+weights/
+**/weights/
+Object_permanence/weights/
+Object_permanence/yolov8n.pt
+
+# Intermediate caches & logs
+*.cache
+*.log
+.ipynb_checkpoints/

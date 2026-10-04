@@ -140,8 +140,9 @@ class VideoProcessor:
                     if 0 <= pcx < self.width and 0 <= pcy < self.height:
                         cv2.drawMarker(annotated, (pcx, pcy), ghost_color, cv2.MARKER_CROSS, 12, 1)
 
-                    # Badge: "[OCCLUDED] Ball | ID 1 (t-5)"
-                    ghost_label = f"[OCCLUDED] {g_cls.capitalize()} | ID {gt_id} (t-{g_gap})"
+                    # Badge: "[OCCLUDED] Ball | ID 1 (t-5) | Color: Purple"
+                    g_color_name = ghost.get('color', 'N/A')
+                    ghost_label = f"[OCCLUDED] {g_cls.capitalize()} | ID {gt_id} (t-{g_gap}) | {g_color_name}"
                     (gl_w, gl_h), _ = cv2.getTextSize(ghost_label, cv2.FONT_HERSHEY_SIMPLEX, 0.42, 1)
                     gl_y1 = max(gy1_c - gl_h - 8, 0)
                     gl_y2 = gl_y1 + gl_h + 6
@@ -151,13 +152,19 @@ class VideoProcessor:
                     cv2.rectangle(annotated, (gx1_c, gl_y1), (gl_x2, gl_y2), ghost_color, 1)
                     cv2.putText(annotated, ghost_label, (gx1_c + 4, gl_y2 - 4), cv2.FONT_HERSHEY_SIMPLEX, 0.42, ghost_color, 1, cv2.LINE_AA)
 
-        # 2. Draw Active Detections
+        # 2. Draw Active Detections with Physical Attributes
         for det in detections:
             track_id = det.get('track_id', 'N/A')
             class_name = det.get('class_name', 'object')
             conf = det.get('confidence', 0.0)
             mem_state = det.get('memory_state', 'VISIBLE')
             x1, y1, x2, y2 = int(det['x1']), int(det['y1']), int(det['x2']), int(det['y2'])
+            
+            # Attributes
+            w_val = det.get('width', x2 - x1)
+            h_val = det.get('height', y2 - y1)
+            ar_val = det.get('aspect_ratio', round(w_val / max(h_val, 1), 2))
+            col_val = det.get('color', 'N/A')
             
             color = self._generate_color(track_id if isinstance(track_id, int) else 0)
             
@@ -172,22 +179,25 @@ class VideoProcessor:
                 cv2.line(annotated, (x2, y2), (x2 - line_len, y2), color, 4)
                 cv2.line(annotated, (x2, y2), (x2, y2 - line_len), color, 4)
 
-            # Label box: "Class | ID X [VISIBLE] (0.91)"
-            label = f"{class_name.capitalize()} | ID {track_id}"
-            if mem_state == "VISIBLE":
-                label += " [VISIBLE]"
-            if conf > 0:
-                label += f" | {conf:.2f}"
-                
-            (label_w, label_h), baseline = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.48, 1)
+            # Two-line Label badge:
+            # Line 1: "Ball | ID 1 [VISIBLE] (0.92)"
+            # Line 2: "95x91px | AR: 1.04 | Purple"
+            line1 = f"{class_name.capitalize()} | ID {track_id} | {conf:.2f}"
+            line2 = f"{w_val:.0f}x{h_val:.0f} | AR:{ar_val:.2f} | {col_val}"
             
-            # Label background box above or inside
-            lbl_y1 = max(y1 - label_h - 10, 0)
-            lbl_y2 = lbl_y1 + label_h + 8
-            lbl_x2 = min(x1 + label_w + 12, self.width)
+            (l1_w, l1_h), _ = cv2.getTextSize(line1, cv2.FONT_HERSHEY_SIMPLEX, 0.44, 1)
+            (l2_w, l2_h), _ = cv2.getTextSize(line2, cv2.FONT_HERSHEY_SIMPLEX, 0.38, 1)
+            max_lw = max(l1_w, l2_w)
+            total_lh = l1_h + l2_h + 10
             
-            cv2.rectangle(annotated, (x1, lbl_y1), (lbl_x2, lbl_y2), color, -1)
-            cv2.putText(annotated, label, (x1 + 6, lbl_y2 - 6), cv2.FONT_HERSHEY_SIMPLEX, 0.48, (255, 255, 255), 1, cv2.LINE_AA)
+            lbl_y1 = max(y1 - total_lh - 6, 0)
+            lbl_y2 = lbl_y1 + total_lh + 4
+            lbl_x2 = min(x1 + max_lw + 12, self.width)
+            
+            cv2.rectangle(annotated, (x1, lbl_y1), (lbl_x2, lbl_y2), (25, 25, 25), -1)
+            cv2.rectangle(annotated, (x1, lbl_y1), (lbl_x2, lbl_y2), color, 1)
+            cv2.putText(annotated, line1, (x1 + 6, lbl_y1 + l1_h + 3), cv2.FONT_HERSHEY_SIMPLEX, 0.44, color, 1, cv2.LINE_AA)
+            cv2.putText(annotated, line2, (x1 + 6, lbl_y2 - 4), cv2.FONT_HERSHEY_SIMPLEX, 0.38, (220, 220, 220), 1, cv2.LINE_AA)
 
         # 3. Draw Active Alerts / Event notifications on bottom right/left
         if active_alerts:

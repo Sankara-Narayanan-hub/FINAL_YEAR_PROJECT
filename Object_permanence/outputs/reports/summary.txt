@@ -2,33 +2,33 @@
  OBJECT PERMANENCE ANALYSIS REPORT
 ==================================================
 
-Video File:                  testball5.mp4
+Video File:                  testball3.mp4
 Total Frames:                121 (5.04 sec @ 24.0 fps)
-Frames with Detections:      40
+Frames with Detections:      120
 Unique Tracked Objects:      2
 
 --------------------------------------------------
  EVENT BREAKDOWN
 --------------------------------------------------
-Total Disappearance Events:  2
-Reappearance Events:         2
+Total Disappearance Events:  1
+Reappearance Events:         1
   - Successful Re-IDs:       1
-  - Identity Switches:       1
+  - Identity Switches:       0
 Permanent Losses (No Re-ID): 0
 
 --------------------------------------------------
  PRELIMINARY RESEARCH METRICS
 --------------------------------------------------
-Detection Consistency:       33.06%
-Identity Consistency:        50.00%
-OBJECT PERMANENCE SCORE:     50.00%
+Detection Consistency:       99.17%
+Identity Consistency:        100.00%
+OBJECT PERMANENCE SCORE:     100.00%
 --------------------------------------------------
  50% MILESTONE: PERSISTENT MEMORY BANK METRICS
 --------------------------------------------------
 Persistent Entities Managed:   2
-Total Occlusion Episodes:      2
-Successful Memory Recoveries:  0
-MEMORY RECOVERY RATE:          0.00%
-Mean Dead-Reckoning Error:     0.00 px
-Max Occlusion Gap Survived:    0 frames
+Total Occlusion Episodes:      1
+Successful Memory Recoveries:  1
+MEMORY RECOVERY RATE:          100.00%
+Mean Dead-Reckoning Error:     217.61 px
+Max Occlusion Gap Survived:    48 frames
 ==================================================

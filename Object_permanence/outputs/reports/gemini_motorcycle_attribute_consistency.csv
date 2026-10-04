@@ -1,0 +1,82 @@
+frame,master_track_id,raw_tracker_id,class_name,occlusion_gap_frames,pre_size,post_size,size_consistency_pct,pre_shape,post_shape,shape_consistency_pct,pre_color,post_color,color_preserved,overall_attribute_score_pct,morphing_detected
+4,1,1,motorcycle,0,469.88x494.85 (232520px),523.1x495.4 (259144px),89.73,AR 0.95,AR 1.06,100.0,Blue,Green,False,30.0,True
+10,1,1,person,0,403.68x503.86 (203399px),354.63x507.42 (179947px),88.47,AR 0.80,AR 0.70,100.0,Green,Blue,False,30.0,True
+11,1,1,person,0,354.63x507.42 (179947px),325.98x510.3 (166351px),92.44,AR 0.70,AR 0.64,100.0,Blue,Green,False,30.0,True
+30,1,1,motorcycle,0,634.01x477.78 (302917px),634.97x476.19 (302362px),99.82,AR 1.33,AR 1.33,100.0,Green,Blue,False,30.0,True
+31,1,1,motorcycle,0,634.97x476.19 (302362px),637.42x475.81 (303290px),99.69,AR 1.33,AR 1.34,100.0,Blue,Green,False,30.0,True
+38,2,2,person,0,332.9x524.38 (174567px),332.21x524.3 (174178px),99.78,AR 0.63,AR 0.63,100.0,Green,Blue,False,30.0,True
+49,2,2,person,0,321.73x531.83 (171108px),319.9x533.34 (170616px),99.71,AR 0.60,AR 0.60,100.0,Blue,Green,False,30.0,True
+65,3,3,car,0,52.03x46.12 (2399px),68.83x45.79 (3152px),76.12,AR 1.13,AR 1.50,100.0,Blue,Green,False,30.0,True
+70,2,2,person,0,353.15x528.33 (186576px),348.34x530.91 (184937px),99.12,AR 0.67,AR 0.66,100.0,Green,Blue,False,30.0,True
+71,2,2,person,0,348.34x530.91 (184937px),342.02x532.68 (182185px),98.51,AR 0.66,AR 0.64,100.0,Blue,Green,False,30.0,True
+76,2,2,person,0,341.87x527.71 (180410px),345.06x527.32 (181956px),99.15,AR 0.65,AR 0.65,100.0,Green,Blue,False,30.0,True
+84,3,3,car,0,49.27x42.91 (2114px),45.15x42.73 (1929px),91.25,AR 1.15,AR 1.06,100.0,Green,Blue,False,30.0,True
+93,5,5,car,0,96.58x32.74 (3162px),84.48x32.19 (2720px),86.0,AR 2.95,AR 2.62,100.0,Green,Blue,False,30.0,True
+95,3,6,car,7,32.79x42.18 (1383px),69.33x33.86 (2348px),58.92,AR 0.78 (Vertical Oblong),AR 2.05 (Horizontal Oblong),38.05,Blue,Green,False,38.79,True
+101,5,8,car,1,36.02x29.49 (1062px),49.37x29.31 (1447px),73.41,AR 1.22 (Spherical / Regular),AR 1.68 (Horizontal Oblong),72.62,Blue,Green,False,58.41,True
+102,5,8,car,0,49.37x29.31 (1447px),49.8x30.06 (1497px),96.66,AR 1.68,AR 1.66,100.0,Green,Yellow,False,30.0,True
+103,5,8,car,0,49.8x30.06 (1497px),50.06x30.37 (1521px),98.45,AR 1.66,AR 1.65,100.0,Yellow,Green,False,30.0,True
+104,7,9,car,1,40.1x28.27 (1134px),48.74x28.85 (1406px),80.62,AR 1.42 (Horizontal Oblong),AR 1.69 (Horizontal Oblong),84.02,Green,Yellow,False,65.86,True
+105,1,1,motorcycle,0,745.66x433.48 (323227px),740.06x430.77 (318796px),98.63,AR 1.72,AR 1.72,100.0,Green,Blue,False,30.0,True
+105,7,9,car,0,48.74x28.85 (1406px),48.8x28.88 (1409px),99.79,AR 1.69,AR 1.69,100.0,Yellow,Green,False,30.0,True
+106,1,1,motorcycle,0,740.06x430.77 (318796px),733.91x428.93 (314796px),98.75,AR 1.72,AR 1.71,100.0,Blue,Green,False,30.0,True
+107,11,11,car,0,45.87x26.82 (1231px),46.28x26.72 (1237px),99.5,AR 1.71,AR 1.73,100.0,Yellow,Green,False,30.0,True
+118,10,10,car,0,46.65x46.62 (2175px),40.64x46.69 (1898px),87.26,AR 1.00,AR 0.87,100.0,Green,Neutral,False,30.0,True
+121,12,12,car,0,129.31x44.95 (5812px),129.49x45.24 (5858px),99.22,AR 2.88,AR 2.86,100.0,Green,Yellow,False,30.0,True
+125,1,1,motorcycle,0,604.46x370.89 (224189px),598.62x366.48 (219381px),97.86,AR 1.63,AR 1.63,100.0,Green,Blue,False,30.0,True
+125,12,12,car,0,103.62x41.11 (4260px),108.08x41.68 (4505px),94.57,AR 2.52,AR 2.59,100.0,Yellow,Green,False,30.0,True
+126,1,1,motorcycle,0,598.62x366.48 (219381px),593.52x362.98 (215433px),98.2,AR 1.63,AR 1.64,100.0,Blue,Green,False,30.0,True
+126,14,14,car,0,111.2x53.54 (5954px),127.45x52.99 (6753px),88.16,AR 2.08,AR 2.41,100.0,Green,Blue,False,30.0,True
+127,1,1,motorcycle,0,593.52x362.98 (215433px),589.21x359.54 (211844px),98.33,AR 1.64,AR 1.64,100.0,Green,Blue,False,30.0,True
+127,14,14,car,0,127.45x52.99 (6753px),144.21x52.11 (7515px),89.87,AR 2.41,AR 2.77,100.0,Blue,Green,False,30.0,True
+128,1,1,motorcycle,0,589.21x359.54 (211844px),585.19x356.53 (208642px),98.49,AR 1.64,AR 1.64,100.0,Blue,Green,False,30.0,True
+129,1,1,motorcycle,0,585.19x356.53 (208642px),581.4x353.8 (205698px),98.59,AR 1.64,AR 1.64,100.0,Green,Blue,False,30.0,True
+130,13,13,car,0,70.57x51.75 (3652px),71.22x52.6 (3746px),97.51,AR 1.36,AR 1.35,100.0,Green,Neutral,False,30.0,True
+131,1,1,motorcycle,0,576.98x351.2 (202635px),573.4x348.73 (199960px),98.68,AR 1.64,AR 1.64,100.0,Blue,Green,False,30.0,True
+132,16,16,car,0,56.96x28.84 (1643px),58.62x28.92 (1695px),96.9,AR 1.97,AR 2.03,100.0,Yellow,Green,False,30.0,True
+136,1,1,motorcycle,0,564.1x340.44 (192040px),562.17x338.13 (190083px),98.98,AR 1.66,AR 1.66,100.0,Green,Blue,False,30.0,True
+137,12,12,car,0,61.84x35.46 (2193px),56.1x34.69 (1946px),88.75,AR 1.74,AR 1.62,100.0,Green,Blue,False,30.0,True
+137,16,17,car,1,63.59x29.17 (1855px),42.34x30.42 (1288px),69.44,AR 2.18 (Horizontal Oblong),AR 1.39 (Horizontal Oblong),63.76,Green,Yellow,False,53.28,True
+139,1,1,motorcycle,0,559.25x335.19 (187459px),557.61x334.27 (186390px),99.43,AR 1.67,AR 1.67,100.0,Blue,Green,False,30.0,True
+139,16,17,car,0,43.51x30.52 (1328px),44.68x30.61 (1368px),97.07,AR 1.43,AR 1.46,100.0,Yellow,Green,False,30.0,True
+140,1,1,motorcycle,0,557.61x334.27 (186390px),555.8x333.28 (185235px),99.38,AR 1.67,AR 1.67,100.0,Green,Blue,False,30.0,True
+142,16,18,car,2,44.68x30.61 (1368px),37.82x24.01 (908px),66.38,AR 1.46 (Horizontal Oblong),AR 1.58 (Horizontal Oblong),92.41,Green,Green,True,83.52,True
+145,19,19,car,0,38.52x35.01 (1348px),48.61x36.85 (1791px),75.29,AR 1.10,AR 1.32,100.0,Yellow,Orange,False,30.0,True
+146,19,19,car,0,48.61x36.85 (1791px),44.31x34.31 (1520px),84.87,AR 1.32,AR 1.29,100.0,Orange,Yellow,False,30.0,True
+147,19,19,car,0,44.31x34.31 (1520px),41.71x32.1 (1339px),88.08,AR 1.29,AR 1.30,100.0,Yellow,Green,False,30.0,True
+148,19,19,car,0,41.71x32.1 (1339px),39.84x30.67 (1222px),91.27,AR 1.30,AR 1.30,100.0,Green,Yellow,False,30.0,True
+149,14,14,car,0,137.96x50.79 (7007px),132.85x50.75 (6742px),96.22,AR 2.72,AR 2.62,100.0,Green,Blue,False,30.0,True
+150,15,15,car,0,71.22x33.21 (2365px),63.11x32.91 (2077px),87.81,AR 2.14,AR 1.92,100.0,Green,Yellow,False,30.0,True
+152,15,15,car,0,55.01x32.6 (1793px),46.91x32.3 (1515px),84.47,AR 1.69,AR 1.45,100.0,Yellow,Green,False,30.0,True
+153,15,15,car,0,46.91x32.3 (1515px),38.81x31.99 (1241px),81.94,AR 1.45,AR 1.21,100.0,Green,Blue,False,30.0,True
+153,16,18,car,0,35.38x22.96 (812px),35.14x23.05 (810px),99.72,AR 1.54,AR 1.52,100.0,Green,Blue,False,30.0,True
+154,16,18,car,0,35.14x23.05 (810px),34.82x23.21 (808px),99.77,AR 1.52,AR 1.50,100.0,Blue,Green,False,30.0,True
+156,14,14,car,0,94.81x48.04 (4554px),85.16x47.7 (4062px),89.19,AR 1.97,AR 1.79,100.0,Blue,Green,False,30.0,True
+158,14,14,car,0,76.3x47.29 (3608px),65.52x47.13 (3088px),85.59,AR 1.61,AR 1.39,100.0,Green,Blue,False,30.0,True
+171,12,22,car,32,50.37x33.91 (1708px),58.19x42.34 (2464px),69.34,AR 1.49 (Horizontal Oblong),AR 1.37 (Horizontal Oblong),91.95,Blue,Blue,True,84.52,True
+176,12,22,car,0,56.12x42.57 (2389px),57.5x42.93 (2469px),96.77,AR 1.32,AR 1.34,100.0,Blue,Green,False,30.0,True
+183,16,18,car,0,21.95x26.23 (576px),20.19x26.75 (540px),93.81,AR 0.84,AR 0.75,100.0,Green,Blue,False,30.0,True
+191,12,22,car,0,53.91x41.44 (2234px),53.4x41.27 (2204px),98.65,AR 1.30,AR 1.29,100.0,Green,Blue,False,30.0,True
+192,16,23,car,5,14.9x28.32 (422px),27.06x22.35 (605px),69.79,AR 0.53 (Vertical Oblong),AR 1.21 (Spherical / Regular),43.8,Blue,Green,False,45.44,True
+194,12,22,car,0,53.36x40.99 (2187px),53.11x40.73 (2163px),98.91,AR 1.30,AR 1.30,100.0,Blue,Green,False,30.0,True
+195,20,20,can,0,18.75x31.49 (590px),18.13x31.95 (579px),98.12,AR 0.60,AR 0.57,100.0,Green,Neutral,False,30.0,True
+198,1,1,motorcycle,0,627.58x410.4 (257559px),631.7x412.88 (260813px),98.75,AR 1.53,AR 1.53,100.0,Blue,Green,False,30.0,True
+201,2,2,person,0,304.36x484.51 (147464px),306.8x486.06 (149124px),98.89,AR 0.63,AR 0.63,100.0,Blue,Green,False,30.0,True
+201,16,23,car,0,29.21x23.33 (681px),28.3x23.24 (658px),96.52,AR 1.25,AR 1.22,100.0,Green,Yellow,False,30.0,True
+204,16,23,car,0,26.47x23.06 (611px),25.56x22.98 (587px),96.2,AR 1.15,AR 1.11,100.0,Yellow,Green,False,30.0,True
+205,24,25,car,1,105.2x42.12 (4431px),58.17x34.27 (1993px),44.99,AR 2.50 (Horizontal Oblong),AR 1.70 (Horizontal Oblong),68.0,Blue,Green,False,45.2,True
+209,12,22,car,0,36.76x38.26 (1407px),44.36x38.37 (1702px),82.64,AR 0.96,AR 1.16,100.0,Green,Yellow,False,30.0,True
+211,12,22,car,0,50.46x38.73 (1954px),54.63x39.97 (2184px),89.48,AR 1.30,AR 1.37,100.0,Yellow,Green,False,30.0,True
+212,12,22,car,0,54.63x39.97 (2184px),46.96x39.31 (1846px),84.53,AR 1.37,AR 1.19,100.0,Green,Yellow,False,30.0,True
+213,12,22,car,0,46.96x39.31 (1846px),45.35x38.41 (1742px),94.36,AR 1.19,AR 1.18,100.0,Yellow,Green,False,30.0,True
+215,19,19,car,0,25.32x29.15 (738px),22.54x29.18 (658px),89.11,AR 0.87,AR 0.77,100.0,Yellow,Neutral,False,30.0,True
+220,12,22,car,0,37.98x38.32 (1455px),36.13x38.41 (1388px),95.37,AR 0.99,AR 0.94,100.0,Green,Neutral,False,30.0,True
+223,2,2,person,0,346.23x540.58 (187166px),348.56x542.5 (189096px),98.98,AR 0.64,AR 0.64,100.0,Green,Blue,False,30.0,True
+225,27,27,car,0,38.59x31.04 (1198px),36.26x32.03 (1162px),96.95,AR 1.24,AR 1.13,100.0,Green,Yellow,False,30.0,True
+226,27,27,car,0,36.26x32.03 (1162px),33.93x33.02 (1120px),96.46,AR 1.13,AR 1.03,100.0,Yellow,Green,False,30.0,True
+230,28,29,can,4,56.83x70.02 (3979px),42.19x46.7 (1970px),49.51,AR 0.81 (Vertical Oblong),AR 0.90 (Spherical / Regular),90.0,Green,Green,True,75.8,True
+232,28,29,can,0,42.02x46.73 (1964px),41.85x46.77 (1957px),99.66,AR 0.90,AR 0.89,100.0,Green,Grey/Brown,False,30.0,True
+234,28,32,can,1,41.85x46.77 (1957px),36.13x44.12 (1594px),81.45,AR 0.89 (Spherical / Regular),AR 0.82 (Spherical / Regular),92.13,Grey/Brown,Green,False,69.43,True
+236,24,25,car,0,26.12x38.97 (1018px),11.23x38.48 (432px),42.43,AR 0.67,AR 0.29,100.0,Green,Neutral,False,30.0,True
+236,28,32,can,0,35.33x44.03 (1556px),34.53x43.94 (1517px),97.54,AR 0.80,AR 0.79,100.0,Green,Yellow,False,30.0,True
+239,30,30,car,0,182.56x92.75 (16933px),213.42x91.85 (19603px),86.38,AR 1.97,AR 2.32,100.0,Blue,Green,False,30.0,True

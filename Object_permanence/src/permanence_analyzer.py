@@ -2,6 +2,7 @@ import os
 import math
 import pandas as pd
 import numpy as np
+from src.memory_bank import are_classes_compatible
 
 class ObjectPermanenceAnalyzer:
     """
@@ -119,7 +120,7 @@ class ObjectPermanenceAnalyzer:
                 gap = f_reapp - f_dis - 1
                 if 0 <= gap <= self.max_reappearance_gap:
                     # Check class compatibility
-                    if old_info['class_name'].lower() == new_info['class_name'].lower():
+                    if are_classes_compatible(old_info['class_name'], new_info['class_name']):
                         # Calculate spatial normalized distance
                         dx = new_info['first_box']['center_x'] - old_info['last_box']['center_x']
                         dy = new_info['first_box']['center_y'] - old_info['last_box']['center_y']
