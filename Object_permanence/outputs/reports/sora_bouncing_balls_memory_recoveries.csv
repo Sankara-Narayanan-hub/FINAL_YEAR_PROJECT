@@ -1,0 +1,4 @@
+frame,master_track_id,raw_tracker_id,class_name,occlusion_gap_frames,prediction_error_px,matching_cost,event,color_pre,color_post,color_preserved,size_consistency_pct,shape_consistency_pct
+99,3,4,balloon,16,247.25,0.4108,MEMORY_RECOVERY_SUCCESS,Purple,Blue,False,21.97,34.23
+124,3,5,balloon,22,51.15,0.3365,MEMORY_RECOVERY_SUCCESS,Blue,Blue,True,44.45,46.41
+138,3,6,toy,5,2.33,0.0184,MEMORY_RECOVERY_SUCCESS,Blue,Blue,True,94.42,96.12

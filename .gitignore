@@ -59,3 +59,9 @@ Object_permanence/yolov8n.pt
 *.cache
 *.log
 .ipynb_checkpoints/
+cache_hf_downloads/
+extracted_assets/
+Sample_report.pdf
+
+# Generated annotated output videos (prevent git bloat; keep lightweight demo videos)
+Object_permanence/outputs/annotated_videos/*.mp4

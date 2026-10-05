@@ -1,0 +1,5 @@
+frame,master_track_id,raw_tracker_id,class_name,occlusion_gap_frames,prediction_error_px,matching_cost,event,color_pre,color_post,color_preserved,size_consistency_pct,shape_consistency_pct
+39,1,3,chair,19,72.33,0.2015,MEMORY_RECOVERY_SUCCESS,Green,Blue,False,44.34,69.85
+52,1,4,chair,3,3.89,0.0122,MEMORY_RECOVERY_SUCCESS,Blue,Blue,True,96.68,98.08
+101,1,5,chair,40,195.81,0.1852,MEMORY_RECOVERY_SUCCESS,Blue,Blue,True,76.58,87.5
+133,1,6,chair,2,28.18,0.1556,MEMORY_RECOVERY_SUCCESS,Blue,Blue,True,52.61,59.67

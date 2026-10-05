@@ -700,6 +700,7 @@ class PersistentMemoryBank:
         # Average attribute stability
         attr_scores = [a["overall_attribute_score_pct"] for a in self.attribute_audits]
         mean_attr_stability = round(float(np.mean(attr_scores)), 2) if attr_scores else 100.0
+        morphed_count = sum(1 for a in self.attribute_audits if a.get("morphing_detected", False))
 
         return {
             "total_occlusion_episodes": total_episodes,
@@ -708,5 +709,6 @@ class PersistentMemoryBank:
             "mean_trajectory_prediction_error_px": mean_pred_error,
             "max_occlusion_gap_survived_frames": max_occlusion_survived,
             "mean_attribute_stability_pct": mean_attr_stability,
-            "persistent_entities_count": len(self.slots)
+            "persistent_entities_count": len(self.slots),
+            "morphing_events_count": morphed_count
         }

@@ -171,15 +171,16 @@ def extract_visual_attributes(frame: np.ndarray, box: tuple, class_name: str = "
 
 # Universal Physical Object Vocabulary for Zero-Code Open-World Video Understanding
 UNIVERSAL_PHYSICAL_VOCABULARY = [
-    # Everyday physical items & permanence benchmark objects (no spurious fruits/household hallucinations)
+    # Everyday physical items & permanence benchmark objects
     "ball", "sports ball", "sphere", "balloon", "box", "cardboard box", "cube", "crate",
-    "toy", "block", "cup", "bottle", "can", "bowl", "cylinder",
+    "toy", "block", "cup", "bottle", "can", "bowl", "cylinder", "drone",
     # Vehicles & transit
     "car", "automobile", "vehicle", "truck", "bus", "van", "suv", "motorcycle", "bicycle", "boat", "airplane",
-    # Living beings
-    "person", "pedestrian", "dog", "cat", "horse", "animal", "bird",
-    # Props & furniture
-    "chair", "table", "backpack", "handbag", "suitcase"
+    # Animals & living beings (Full fine-grained taxonomy)
+    "person", "pedestrian", "cat", "kitten", "dog", "puppy", "lion", "tiger", "bear", "elephant",
+    "kangaroo", "rabbit", "horse", "animal", "bird", "monkey", "squirrel", "fox",
+    # Props & furniture & barriers
+    "chair", "table", "desk", "sofa", "bed", "backpack", "handbag", "suitcase", "tree", "plant", "flower", "rock"
 ]
 
 
@@ -188,11 +189,16 @@ def get_class_family(class_name: str) -> str:
     c = class_name.lower().strip()
     if c in {"person", "pedestrian", "runner", "cyclist"}:
         return "people"
+    if c in {
+        "cat", "kitten", "dog", "puppy", "lion", "tiger", "bear", "elephant",
+        "kangaroo", "rabbit", "horse", "animal", "bird", "monkey", "squirrel", "fox"
+    }:
+        return "animals"
     if c in {"bicycle", "bike", "cycle", "motorcycle", "motorbike"}:
         return "two_wheelers"
     if c in {
         "ball", "sports ball", "sphere", "toy", "block", "cube", "fruit", "apple", "orange",
-        "bottle", "cup", "can", "balloon", "bowl", "frisbee", "disc", "cylinder"
+        "bottle", "cup", "can", "balloon", "bowl", "frisbee", "disc", "cylinder", "drone"
     }:
         return "small_objects"
     if c in {"box", "cardboard box", "crate"}:
@@ -200,6 +206,84 @@ def get_class_family(class_name: str) -> str:
     if c in {"car", "automobile", "vehicle", "truck", "bus", "van", "suv", "boat", "airplane"}:
         return "vehicles"
     return "general"
+
+
+class CLIPSemanticVerifier:
+    """
+    Zero-Shot Foundation Vision-Language Verifier using OpenAI CLIP (ViT-B/32).
+    Resolves fine-grained animal and object classification ambiguities (e.g. cat vs dog, lion vs dog)
+    by evaluating candidate bounding box crops against prompt targets and canonical taxonomies.
+    """
+    def __init__(self, clip_path: str = "weights/clip/ViT-B-32.pt", device="cuda"):
+        self.device = device if (torch.cuda.is_available() and str(device) != "cpu") else "cpu"
+        self.model = None
+        self.preprocess = None
+        self.enabled = False
+        resolved = self._resolve_path(clip_path)
+        if resolved and os.path.exists(resolved):
+            try:
+                import clip
+                self.model, self.preprocess = clip.load(resolved, device=self.device)
+                self.model.eval()
+                self.enabled = True
+                print(f"[INFO] Initialized CLIP Foundation Semantic Verifier ({resolved}) on {self.device}.")
+            except Exception as e:
+                print(f"[WARNING] Could not load CLIP verifier ({e}). Proceeding without CLIP.")
+
+    def _resolve_path(self, path: str) -> str:
+        candidates = [
+            path,
+            os.path.join("Object_permanence", path),
+            os.path.join("weights", "clip", "ViT-B-32.pt"),
+            os.path.join("Object_permanence", "weights", "clip", "ViT-B-32.pt")
+        ]
+        for c in candidates:
+            if os.path.exists(c):
+                return c
+        return None
+
+    def verify_crop(self, crop_bgr: np.ndarray, current_label: str, prompt_targets=None) -> tuple:
+        """
+        Evaluates a bounding box crop against candidate fine-grained labels.
+        Returns (refined_label, confidence_score).
+        """
+        if not self.enabled or crop_bgr is None or crop_bgr.shape[0] < 20 or crop_bgr.shape[1] < 20:
+            return current_label, 1.0
+
+        try:
+            import clip
+            from PIL import Image
+
+            base_candidates = [
+                "cat", "kitten", "dog", "puppy", "lion", "tiger", "bear",
+                "elephant", "kangaroo", "rabbit", "horse", "bird", "monkey", "squirrel", "fox"
+            ]
+            candidates = list(base_candidates)
+            if prompt_targets:
+                if isinstance(prompt_targets, str):
+                    prompt_targets = [prompt_targets]
+                for p in prompt_targets:
+                    p_clean = str(p).lower().strip()
+                    if p_clean and p_clean not in candidates:
+                        candidates.insert(0, p_clean)
+
+            text_tokens = clip.tokenize([f"a photo of a {c}" for c in candidates]).to(self.device)
+            img = Image.fromarray(cv2.cvtColor(crop_bgr, cv2.COLOR_BGR2RGB))
+            img_tensor = self.preprocess(img).unsqueeze(0).to(self.device)
+
+            with torch.no_grad():
+                img_feat = self.model.encode_image(img_tensor)
+                text_feat = self.model.encode_text(text_tokens)
+                img_feat /= img_feat.norm(dim=-1, keepdim=True)
+                text_feat /= text_feat.norm(dim=-1, keepdim=True)
+                probs = (100.0 * img_feat @ text_feat.T).softmax(dim=-1)[0]
+                best_idx = probs.argmax().item()
+                best_cls = candidates[best_idx]
+                best_prob = float(probs[best_idx].item())
+
+            return best_cls, best_prob
+        except Exception:
+            return current_label, 1.0
 
 
 class ObjectDetectorTracker:
@@ -276,7 +360,16 @@ class ObjectDetectorTracker:
                 print(f"[WARNING] Could not initialize Norfair ({e}). Falling back to ByteTrack.")
                 self.tracker_type = "bytetrack"
 
-        # 2. Try loading YOLO / YOLO-World model
+        # 2. Initialize CLIP Foundation Semantic Verifier (Method 2 from Methodology)
+        self.clip_verifier = None
+        clip_weights = "weights/clip/ViT-B-32.pt"
+        if os.path.exists(clip_weights) or os.path.exists(os.path.join("Object_permanence", clip_weights)):
+            try:
+                self.clip_verifier = CLIPSemanticVerifier(clip_weights, device=self.device)
+            except Exception as e:
+                print(f"[WARNING] CLIP verifier initialization failed: {e}")
+
+        # 3. Try loading YOLO / YOLO-World model
         try:
             if "world" in str(resolved_weights).lower():
                 from ultralytics import YOLOWorld
@@ -370,10 +463,32 @@ class ObjectDetectorTracker:
             return "motorcycle"
         if "pedestrian" in c or "person" in c:
             return "person"
+        if "lion" in c:
+            return "lion"
+        if "tiger" in c:
+            return "tiger"
+        if "cat" in c or "kitten" in c:
+            return "cat"
+        if "dog" in c or "puppy" in c:
+            return "dog"
+        if "rabbit" in c or "bunny" in c:
+            return "rabbit"
+        if "kangaroo" in c:
+            return "kangaroo"
+        if "elephant" in c:
+            return "elephant"
+        if "monkey" in c or "ape" in c or "chimpanzee" in c:
+            return "monkey"
+        if "squirrel" in c:
+            return "squirrel"
+        if "fox" in c:
+            return "fox"
+        if "drone" in c:
+            return "drone"
         return class_name
 
-    def _to_norfair_detections(self, xyxy_list, conf_list, cls_list) -> list:
-        """Converts raw YOLO bounding boxes into Norfair Detection objects with strict class filtering."""
+    def _to_norfair_detections(self, xyxy_list, conf_list, cls_list, frame: np.ndarray = None) -> list:
+        """Converts raw YOLO bounding boxes into Norfair Detection objects with strict class filtering and CLIP verification."""
         from norfair import Detection
         norfair_detections = []
         for i in range(len(xyxy_list)):
@@ -381,6 +496,24 @@ class ObjectDetectorTracker:
             conf = float(conf_list[i])
             cls_id = int(cls_list[i])
             raw_class_name = self.model.names.get(cls_id, f"cls_{cls_id}") if self.model else "object"
+
+            # Zero-Shot CLIP verification on animal and ambiguous categories (Method 2)
+            if self.clip_verifier and self.clip_verifier.enabled and frame is not None:
+                if raw_class_name in {
+                    "dog", "cat", "animal", "horse", "bear", "lion", "tiger",
+                    "rabbit", "kangaroo", "elephant", "monkey", "squirrel", "fox", "object"
+                }:
+                    h_f, w_f = frame.shape[:2]
+                    cy1, cy2 = max(0, int(y1)), min(h_f, int(y2))
+                    cx1, cx2 = max(0, int(x1)), min(w_f, int(x2))
+                    if (cy2 - cy1) >= 20 and (cx2 - cx1) >= 20:
+                        crop = frame[cy1:cy2, cx1:cx2]
+                        verified_class, v_conf = self.clip_verifier.verify_crop(
+                            crop, raw_class_name, prompt_targets=self.target_class or self.custom_prompts
+                        )
+                        if verified_class and v_conf >= 0.35 and verified_class != raw_class_name:
+                            raw_class_name = verified_class
+                            conf = max(conf, v_conf)
 
             # Reject classes not in target prompts (prevents apple, bed, vase, etc.)
             if not self._matches_target_class(raw_class_name):
@@ -436,7 +569,7 @@ class ObjectDetectorTracker:
                         xyxy_list = boxes.xyxy.cpu().numpy() if boxes.xyxy is not None else []
                         conf_list = boxes.conf.cpu().numpy() if boxes.conf is not None else []
                         cls_list = boxes.cls.cpu().numpy() if boxes.cls is not None else []
-                        norfair_dets = self._to_norfair_detections(xyxy_list, conf_list, cls_list)
+                        norfair_dets = self._to_norfair_detections(xyxy_list, conf_list, cls_list, frame=frame)
 
                     # Group detections by semantic family (people, two_wheelers, small_objects, vehicles, etc.)
                     norfair_dets_by_family = {}

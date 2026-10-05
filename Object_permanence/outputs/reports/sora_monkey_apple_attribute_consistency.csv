@@ -1,0 +1,5 @@
+frame,master_track_id,raw_tracker_id,class_name,occlusion_gap_frames,pre_size,post_size,size_consistency_pct,pre_shape,post_shape,shape_consistency_pct,pre_color,post_color,color_preserved,overall_attribute_score_pct,morphing_detected
+48,2,4,toy,5,239.97x167.45 (40181px),153.38x200.06 (30685px),76.37,AR 1.43 (Horizontal Oblong),AR 0.77 (Vertical Oblong),53.85,Red,Red,True,72.09,False
+94,3,6,person,45,163.45x191.21 (31253px),149.15x236.43 (35263px),88.63,AR 0.85 (Spherical / Regular),AR 0.63 (Vertical Oblong),74.12,Red,Orange,False,65.1,True
+112,5,7,monkey,12,121.79x243.98 (29715px),180.49x251.95 (45474px),65.34,AR 0.50 (Vertical Oblong),AR 0.72 (Vertical Oblong),69.44,Orange,Red,False,53.91,True
+128,5,8,monkey,7,154.36x266.51 (41139px),246.02x218.11 (53659px),76.67,AR 0.58 (Vertical Oblong),AR 1.13 (Spherical / Regular),51.33,Orange,Orange,True,71.2,False

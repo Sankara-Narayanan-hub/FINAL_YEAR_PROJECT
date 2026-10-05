@@ -1,0 +1,149 @@
+[
+  {
+    "video_name": "sora_a_child_sees_a_lonely_tree_every_da.mp4",
+    "model": "Sora",
+    "category": "Complex_Plot",
+    "prompt": "A child sees a lonely tree every day in a park near his school, always appearing to be alone. On the first day, the child stops under the tree, gently touching its bark, feeling a -0",
+    "path": "Object_permanence\\data\\input\\sora_a_child_sees_a_lonely_tree_every_da.mp4"
+  },
+  {
+    "video_name": "sora_a_young_prince_named_alvin_became_l.mp4",
+    "model": "Sora",
+    "category": "Complex_Plot",
+    "prompt": "A young prince named Alvin became lost in the forest and accidentally discovered a shiny green gemstone. The gemstone radiated powerful natural energy, capable of communicating wit-0",
+    "path": "Object_permanence\\data\\input\\sora_a_young_prince_named_alvin_became_l.mp4"
+  },
+  {
+    "video_name": "sora_in_an_ancient_city_a_young_painter.mp4",
+    "model": "Sora",
+    "category": "Complex_Plot",
+    "prompt": "In an ancient city, a young painter always looks out of the glass window of his studio at the street. On the first day, he notices a figure who appears at a specific time at the st-0",
+    "path": "Object_permanence\\data\\input\\sora_in_an_ancient_city_a_young_painter.mp4"
+  },
+  {
+    "video_name": "sora_in_an_ancient_tomb_the_raiders_disc.mp4",
+    "model": "Sora",
+    "category": "Complex_Plot",
+    "prompt": "In an ancient tomb, the raiders discovered five statues, each representing one of the five elements. Captain Zhao Fei carefully studied the statues and believed they would lead the-0",
+    "path": "Object_permanence\\data\\input\\sora_in_an_ancient_tomb_the_raiders_disc.mp4"
+  },
+  {
+    "video_name": "sora_in_an_ancient_tomb_the_raiders_foun.mp4",
+    "model": "Sora",
+    "category": "Complex_Plot",
+    "prompt": "In an ancient tomb, the raiders found a jade box, said to be a relic of an ancient emperor. As they opened the box, a strange black mist enveloped the entire chamber, sending a chi-0",
+    "path": "Object_permanence\\data\\input\\sora_in_an_ancient_tomb_the_raiders_foun.mp4"
+  },
+  {
+    "video_name": "sora_inside_the_tomb_the_tomb_raiders_fo.mp4",
+    "model": "Sora",
+    "category": "Complex_Plot",
+    "prompt": "Inside the tomb, the tomb raiders found a stone tablet adorned with blood-red totems. According to legend, this tablet would lead to an endless treasure. Captain Wang Kai believed -0",
+    "path": "Object_permanence\\data\\input\\sora_inside_the_tomb_the_tomb_raiders_fo.mp4"
+  },
+  {
+    "video_name": "sora_it_is_said_that_the_ancient_dragon.mp4",
+    "model": "Sora",
+    "category": "Complex_Plot",
+    "prompt": "It is said that the ancient Dragon Tribe left behind a vast treasure, accessible only through a series of trials. Young adventurer Lucas set off on his own journey to find this leg-0",
+    "path": "Object_permanence\\data\\input\\sora_it_is_said_that_the_ancient_dragon.mp4"
+  },
+  {
+    "video_name": "sora_the_violet_flower_glowed_mysterious.mp4",
+    "model": "Sora",
+    "category": "Complex_Plot",
+    "prompt": "The Violet Flower glowed mysteriously at night, and it was said to heal any ailment. To save his ill mother, a young man named Oscar decided to find this magical flower. He crossed-0",
+    "path": "Object_permanence\\data\\input\\sora_the_violet_flower_glowed_mysterious.mp4"
+  },
+  {
+    "video_name": "sora_the_match_began_and_team_a_quickly.mp4",
+    "model": "Sora",
+    "category": "Complex_Plot",
+    "prompt": "The match began, and Team A quickly organized an attack, breaking through Team B's defense with fast passes. The forward accurately kicked the ball into the goal, taking a 1-0 lead-0",
+    "path": "Object_permanence\\data\\input\\sora_the_match_began_and_team_a_quickly.mp4"
+  },
+  {
+    "video_name": "sora_the_race_began_and_all_the_runners.mp4",
+    "model": "Sora",
+    "category": "Complex_Plot",
+    "prompt": "The race began, and all the runners sprinted quickly. The runner from Team A quickly took the lead. After a period of steady running, the runners from Team A and Team B gradually c-0",
+    "path": "Object_permanence\\data\\input\\sora_the_race_began_and_all_the_runners.mp4"
+  },
+  {
+    "video_name": "sora_the_three_little_pigs_decide_to_bui.mp4",
+    "model": "Sora",
+    "category": "Complex_Plot",
+    "prompt": "The three little pigs decide to build their own houses. The eldest pig chooses straw, the second pig uses wood, and the youngest pig carefully selects bricks to build a sturdy home-0",
+    "path": "Object_permanence\\data\\input\\sora_the_three_little_pigs_decide_to_bui.mp4"
+  },
+  {
+    "video_name": "sora_a_bird_is_above_a_tree_then_the_bir.mp4",
+    "model": "Sora",
+    "category": "Dynamic_Spatial_Relationship",
+    "prompt": "A bird is above a tree, then the bird flies to the back of the tree.-0",
+    "path": "Object_permanence\\data\\input\\sora_a_bird_is_above_a_tree_then_the_bir.mp4"
+  },
+  {
+    "video_name": "sora_a_bird_is_above_a_tree_then_the_bir.mp4",
+    "model": "Sora",
+    "category": "Dynamic_Spatial_Relationship",
+    "prompt": "A bird is above a tree, then the bird flies to the front of the tree.-0",
+    "path": "Object_permanence\\data\\input\\sora_a_bird_is_above_a_tree_then_the_bir.mp4"
+  },
+  {
+    "video_name": "sora_a_bird_is_above_a_tree_then_the_bir.mp4",
+    "model": "Sora",
+    "category": "Dynamic_Spatial_Relationship",
+    "prompt": "A bird is above a tree, then the bird flies to the left of the tree.-0",
+    "path": "Object_permanence\\data\\input\\sora_a_bird_is_above_a_tree_then_the_bir.mp4"
+  },
+  {
+    "video_name": "sora_a_bird_is_above_a_tree_then_the_bir.mp4",
+    "model": "Sora",
+    "category": "Dynamic_Spatial_Relationship",
+    "prompt": "A bird is above a tree, then the bird flies to the right of the tree.-0",
+    "path": "Object_permanence\\data\\input\\sora_a_bird_is_above_a_tree_then_the_bir.mp4"
+  },
+  {
+    "video_name": "sora_a_bird_is_behind_a_apple_then_the_b.mp4",
+    "model": "Sora",
+    "category": "Dynamic_Spatial_Relationship",
+    "prompt": "A bird is behind a apple, then the bird flies to the front of the apple.-0",
+    "path": "Object_permanence\\data\\input\\sora_a_bird_is_behind_a_apple_then_the_b.mp4"
+  },
+  {
+    "video_name": "sora_a_bird_is_behind_a_apple_then_the_b.mp4",
+    "model": "Sora",
+    "category": "Dynamic_Spatial_Relationship",
+    "prompt": "A bird is behind a apple, then the bird flies to the left of the apple.-0",
+    "path": "Object_permanence\\data\\input\\sora_a_bird_is_behind_a_apple_then_the_b.mp4"
+  },
+  {
+    "video_name": "sora_a_bird_is_behind_a_apple_then_the_b.mp4",
+    "model": "Sora",
+    "category": "Dynamic_Spatial_Relationship",
+    "prompt": "A bird is behind a apple, then the bird flies to the right of the apple.-0",
+    "path": "Object_permanence\\data\\input\\sora_a_bird_is_behind_a_apple_then_the_b.mp4"
+  },
+  {
+    "video_name": "sora_a_bird_is_behind_a_tree_then_the_bi.mp4",
+    "model": "Sora",
+    "category": "Dynamic_Spatial_Relationship",
+    "prompt": "A bird is behind a tree, then the bird flies to the above of the tree.-0",
+    "path": "Object_permanence\\data\\input\\sora_a_bird_is_behind_a_tree_then_the_bi.mp4"
+  },
+  {
+    "video_name": "sora_a_bird_is_in_front_of_a_table_then.mp4",
+    "model": "Sora",
+    "category": "Dynamic_Spatial_Relationship",
+    "prompt": "A bird is in front of a table, then the bird flies to the right of the table.-0",
+    "path": "Object_permanence\\data\\input\\sora_a_bird_is_in_front_of_a_table_then.mp4"
+  },
+  {
+    "video_name": "sora_a_bird_is_in_the_front_a_tree_then.mp4",
+    "model": "Sora",
+    "category": "Dynamic_Spatial_Relationship",
+    "prompt": "A bird is in the front a tree, then the bird flies to the above of the tree.-0",
+    "path": "Object_permanence\\data\\input\\sora_a_bird_is_in_the_front_a_tree_then.mp4"
+  }
+]

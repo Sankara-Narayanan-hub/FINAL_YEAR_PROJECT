@@ -1,0 +1,5 @@
+frame,master_track_id,raw_tracker_id,class_name,occlusion_gap_frames,pre_size,post_size,size_consistency_pct,pre_shape,post_shape,shape_consistency_pct,pre_color,post_color,color_preserved,overall_attribute_score_pct,morphing_detected
+41,2,6,balloon,23,258.5x279.67 (72295px),269.88x278.53 (75171px),96.17,AR 0.92 (Spherical / Regular),AR 0.97 (Spherical / Regular),94.85,Red,Red,True,96.41,False
+64,1,7,bird,39,332.59x136.36 (45351px),411.0x336.94 (138481px),32.75,AR 2.44 (Horizontal Oblong),AR 1.22 (Spherical / Regular),50.0,Orange,Orange,True,53.1,False
+104,2,8,ball,48,270.47x277.99 (75189px),215.7x230.17 (49647px),66.03,AR 0.97 (Spherical / Regular),AR 0.94 (Spherical / Regular),96.91,Red,Red,True,85.18,False
+135,4,10,table,77,844.07x315.05 (265922px),848.52x306.89 (260402px),97.92,AR 2.68 (Horizontal Oblong),AR 2.76 (Horizontal Oblong),97.1,Red,Orange,False,78.01,True

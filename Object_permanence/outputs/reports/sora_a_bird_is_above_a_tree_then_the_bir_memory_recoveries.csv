@@ -1,0 +1,2 @@
+frame,master_track_id,raw_tracker_id,class_name,occlusion_gap_frames,prediction_error_px,matching_cost,event,color_pre,color_post,color_preserved,size_consistency_pct,shape_consistency_pct
+59,3,4,bird,8,84.55,0.3604,MEMORY_RECOVERY_SUCCESS,Blue,Blue,True,17.33,4.29

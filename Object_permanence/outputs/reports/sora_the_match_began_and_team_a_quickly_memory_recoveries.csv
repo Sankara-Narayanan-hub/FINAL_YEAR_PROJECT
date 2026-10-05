@@ -1,0 +1,8 @@
+frame,master_track_id,raw_tracker_id,class_name,occlusion_gap_frames,prediction_error_px,matching_cost,event,color_pre,color_post,color_preserved,size_consistency_pct,shape_consistency_pct
+20,6,8,person,15,58.2,0.1617,MEMORY_RECOVERY_SUCCESS,Cyan,Green,False,59.96,97.47
+57,5,12,person,4,120.02,0.328,MEMORY_RECOVERY_SUCCESS,Cyan,Cyan,True,19.26,83.67
+82,15,17,ball,5,162.18,0.4159,MEMORY_RECOVERY_SUCCESS,Purple,Green,False,40.32,82.08
+88,9,18,ball,4,156.47,0.1915,MEMORY_RECOVERY_SUCCESS,Green,Yellow,False,73.41,96.3
+110,3,20,person,5,104.12,0.0883,MEMORY_RECOVERY_SUCCESS,Green,Purple,False,95.38,36.36
+112,1,21,person,33,270.89,0.2732,MEMORY_RECOVERY_SUCCESS,Green,Red,False,73.46,65.62
+119,7,22,person,34,221.19,0.164,MEMORY_RECOVERY_SUCCESS,Green,Grey,False,98.04,37.84

@@ -1,0 +1,5 @@
+frame,master_track_id,raw_tracker_id,class_name,occlusion_gap_frames,prediction_error_px,matching_cost,event,color_pre,color_post,color_preserved,size_consistency_pct,shape_consistency_pct
+48,2,4,toy,5,51.05,0.1074,MEMORY_RECOVERY_SUCCESS,Red,Red,True,76.37,53.85
+94,3,6,person,45,81.73,0.0969,MEMORY_RECOVERY_SUCCESS,Red,Orange,False,88.63,74.12
+112,5,7,monkey,12,53.69,0.1975,MEMORY_RECOVERY_SUCCESS,Orange,Red,False,65.34,69.44
+128,5,8,monkey,7,70.27,0.1415,MEMORY_RECOVERY_SUCCESS,Orange,Orange,True,76.67,51.33

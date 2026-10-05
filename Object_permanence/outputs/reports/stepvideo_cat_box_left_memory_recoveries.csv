@@ -1,0 +1,2 @@
+frame,master_track_id,raw_tracker_id,class_name,occlusion_gap_frames,prediction_error_px,matching_cost,event,color_pre,color_post,color_preserved,size_consistency_pct,shape_consistency_pct
+71,1,4,box,11,0.87,0.0014,MEMORY_RECOVERY_SUCCESS,Orange,Orange,True,99.7,100.0

@@ -1,0 +1,3 @@
+frame,master_track_id,raw_tracker_id,class_name,occlusion_gap_frames,prediction_error_px,matching_cost,event,color_pre,color_post,color_preserved,size_consistency_pct,shape_consistency_pct
+34,2,3,car,8,60.72,0.0608,MEMORY_RECOVERY_SUCCESS,Blue,Blue,True,89.94,91.14
+47,2,4,car,3,16.76,0.0219,MEMORY_RECOVERY_SUCCESS,Blue,Blue,True,95.42,94.94

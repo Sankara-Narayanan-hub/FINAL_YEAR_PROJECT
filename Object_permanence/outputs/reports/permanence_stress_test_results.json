@@ -1,0 +1,458 @@
+[
+  {
+    "video": "kling_dog_behind_chair.mp4",
+    "model": "Kuaishou Kling",
+    "scenario": "Dog behind chair runs to right",
+    "barrier": "chair",
+    "mta": 86.87,
+    "pwma": 61.88,
+    "ops": 0.0,
+    "id_cons": 87.5,
+    "ovr": 100.0,
+    "sai": 97.25,
+    "sta": 100.0,
+    "pvr": 17.93,
+    "disappearances": 3,
+    "re_ids": 0,
+    "switches": 1,
+    "vanished": 2,
+    "morphs": 0,
+    "dominant_classes": [
+      {
+        "dominant_class": "chair",
+        "target_grounding_pct": 100.0,
+        "temporal_stability_pct": 100.0,
+        "composite_sai_pct": 100.0,
+        "entropy": -0.0,
+        "total_frames": 240,
+        "flicker_frames": 0,
+        "status": "CORRECTLY ALIGNED"
+      },
+      {
+        "dominant_class": "chair",
+        "target_grounding_pct": 100.0,
+        "temporal_stability_pct": 100.0,
+        "composite_sai_pct": 100.0,
+        "entropy": -0.0,
+        "total_frames": 240,
+        "flicker_frames": 0,
+        "status": "CORRECTLY ALIGNED"
+      },
+      {
+        "dominant_class": "dog",
+        "target_grounding_pct": 100.0,
+        "temporal_stability_pct": 94.86,
+        "composite_sai_pct": 94.86,
+        "entropy": 0.355,
+        "total_frames": 175,
+        "flicker_frames": 9,
+        "status": "CORRECTLY ALIGNED"
+      },
+      {
+        "dominant_class": "sofa",
+        "target_grounding_pct": 100.0,
+        "temporal_stability_pct": 100.0,
+        "composite_sai_pct": 100.0,
+        "entropy": -0.0,
+        "total_frames": 18,
+        "flicker_frames": 0,
+        "status": "CORRECTLY ALIGNED"
+      },
+      {
+        "dominant_class": "desk",
+        "target_grounding_pct": 100.0,
+        "temporal_stability_pct": 100.0,
+        "composite_sai_pct": 100.0,
+        "entropy": -0.0,
+        "total_frames": 86,
+        "flicker_frames": 0,
+        "status": "CORRECTLY ALIGNED"
+      },
+      {
+        "dominant_class": "chair",
+        "target_grounding_pct": 100.0,
+        "temporal_stability_pct": 97.44,
+        "composite_sai_pct": 97.44,
+        "entropy": 0.172,
+        "total_frames": 78,
+        "flicker_frames": 2,
+        "status": "CORRECTLY ALIGNED"
+      },
+      {
+        "dominant_class": "dog",
+        "target_grounding_pct": 100.0,
+        "temporal_stability_pct": 85.71,
+        "composite_sai_pct": 85.71,
+        "entropy": 0.735,
+        "total_frames": 28,
+        "flicker_frames": 4,
+        "status": "CORRECTLY ALIGNED"
+      },
+      {
+        "dominant_class": "chair",
+        "target_grounding_pct": 100.0,
+        "temporal_stability_pct": 100.0,
+        "composite_sai_pct": 100.0,
+        "entropy": -0.0,
+        "total_frames": 5,
+        "flicker_frames": 0,
+        "status": "CORRECTLY ALIGNED"
+      }
+    ],
+    "verdict": "LOW PHYSICAL ACCURACY (FREQUENT HALLUCINATIONS)"
+  },
+  {
+    "video": "cogvideo_dog_behind_chair.mp4",
+    "model": "THUDM CogVideo",
+    "scenario": "Dog behind chair runs to right",
+    "barrier": "chair",
+    "mta": 77.72,
+    "pwma": 97.0,
+    "ops": 100.0,
+    "id_cons": 100.0,
+    "ovr": 100.0,
+    "sai": 95.54,
+    "sta": 100.0,
+    "pvr": 0.0,
+    "disappearances": 1,
+    "re_ids": 1,
+    "switches": 0,
+    "vanished": 0,
+    "morphs": 0,
+    "dominant_classes": [
+      {
+        "dominant_class": "dog",
+        "target_grounding_pct": 100.0,
+        "temporal_stability_pct": 91.88,
+        "composite_sai_pct": 91.88,
+        "entropy": 0.548,
+        "total_frames": 160,
+        "flicker_frames": 13,
+        "status": "CORRECTLY ALIGNED"
+      },
+      {
+        "dominant_class": "chair",
+        "target_grounding_pct": 100.0,
+        "temporal_stability_pct": 99.21,
+        "composite_sai_pct": 99.21,
+        "entropy": 0.067,
+        "total_frames": 126,
+        "flicker_frames": 1,
+        "status": "CORRECTLY ALIGNED"
+      }
+    ],
+    "verdict": "HIGH PHYSICAL ACCURACY (COMPLIANT)"
+  },
+  {
+    "video": "wanx_cat_box_left.mp4",
+    "model": "Alibaba Wanx",
+    "scenario": "Cat runs behind box to left",
+    "barrier": "box",
+    "mta": 73.37,
+    "pwma": 82.24,
+    "ops": 100.0,
+    "id_cons": 100.0,
+    "ovr": 100.0,
+    "sai": 52.76,
+    "sta": 60.0,
+    "pvr": 11.86,
+    "disappearances": 1,
+    "re_ids": 1,
+    "switches": 0,
+    "vanished": 0,
+    "morphs": 1,
+    "dominant_classes": [
+      {
+        "dominant_class": "cat",
+        "target_grounding_pct": 100.0,
+        "temporal_stability_pct": 85.53,
+        "composite_sai_pct": 85.53,
+        "entropy": 0.722,
+        "total_frames": 76,
+        "flicker_frames": 11,
+        "status": "CORRECTLY ALIGNED"
+      },
+      {
+        "dominant_class": "person",
+        "target_grounding_pct": 20.0,
+        "temporal_stability_pct": 100.0,
+        "composite_sai_pct": 20.0,
+        "entropy": -0.0,
+        "total_frames": 8,
+        "flicker_frames": 0,
+        "status": "LABEL MISCLASSIFICATION / HALLUCINATION"
+      }
+    ],
+    "verdict": "LOW PHYSICAL ACCURACY (FREQUENT HALLUCINATIONS)"
+  },
+  {
+    "video": "stepvideo_cat_box_left.mp4",
+    "model": "StepFun StepVideo",
+    "scenario": "Cat runs behind box to left",
+    "barrier": "box",
+    "mta": 81.03,
+    "pwma": 99.95,
+    "ops": 100.0,
+    "id_cons": 100.0,
+    "ovr": 100.0,
+    "sai": 79.26,
+    "sta": 80.0,
+    "pvr": 7.35,
+    "disappearances": 2,
+    "re_ids": 1,
+    "switches": 0,
+    "vanished": 1,
+    "morphs": 0,
+    "dominant_classes": [
+      {
+        "dominant_class": "box",
+        "target_grounding_pct": 100.0,
+        "temporal_stability_pct": 100.0,
+        "composite_sai_pct": 100.0,
+        "entropy": -0.0,
+        "total_frames": 163,
+        "flicker_frames": 0,
+        "status": "CORRECTLY ALIGNED"
+      },
+      {
+        "dominant_class": "airplane",
+        "target_grounding_pct": 20.0,
+        "temporal_stability_pct": 100.0,
+        "composite_sai_pct": 20.0,
+        "entropy": -0.0,
+        "total_frames": 13,
+        "flicker_frames": 0,
+        "status": "LABEL MISCLASSIFICATION / HALLUCINATION"
+      },
+      {
+        "dominant_class": "cat",
+        "target_grounding_pct": 100.0,
+        "temporal_stability_pct": 97.06,
+        "composite_sai_pct": 97.06,
+        "entropy": 0.221,
+        "total_frames": 136,
+        "flicker_frames": 4,
+        "status": "CORRECTLY ALIGNED"
+      },
+      {
+        "dominant_class": "desk",
+        "target_grounding_pct": 100.0,
+        "temporal_stability_pct": 100.0,
+        "composite_sai_pct": 100.0,
+        "entropy": -0.0,
+        "total_frames": 99,
+        "flicker_frames": 0,
+        "status": "CORRECTLY ALIGNED"
+      }
+    ],
+    "verdict": "LOW PHYSICAL ACCURACY (FREQUENT HALLUCINATIONS)"
+  },
+  {
+    "video": "hunyuan_monkey_apple.mp4",
+    "model": "Tencent Hunyuan",
+    "scenario": "Monkey behind apple jumps front",
+    "barrier": "apple",
+    "mta": 90.8,
+    "pwma": 100.0,
+    "ops": 100.0,
+    "id_cons": 100.0,
+    "ovr": 100.0,
+    "sai": 71.62,
+    "sta": 100.0,
+    "pvr": 0.0,
+    "disappearances": 0,
+    "re_ids": 0,
+    "switches": 0,
+    "vanished": 0,
+    "morphs": 0,
+    "dominant_classes": [
+      {
+        "dominant_class": "monkey",
+        "target_grounding_pct": 100.0,
+        "temporal_stability_pct": 71.62,
+        "composite_sai_pct": 71.62,
+        "entropy": 0.939,
+        "total_frames": 74,
+        "flicker_frames": 21,
+        "status": "CORRECTLY ALIGNED"
+      }
+    ],
+    "verdict": "HIGH PHYSICAL ACCURACY (COMPLIANT)"
+  },
+  {
+    "video": "sora_monkey_apple.mp4",
+    "model": "OpenAI Sora",
+    "scenario": "Monkey behind apple jumps front",
+    "barrier": "apple",
+    "mta": 83.43,
+    "pwma": 90.5,
+    "ops": 100.0,
+    "id_cons": 100.0,
+    "ovr": 100.0,
+    "sai": 59.17,
+    "sta": 59.17,
+    "pvr": 36.0,
+    "disappearances": 5,
+    "re_ids": 4,
+    "switches": 0,
+    "vanished": 1,
+    "morphs": 2,
+    "dominant_classes": [
+      {
+        "dominant_class": "desk",
+        "target_grounding_pct": 100.0,
+        "temporal_stability_pct": 100.0,
+        "composite_sai_pct": 100.0,
+        "entropy": -0.0,
+        "total_frames": 149,
+        "flicker_frames": 0,
+        "status": "CORRECTLY ALIGNED"
+      },
+      {
+        "dominant_class": "toy",
+        "target_grounding_pct": 20.0,
+        "temporal_stability_pct": 100.0,
+        "composite_sai_pct": 20.0,
+        "entropy": -0.0,
+        "total_frames": 24,
+        "flicker_frames": 0,
+        "status": "LABEL MISCLASSIFICATION / HALLUCINATION"
+      },
+      {
+        "dominant_class": "person",
+        "target_grounding_pct": 20.0,
+        "temporal_stability_pct": 100.0,
+        "composite_sai_pct": 20.0,
+        "entropy": -0.0,
+        "total_frames": 58,
+        "flicker_frames": 0,
+        "status": "LABEL MISCLASSIFICATION / HALLUCINATION"
+      },
+      {
+        "dominant_class": "monkey",
+        "target_grounding_pct": 100.0,
+        "temporal_stability_pct": 100.0,
+        "composite_sai_pct": 100.0,
+        "entropy": -0.0,
+        "total_frames": 54,
+        "flicker_frames": 0,
+        "status": "CORRECTLY ALIGNED"
+      },
+      {
+        "dominant_class": "dog",
+        "target_grounding_pct": 15.0,
+        "temporal_stability_pct": 100.0,
+        "composite_sai_pct": 15.0,
+        "entropy": -0.0,
+        "total_frames": 3,
+        "flicker_frames": 0,
+        "status": "LABEL MISCLASSIFICATION / HALLUCINATION"
+      },
+      {
+        "dominant_class": "flower",
+        "target_grounding_pct": 100.0,
+        "temporal_stability_pct": 100.0,
+        "composite_sai_pct": 100.0,
+        "entropy": -0.0,
+        "total_frames": 2,
+        "flicker_frames": 0,
+        "status": "CORRECTLY ALIGNED"
+      }
+    ],
+    "verdict": "LOW PHYSICAL ACCURACY (FREQUENT HALLUCINATIONS)"
+  },
+  {
+    "video": "veo3_rabbit_table.mp4",
+    "model": "Google Veo3",
+    "scenario": "Rabbit in front of table jumps left",
+    "barrier": "table",
+    "mta": 91.22,
+    "pwma": 100.0,
+    "ops": 100.0,
+    "id_cons": 100.0,
+    "ovr": 100.0,
+    "sai": 97.52,
+    "sta": 100.0,
+    "pvr": 15.0,
+    "disappearances": 2,
+    "re_ids": 0,
+    "switches": 0,
+    "vanished": 2,
+    "morphs": 0,
+    "dominant_classes": [
+      {
+        "dominant_class": "rabbit",
+        "target_grounding_pct": 100.0,
+        "temporal_stability_pct": 92.57,
+        "composite_sai_pct": 92.57,
+        "entropy": 0.382,
+        "total_frames": 148,
+        "flicker_frames": 11,
+        "status": "CORRECTLY ALIGNED"
+      },
+      {
+        "dominant_class": "desk",
+        "target_grounding_pct": 100.0,
+        "temporal_stability_pct": 100.0,
+        "composite_sai_pct": 100.0,
+        "entropy": -0.0,
+        "total_frames": 191,
+        "flicker_frames": 0,
+        "status": "CORRECTLY ALIGNED"
+      },
+      {
+        "dominant_class": "chair",
+        "target_grounding_pct": 100.0,
+        "temporal_stability_pct": 100.0,
+        "composite_sai_pct": 100.0,
+        "entropy": -0.0,
+        "total_frames": 7,
+        "flicker_frames": 0,
+        "status": "CORRECTLY ALIGNED"
+      }
+    ],
+    "verdict": "LOW PHYSICAL ACCURACY (FREQUENT HALLUCINATIONS)"
+  },
+  {
+    "video": "wanx_elephant_behind_car.mp4",
+    "model": "Alibaba Wanx",
+    "scenario": "Elephant walks to back of car",
+    "barrier": "car",
+    "mta": 82.86,
+    "pwma": 98.78,
+    "ops": 100.0,
+    "id_cons": 100.0,
+    "ovr": 100.0,
+    "sai": 60.0,
+    "sta": 60.0,
+    "pvr": 11.86,
+    "disappearances": 4,
+    "re_ids": 4,
+    "switches": 0,
+    "vanished": 0,
+    "morphs": 1,
+    "dominant_classes": [
+      {
+        "dominant_class": "elephant",
+        "target_grounding_pct": 100.0,
+        "temporal_stability_pct": 100.0,
+        "composite_sai_pct": 100.0,
+        "entropy": -0.0,
+        "total_frames": 80,
+        "flicker_frames": 0,
+        "status": "CORRECTLY ALIGNED"
+      },
+      {
+        "dominant_class": "truck",
+        "target_grounding_pct": 20.0,
+        "temporal_stability_pct": 100.0,
+        "composite_sai_pct": 20.0,
+        "entropy": -0.0,
+        "total_frames": 35,
+        "flicker_frames": 0,
+        "status": "LABEL MISCLASSIFICATION / HALLUCINATION"
+      }
+    ],
+    "verdict": "LOW PHYSICAL ACCURACY (FREQUENT HALLUCINATIONS)"
+  }
+]

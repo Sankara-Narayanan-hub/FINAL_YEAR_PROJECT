@@ -1,0 +1,4 @@
+frame,master_track_id,raw_tracker_id,class_name,occlusion_gap_frames,prediction_error_px,matching_cost,event,color_pre,color_post,color_preserved,size_consistency_pct,shape_consistency_pct
+37,2,3,bird,10,20.65,0.3148,MEMORY_RECOVERY_SUCCESS,Blue,Blue,True,21.32,82.57
+51,2,4,bird,5,118.46,0.1074,MEMORY_RECOVERY_SUCCESS,Cyan,Blue,True,92.4,90.86
+106,1,5,tree,4,116.18,0.383,MEMORY_RECOVERY_SUCCESS,Black,Green,False,31.93,31.94

@@ -1,0 +1,12 @@
+frame,master_track_id,raw_tracker_id,class_name,occlusion_gap_frames,pre_size,post_size,size_consistency_pct,pre_shape,post_shape,shape_consistency_pct,pre_color,post_color,color_preserved,overall_attribute_score_pct,morphing_detected
+50,3,5,person,12,23.59x84.65 (1997px),544.71x477.85 (260288px),0.77,AR 0.28 (Vertical Oblong),AR 1.14 (Spherical / Regular),24.56,Orange,Black,False,10.13,True
+57,2,7,person,3,23.34x62.82 (1466px),36.12x79.88 (2885px),50.81,AR 0.37 (Vertical Oblong),AR 0.45 (Vertical Oblong),82.22,Orange,Black,False,53.21,True
+70,1,9,person,16,175.97x251.16 (44197px),62.21x330.39 (20553px),46.5,AR 0.70 (Vertical Oblong),AR 0.19 (Vertical Oblong),27.14,Orange,Orange,True,49.46,True
+76,4,10,person,22,21.17x59.29 (1255px),20.97x60.47 (1268px),98.95,AR 0.36 (Vertical Oblong),AR 0.35 (Vertical Oblong),97.22,Orange,Orange,True,98.47,False
+80,1,11,person,1,86.48x28.1 (2430px),119.24x287.05 (34228px),7.1,AR 3.08 (Horizontal Oblong),AR 0.42 (Vertical Oblong),13.64,Orange,Orange,True,28.3,True
+94,4,12,person,15,20.92x60.6 (1268px),150.55x388.26 (58454px),2.17,AR 0.35 (Vertical Oblong),AR 0.39 (Vertical Oblong),89.74,Orange,Black,False,36.76,True
+94,8,13,person,7,22.54x94.75 (2136px),77.74x195.06 (15164px),14.09,AR 0.24 (Vertical Oblong),AR 0.40 (Vertical Oblong),60.0,Orange,Black,False,29.64,True
+102,2,19,person,29,17.95x77.59 (1392px),59.44x208.28 (12379px),11.25,AR 0.23 (Vertical Oblong),AR 0.29 (Vertical Oblong),79.31,Orange,Black,False,36.22,True
+107,16,20,bottle,10,53.15x88.06 (4680px),23.23x69.84 (1623px),34.67,AR 0.60 (Vertical Oblong),AR 0.33 (Vertical Oblong),55.0,Orange,Red,False,35.87,True
+123,2,22,person,8,50.26x190.32 (9565px),59.0x198.61 (11719px),81.62,AR 0.26 (Vertical Oblong),AR 0.30 (Vertical Oblong),86.67,Black,Black,True,87.32,False
+136,16,23,cup,2,47.41x83.22 (3945px),51.47x90.65 (4666px),84.56,AR 0.57 (Vertical Oblong),AR 0.57 (Vertical Oblong),100.0,Orange,Orange,True,93.82,False

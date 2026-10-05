@@ -1,0 +1,6 @@
+frame,master_track_id,raw_tracker_id,class_name,occlusion_gap_frames,pre_size,post_size,size_consistency_pct,pre_shape,post_shape,shape_consistency_pct,pre_color,post_color,color_preserved,overall_attribute_score_pct,morphing_detected
+81,1,4,chair,6,173.44x443.43 (76910px),174.72x426.98 (74601px),97.0,AR 0.39 (Vertical Oblong),AR 0.41 (Vertical Oblong),95.12,Red,Red,True,96.85,False
+100,2,5,table,20,691.08x474.1 (327642px),685.48x474.38 (325175px),99.25,AR 1.46 (Horizontal Oblong),AR 1.45 (Horizontal Oblong),99.32,Orange,Orange,True,99.43,False
+109,2,6,table,4,687.55x474.28 (326089px),686.03x474.2 (325317px),99.76,AR 1.45 (Horizontal Oblong),AR 1.45 (Horizontal Oblong),100.0,Orange,Orange,True,99.9,False
+155,2,7,table,31,685.52x474.05 (324974px),696.35x479.21 (333694px),97.39,AR 1.45 (Horizontal Oblong),AR 1.45 (Horizontal Oblong),100.0,Orange,Orange,True,98.96,False
+189,2,8,table,29,696.44x479.08 (333649px),695.53x478.74 (332977px),99.8,AR 1.45 (Horizontal Oblong),AR 1.45 (Horizontal Oblong),100.0,Orange,Orange,True,99.92,False

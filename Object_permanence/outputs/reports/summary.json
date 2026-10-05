@@ -1,27 +1,95 @@
 {
-  "video_file": "testball3.mp4",
-  "total_frames": 121,
-  "duration_sec": 5.04,
-  "fps": 24.0,
-  "frames_with_detections": 120,
+  "video_file": "wanx_elephant_behind_car.mp4",
+  "total_frames": 81,
+  "duration_sec": 5.06,
+  "fps": 16.0,
+  "frames_with_detections": 80,
   "tracked_objects_count": 2,
-  "disappearance_events_count": 1,
-  "reappearance_events_count": 1,
-  "successful_reidentifications": 1,
+  "disappearance_events_count": 4,
+  "reappearance_events_count": 4,
+  "successful_reidentifications": 4,
   "identity_switches": 0,
   "lost_without_recovery": 0,
+  "morphing_events_count": 1,
+  "total_physical_violations": 1,
+  "model_tracking_accuracy_metrics": {
+    "mean_detection_confidence_pct": 71.78,
+    "confidence_std_dev_pct": 26.34,
+    "bbox_iou_smoothness_pct": 99.39,
+    "bbox_spatial_jitter_px": 1.44,
+    "track_lifespan_coverage_pct": 76.52,
+    "track_fragmentations": 4,
+    "model_tracking_accuracy_pct": 82.86,
+    "model_performance_grade": "GOOD TRACKING ACCURACY (ACCEPTABLE)"
+  },
+  "occlusion_veracity_metrics": {
+    "total_disappearance_events": 4,
+    "verified_true_occlusions": 4,
+    "phantom_disappearances": 0,
+    "detector_dropouts": 0,
+    "occlusion_veracity_ratio_pct": 100.0,
+    "occlusion_veracity_verdict": "HIGH OCCLUSION VERACITY (PHYSICALLY GROUNDED)"
+  },
+  "semantic_alignment_metrics": {
+    "semantic_alignment_index_pct": 60.0,
+    "semantic_target_grounding_pct": 60.0,
+    "semantic_class_stability_pct": 100.0,
+    "mean_class_entropy": 0.0,
+    "transient_label_flickers_count": 0,
+    "dominant_classes_identified": {
+      "1": {
+        "dominant_class": "elephant",
+        "target_grounding_pct": 100.0,
+        "temporal_stability_pct": 100.0,
+        "composite_sai_pct": 100.0,
+        "entropy": -0.0,
+        "total_frames": 80,
+        "flicker_frames": 0,
+        "status": "CORRECTLY ALIGNED"
+      },
+      "2": {
+        "dominant_class": "truck",
+        "target_grounding_pct": 20.0,
+        "temporal_stability_pct": 100.0,
+        "composite_sai_pct": 20.0,
+        "entropy": -0.0,
+        "total_frames": 35,
+        "flicker_frames": 0,
+        "status": "LABEL MISCLASSIFICATION / HALLUCINATION"
+      }
+    },
+    "semantic_stability_grade": "LOW SEMANTIC ALIGNMENT (LABEL MISCLASSIFICATION / HALLUCINATION)",
+    "target_prompt_entities": [
+      "elephant",
+      "car"
+    ]
+  },
   "metrics": {
-    "detection_consistency_pct": 99.17,
+    "detection_consistency_pct": 98.77,
     "identity_consistency_pct": 100.0,
-    "object_permanence_score_pct": 100.0
+    "object_permanence_score_pct": 100.0,
+    "kinematic_trajectory_accuracy_pct": 99.35,
+    "attribute_stability_pct": 94.56,
+    "physical_world_model_accuracy_pct": 98.78,
+    "occlusion_veracity_ratio_pct": 100.0,
+    "semantic_alignment_index_pct": 60.0,
+    "semantic_target_grounding_pct": 60.0,
+    "semantic_class_stability_pct": 100.0,
+    "mean_class_entropy": 0.0,
+    "transient_label_flickers": 0,
+    "physical_violation_rate_per_min": 11.86,
+    "physical_commonsense_verdict": "LOW PHYSICAL ACCURACY (FREQUENT HALLUCINATIONS)",
+    "occlusion_veracity_verdict": "HIGH OCCLUSION VERACITY (PHYSICALLY GROUNDED)",
+    "semantic_stability_grade": "LOW SEMANTIC ALIGNMENT (LABEL MISCLASSIFICATION / HALLUCINATION)"
   },
   "memory_bank_metrics": {
-    "total_occlusion_episodes": 1,
-    "successful_memory_recoveries": 1,
+    "total_occlusion_episodes": 4,
+    "successful_memory_recoveries": 4,
     "memory_recovery_rate_pct": 100.0,
-    "mean_trajectory_prediction_error_px": 217.61,
-    "max_occlusion_gap_survived_frames": 48,
-    "mean_attribute_stability_pct": 54.14,
-    "persistent_entities_count": 2
+    "mean_trajectory_prediction_error_px": 4.76,
+    "max_occlusion_gap_survived_frames": 19,
+    "mean_attribute_stability_pct": 94.56,
+    "persistent_entities_count": 2,
+    "morphing_events_count": 1
   }
 }

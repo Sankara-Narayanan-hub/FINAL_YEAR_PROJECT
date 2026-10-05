@@ -1,0 +1,5 @@
+frame,master_track_id,raw_tracker_id,class_name,occlusion_gap_frames,prediction_error_px,matching_cost,event,color_pre,color_post,color_preserved,size_consistency_pct,shape_consistency_pct
+41,2,6,balloon,23,6.92,0.0169,MEMORY_RECOVERY_SUCCESS,Red,Red,True,96.17,94.85
+64,1,7,bird,39,238.57,0.4705,MEMORY_RECOVERY_SUCCESS,Orange,Orange,True,32.75,50.0
+104,2,8,ball,48,57.88,0.1433,MEMORY_RECOVERY_SUCCESS,Red,Red,True,66.03,96.91
+135,4,10,table,77,13.66,0.016,MEMORY_RECOVERY_SUCCESS,Red,Orange,False,97.92,97.1

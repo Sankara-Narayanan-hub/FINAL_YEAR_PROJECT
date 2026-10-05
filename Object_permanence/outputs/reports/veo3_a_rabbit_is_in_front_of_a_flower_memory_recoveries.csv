@@ -1,0 +1,4 @@
+frame,master_track_id,raw_tracker_id,class_name,occlusion_gap_frames,prediction_error_px,matching_cost,event,color_pre,color_post,color_preserved,size_consistency_pct,shape_consistency_pct
+143,2,6,bowl,28,189.28,0.3902,MEMORY_RECOVERY_SUCCESS,Red,Red,True,31.19,36.94
+179,5,7,desk,63,3.06,0.0061,MEMORY_RECOVERY_SUCCESS,Orange,Red,False,98.47,98.47
+190,5,8,desk,6,2.88,0.0015,MEMORY_RECOVERY_SUCCESS,Red,Red,True,99.94,99.69
