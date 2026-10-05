@@ -1,0 +1,5 @@
+frame,master_track_id,raw_tracker_id,class_name,occlusion_gap_frames,pre_size,post_size,size_consistency_pct,pre_shape,post_shape,shape_consistency_pct,pre_color,post_color,color_preserved,overall_attribute_score_pct,morphing_detected
+37,2,3,truck,4,1103.06x355.35 (391967px),1104.12x353.71 (390536px),99.63,AR 3.10 (Horizontal Oblong),AR 3.12 (Horizontal Oblong),99.36,Black,Black,True,99.6,False
+48,2,4,truck,4,1102.14x355.14 (391415px),1100.03x357.52 (393288px),99.52,AR 3.10 (Horizontal Oblong),AR 3.08 (Horizontal Oblong),99.35,Black,Black,True,99.55,False
+70,2,5,truck,19,1100.05x357.65 (393428px),1090.25x356.86 (389066px),98.89,AR 3.08 (Horizontal Oblong),AR 3.06 (Horizontal Oblong),99.35,Black,Black,True,99.3,False
+77,2,6,truck,4,1090.26x356.99 (389216px),1085.97x356.58 (387236px),99.49,AR 3.05 (Horizontal Oblong),AR 3.05 (Horizontal Oblong),100.0,Black,Yellow,False,79.8,True

@@ -1,0 +1,81 @@
+{
+  "video_file": "testball3.mp4",
+  "total_frames": 121,
+  "duration_sec": 5.04,
+  "fps": 24.0,
+  "frames_with_detections": 120,
+  "tracked_objects_count": 2,
+  "disappearance_events_count": 1,
+  "reappearance_events_count": 1,
+  "successful_reidentifications": 1,
+  "identity_switches": 0,
+  "lost_without_recovery": 0,
+  "morphing_events_count": 1,
+  "total_physical_violations": 1,
+  "model_tracking_accuracy_metrics": {
+    "mean_detection_confidence_pct": 56.62,
+    "confidence_std_dev_pct": 11.09,
+    "bbox_iou_smoothness_pct": 94.06,
+    "bbox_spatial_jitter_px": 2.82,
+    "track_lifespan_coverage_pct": 80.0,
+    "track_fragmentations": 1,
+    "model_tracking_accuracy_pct": 76.74,
+    "model_performance_grade": "GOOD TRACKING ACCURACY (ACCEPTABLE)"
+  },
+  "occlusion_veracity_metrics": {
+    "total_disappearance_events": 1,
+    "verified_true_occlusions": 1,
+    "phantom_disappearances": 0,
+    "detector_dropouts": 0,
+    "occlusion_veracity_ratio_pct": 100.0,
+    "occlusion_veracity_verdict": "HIGH OCCLUSION VERACITY (PHYSICALLY GROUNDED)"
+  },
+  "semantic_alignment_metrics": {
+    "semantic_class_stability_pct": 77.08,
+    "mean_class_entropy": 0.497,
+    "transient_label_flickers_count": 33,
+    "dominant_classes_identified": {
+      "1": {
+        "dominant_class": "box",
+        "stability_pct": 100.0,
+        "entropy": -0.0,
+        "total_frames": 120,
+        "flicker_frames": 0
+      },
+      "2": {
+        "dominant_class": "ball",
+        "stability_pct": 54.17,
+        "entropy": 0.995,
+        "total_frames": 72,
+        "flicker_frames": 33
+      }
+    },
+    "semantic_stability_grade": "LOW SEMANTIC STABILITY (FREQUENT LABEL HALLUCINATIONS)"
+  },
+  "metrics": {
+    "detection_consistency_pct": 99.17,
+    "identity_consistency_pct": 100.0,
+    "object_permanence_score_pct": 100.0,
+    "kinematic_trajectory_accuracy_pct": 70.37,
+    "attribute_stability_pct": 54.14,
+    "physical_world_model_accuracy_pct": 84.9,
+    "occlusion_veracity_ratio_pct": 100.0,
+    "semantic_class_stability_pct": 77.08,
+    "mean_class_entropy": 0.497,
+    "transient_label_flickers": 33,
+    "physical_violation_rate_per_min": 11.9,
+    "physical_commonsense_verdict": "LOW PHYSICAL ACCURACY (FREQUENT HALLUCINATIONS)",
+    "occlusion_veracity_verdict": "HIGH OCCLUSION VERACITY (PHYSICALLY GROUNDED)",
+    "semantic_stability_grade": "LOW SEMANTIC STABILITY (FREQUENT LABEL HALLUCINATIONS)"
+  },
+  "memory_bank_metrics": {
+    "total_occlusion_episodes": 1,
+    "successful_memory_recoveries": 1,
+    "memory_recovery_rate_pct": 100.0,
+    "mean_trajectory_prediction_error_px": 217.61,
+    "max_occlusion_gap_survived_frames": 48,
+    "mean_attribute_stability_pct": 54.14,
+    "persistent_entities_count": 2,
+    "morphing_events_count": 1
+  }
+}

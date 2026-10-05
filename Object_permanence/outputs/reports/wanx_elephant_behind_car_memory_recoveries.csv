@@ -1,0 +1,5 @@
+frame,master_track_id,raw_tracker_id,class_name,occlusion_gap_frames,prediction_error_px,matching_cost,event,color_pre,color_post,color_preserved,size_consistency_pct,shape_consistency_pct
+37,2,3,truck,4,10.99,0.0063,MEMORY_RECOVERY_SUCCESS,Black,Black,True,99.63,99.36
+48,2,4,truck,4,0.94,0.0019,MEMORY_RECOVERY_SUCCESS,Black,Black,True,99.52,99.35
+70,2,5,truck,19,5.04,0.0057,MEMORY_RECOVERY_SUCCESS,Black,Black,True,98.89,99.35
+77,2,6,truck,4,2.09,0.0025,MEMORY_RECOVERY_SUCCESS,Black,Yellow,False,99.49,100.0

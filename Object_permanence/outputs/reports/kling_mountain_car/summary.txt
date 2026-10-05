@@ -1,0 +1,73 @@
+==================================================
+ OBJECT PERMANENCE & MODEL ACCURACY REPORT
+==================================================
+
+Video File:                  kling_mountain_car.mp4
+Total Frames:                241 (10.04 sec @ 24.0 fps)
+Frames with Detections:      130
+Unique Tracked Objects:      3
+
+--------------------------------------------------
+ EVENT & ANOMALY BREAKDOWN
+--------------------------------------------------
+Total Disappearance Events:  4
+Reappearance Events:         3
+  - Successful Re-IDs:       3
+  - Identity Switches:       0
+Permanent Losses (Vanished): 1
+Attribute Morphing Events:   1
+TOTAL PHYSICAL VIOLATIONS:   2
+
+--------------------------------------------------
+ OBJECT PERMANENCE & IDENTITY METRICS
+--------------------------------------------------
+Detection Consistency:       53.94%
+Identity Consistency:        100.00%
+OBJECT PERMANENCE SCORE:     100.00%
+--------------------------------------------------
+ MODEL DETECTION & TRACKING ACCURACY METRICS
+--------------------------------------------------
+MODEL TRACKING ACCURACY (MTA):        70.60%
+Bounding Box IoU Smoothness:          93.32%
+Mean Spatial Jitter:                  2.92 px/frame
+Mean Detection Confidence:            36.43% (±6.73%)
+Track Lifespan Coverage Ratio:        83.96%
+Track Fragmentations:                 4
+Model Performance Grade:              GOOD TRACKING ACCURACY (ACCEPTABLE)
+
+--------------------------------------------------
+ OCCLUSION VERACITY & DROPOUT DIAGNOSTICS (OVR)
+--------------------------------------------------
+OCCLUSION VERACITY RATIO (OVR):       50.00%
+Verified True Physical Occlusions:    2
+Phantom Generative Vanishings:        2
+Transient Detector Dropouts:          0
+Veracity Diagnosis Verdict:           MODERATE OCCLUSION VERACITY (MIXED WITH DROPOUTS)
+
+--------------------------------------------------
+ SEMANTIC LABEL CONSISTENCY & FLICKER METRICS (SAI)
+--------------------------------------------------
+SEMANTIC CLASS STABILITY:             100.00%
+Mean Class Entropy H(C):              0.000
+Transient Label Hallucinations:       0 frames
+Semantic Stability Grade:             EXCELLENT SEMANTIC STABILITY (INVARIANT LABELS)
+
+--------------------------------------------------
+ PERSISTENT MEMORY BANK METRICS
+--------------------------------------------------
+Persistent Entities Managed:   3
+Total Occlusion Episodes:      4
+Successful Memory Recoveries:  4
+MEMORY RECOVERY RATE:          100.00%
+Mean Dead-Reckoning Error:     75.05 px
+Max Occlusion Gap Survived:    40 frames
+
+--------------------------------------------------
+ PHYSICAL WORLD MODEL ACCURACY & VIOLATION METRICS
+--------------------------------------------------
+Physical World Model Accuracy (PWMA): 92.66%
+Physical Violation Rate:               11.95 violations/min
+Kinematic Trajectory Accuracy:        89.78%
+Attribute & Morphological Stability:  73.53%
+Physical Commonsense Verdict:         LOW PHYSICAL ACCURACY (FREQUENT HALLUCINATIONS)
+==================================================

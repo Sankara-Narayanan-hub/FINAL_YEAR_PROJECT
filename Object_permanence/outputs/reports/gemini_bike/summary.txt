@@ -1,0 +1,73 @@
+==================================================
+ OBJECT PERMANENCE & MODEL ACCURACY REPORT
+==================================================
+
+Video File:                  gemini_bike.mp4
+Total Frames:                240 (10.0 sec @ 24.0 fps)
+Frames with Detections:      239
+Unique Tracked Objects:      10
+
+--------------------------------------------------
+ EVENT & ANOMALY BREAKDOWN
+--------------------------------------------------
+Total Disappearance Events:  19
+Reappearance Events:         17
+  - Successful Re-IDs:       16
+  - Identity Switches:       1
+Permanent Losses (Vanished): 2
+Attribute Morphing Events:   15
+TOTAL PHYSICAL VIOLATIONS:   18
+
+--------------------------------------------------
+ OBJECT PERMANENCE & IDENTITY METRICS
+--------------------------------------------------
+Detection Consistency:       99.58%
+Identity Consistency:        90.00%
+OBJECT PERMANENCE SCORE:     94.12%
+--------------------------------------------------
+ MODEL DETECTION & TRACKING ACCURACY METRICS
+--------------------------------------------------
+MODEL TRACKING ACCURACY (MTA):        73.61%
+Bounding Box IoU Smoothness:          82.80%
+Mean Spatial Jitter:                  3.79 px/frame
+Mean Detection Confidence:            65.06% (±25.30%)
+Track Lifespan Coverage Ratio:        72.85%
+Track Fragmentations:                 22
+Model Performance Grade:              GOOD TRACKING ACCURACY (ACCEPTABLE)
+
+--------------------------------------------------
+ OCCLUSION VERACITY & DROPOUT DIAGNOSTICS (OVR)
+--------------------------------------------------
+OCCLUSION VERACITY RATIO (OVR):       84.21%
+Verified True Physical Occlusions:    16
+Phantom Generative Vanishings:        1
+Transient Detector Dropouts:          2
+Veracity Diagnosis Verdict:           MODERATE OCCLUSION VERACITY (MIXED WITH DROPOUTS)
+
+--------------------------------------------------
+ SEMANTIC LABEL CONSISTENCY & FLICKER METRICS (SAI)
+--------------------------------------------------
+SEMANTIC CLASS STABILITY:             100.00%
+Mean Class Entropy H(C):              0.000
+Transient Label Hallucinations:       0 frames
+Semantic Stability Grade:             EXCELLENT SEMANTIC STABILITY (INVARIANT LABELS)
+
+--------------------------------------------------
+ PERSISTENT MEMORY BANK METRICS
+--------------------------------------------------
+Persistent Entities Managed:   10
+Total Occlusion Episodes:      19
+Successful Memory Recoveries:  22
+MEMORY RECOVERY RATE:          115.79%
+Mean Dead-Reckoning Error:     84.69 px
+Max Occlusion Gap Survived:    82 frames
+
+--------------------------------------------------
+ PHYSICAL WORLD MODEL ACCURACY & VIOLATION METRICS
+--------------------------------------------------
+Physical World Model Accuracy (PWMA): 87.83%
+Physical Violation Rate:               108.00 violations/min
+Kinematic Trajectory Accuracy:        88.47%
+Attribute & Morphological Stability:  73.48%
+Physical Commonsense Verdict:         LOW PHYSICAL ACCURACY (FREQUENT HALLUCINATIONS)
+==================================================

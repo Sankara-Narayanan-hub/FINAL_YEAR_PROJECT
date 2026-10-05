@@ -1,0 +1,4 @@
+frame,master_track_id,raw_tracker_id,class_name,occlusion_gap_frames,prediction_error_px,matching_cost,event,color_pre,color_post,color_preserved,size_consistency_pct,shape_consistency_pct
+144,1,2,tiger,60,88.53,0.1393,MEMORY_RECOVERY_SUCCESS,Orange,Orange,True,75.07,78.48
+153,1,3,tiger,6,45.45,0.0325,MEMORY_RECOVERY_SUCCESS,Orange,Orange,True,95.96,91.48
+160,1,4,tiger,4,35.71,0.0349,MEMORY_RECOVERY_SUCCESS,Orange,Orange,True,93.69,95.1

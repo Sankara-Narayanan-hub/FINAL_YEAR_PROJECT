@@ -1,0 +1,2 @@
+frame,master_track_id,raw_tracker_id,class_name,occlusion_gap_frames,pre_size,post_size,size_consistency_pct,pre_shape,post_shape,shape_consistency_pct,pre_color,post_color,color_preserved,overall_attribute_score_pct,morphing_detected
+59,3,4,bird,8,19.58x262.23 (5134px),219.71x134.86 (29630px),17.33,AR 0.07 (Vertical Oblong),AR 1.63 (Horizontal Oblong),4.29,Blue,Blue,True,28.65,True

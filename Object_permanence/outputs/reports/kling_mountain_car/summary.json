@@ -1,0 +1,88 @@
+{
+  "video_file": "kling_mountain_car.mp4",
+  "total_frames": 241,
+  "duration_sec": 10.04,
+  "fps": 24.0,
+  "frames_with_detections": 130,
+  "tracked_objects_count": 3,
+  "disappearance_events_count": 4,
+  "reappearance_events_count": 3,
+  "successful_reidentifications": 3,
+  "identity_switches": 0,
+  "lost_without_recovery": 1,
+  "morphing_events_count": 1,
+  "total_physical_violations": 2,
+  "model_tracking_accuracy_metrics": {
+    "mean_detection_confidence_pct": 36.43,
+    "confidence_std_dev_pct": 6.73,
+    "bbox_iou_smoothness_pct": 93.32,
+    "bbox_spatial_jitter_px": 2.92,
+    "track_lifespan_coverage_pct": 83.96,
+    "track_fragmentations": 4,
+    "model_tracking_accuracy_pct": 70.6,
+    "model_performance_grade": "GOOD TRACKING ACCURACY (ACCEPTABLE)"
+  },
+  "occlusion_veracity_metrics": {
+    "total_disappearance_events": 4,
+    "verified_true_occlusions": 2,
+    "phantom_disappearances": 2,
+    "detector_dropouts": 0,
+    "occlusion_veracity_ratio_pct": 50.0,
+    "occlusion_veracity_verdict": "MODERATE OCCLUSION VERACITY (MIXED WITH DROPOUTS)"
+  },
+  "semantic_alignment_metrics": {
+    "semantic_class_stability_pct": 100.0,
+    "mean_class_entropy": 0.0,
+    "transient_label_flickers_count": 0,
+    "dominant_classes_identified": {
+      "1": {
+        "dominant_class": "chair",
+        "stability_pct": 100.0,
+        "entropy": -0.0,
+        "total_frames": 69,
+        "flicker_frames": 0
+      },
+      "2": {
+        "dominant_class": "car",
+        "stability_pct": 100.0,
+        "entropy": -0.0,
+        "total_frames": 93,
+        "flicker_frames": 0
+      },
+      "7": {
+        "dominant_class": "car",
+        "stability_pct": 100.0,
+        "entropy": -0.0,
+        "total_frames": 6,
+        "flicker_frames": 0
+      }
+    },
+    "semantic_stability_grade": "EXCELLENT SEMANTIC STABILITY (INVARIANT LABELS)"
+  },
+  "metrics": {
+    "detection_consistency_pct": 53.94,
+    "identity_consistency_pct": 100.0,
+    "object_permanence_score_pct": 100.0,
+    "kinematic_trajectory_accuracy_pct": 89.78,
+    "attribute_stability_pct": 73.53,
+    "physical_world_model_accuracy_pct": 92.66,
+    "occlusion_veracity_ratio_pct": 50.0,
+    "semantic_class_stability_pct": 100.0,
+    "mean_class_entropy": 0.0,
+    "transient_label_flickers": 0,
+    "physical_violation_rate_per_min": 11.95,
+    "physical_commonsense_verdict": "LOW PHYSICAL ACCURACY (FREQUENT HALLUCINATIONS)",
+    "occlusion_veracity_verdict": "MODERATE OCCLUSION VERACITY (MIXED WITH DROPOUTS)",
+    "semantic_stability_grade": "EXCELLENT SEMANTIC STABILITY (INVARIANT LABELS)"
+  },
+  "memory_bank_metrics": {
+    "total_occlusion_episodes": 4,
+    "successful_memory_recoveries": 4,
+    "memory_recovery_rate_pct": 100.0,
+    "mean_trajectory_prediction_error_px": 75.05,
+    "max_occlusion_gap_survived_frames": 40,
+    "mean_attribute_stability_pct": 73.53,
+    "persistent_entities_count": 3,
+    "morphing_events_count": 1
+  }
+}

@@ -1,0 +1,2 @@
+frame,master_track_id,raw_tracker_id,class_name,occlusion_gap_frames,prediction_error_px,matching_cost,event,color_pre,color_post,color_preserved,size_consistency_pct,shape_consistency_pct
+56,1,2,person,4,6.43,0.0348,MEMORY_RECOVERY_SUCCESS,Red,Red,True,89.93,100.0

@@ -1,0 +1,4 @@
+event_id,object_class,original_track_id,last_visible_frame,first_reappeared_frame,missing_duration,new_track_id,event_type,reidentified,confidence_score,spatial_distance_norm
+1,dog,3,176,207.0,30,7.0,IDENTITY_SWITCH,False,0.7,0.2997
+2,sofa,4,27,,214,,DISAPPEARANCE_WITHOUT_RECOVERY,False,0.0,
+3,dog,7,234,,7,,DISAPPEARANCE_WITHOUT_RECOVERY,False,0.0,

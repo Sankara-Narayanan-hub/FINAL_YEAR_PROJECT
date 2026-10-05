@@ -1,34 +1,76 @@
 ==================================================
- OBJECT PERMANENCE ANALYSIS REPORT
+ OBJECT PERMANENCE & MODEL ACCURACY REPORT
 ==================================================
 
-Video File:                  testball3.mp4
-Total Frames:                121 (5.04 sec @ 24.0 fps)
-Frames with Detections:      120
+Video File:                  wanx_elephant_behind_car.mp4
+Total Frames:                81 (5.06 sec @ 16.0 fps)
+Frames with Detections:      80
 Unique Tracked Objects:      2
 
 --------------------------------------------------
- EVENT BREAKDOWN
+ EVENT & ANOMALY BREAKDOWN
 --------------------------------------------------
-Total Disappearance Events:  1
-Reappearance Events:         1
-  - Successful Re-IDs:       1
+Total Disappearance Events:  4
+Reappearance Events:         4
+  - Successful Re-IDs:       4
   - Identity Switches:       0
-Permanent Losses (No Re-ID): 0
+Permanent Losses (Vanished): 0
+Attribute Morphing Events:   1
+TOTAL PHYSICAL VIOLATIONS:   1
 
 --------------------------------------------------
- PRELIMINARY RESEARCH METRICS
+ OBJECT PERMANENCE & IDENTITY METRICS
 --------------------------------------------------
-Detection Consistency:       99.17%
+Detection Consistency:       98.77%
 Identity Consistency:        100.00%
 OBJECT PERMANENCE SCORE:     100.00%
 --------------------------------------------------
- 50% MILESTONE: PERSISTENT MEMORY BANK METRICS
+ MODEL DETECTION & TRACKING ACCURACY METRICS
+--------------------------------------------------
+MODEL TRACKING ACCURACY (MTA):        82.86%
+Bounding Box IoU Smoothness:          99.39%
+Mean Spatial Jitter:                  1.44 px/frame
+Mean Detection Confidence:            71.78% (±26.34%)
+Track Lifespan Coverage Ratio:        76.52%
+Track Fragmentations:                 4
+Model Performance Grade:              GOOD TRACKING ACCURACY (ACCEPTABLE)
+
+--------------------------------------------------
+ OCCLUSION VERACITY & DROPOUT DIAGNOSTICS (OVR)
+--------------------------------------------------
+OCCLUSION VERACITY RATIO (OVR):       100.00%
+Verified True Physical Occlusions:    4
+Phantom Generative Vanishings:        0
+Transient Detector Dropouts:          0
+Veracity Diagnosis Verdict:           HIGH OCCLUSION VERACITY (PHYSICALLY GROUNDED)
+
+--------------------------------------------------
+ SEMANTIC TARGET GROUNDING & FLICKER METRICS (SAI)
+--------------------------------------------------
+SEMANTIC ALIGNMENT INDEX (SAI):        60.00%
+Target Semantic Grounding:             60.00%
+Temporal Class Stability:              100.00%
+Mean Class Entropy H(C):               0.000
+Transient Label Hallucinations:        0 frames
+Target Prompt Entities:                elephant, car
+Semantic Stability Grade:              LOW SEMANTIC ALIGNMENT (LABEL MISCLASSIFICATION / HALLUCINATION)
+
+--------------------------------------------------
+ PERSISTENT MEMORY BANK METRICS
 --------------------------------------------------
 Persistent Entities Managed:   2
-Total Occlusion Episodes:      1
-Successful Memory Recoveries:  1
+Total Occlusion Episodes:      4
+Successful Memory Recoveries:  4
 MEMORY RECOVERY RATE:          100.00%
-Mean Dead-Reckoning Error:     217.61 px
-Max Occlusion Gap Survived:    48 frames
+Mean Dead-Reckoning Error:     4.76 px
+Max Occlusion Gap Survived:    19 frames
+
+--------------------------------------------------
+ PHYSICAL WORLD MODEL ACCURACY & VIOLATION METRICS
+--------------------------------------------------
+Physical World Model Accuracy (PWMA): 98.78%
+Physical Violation Rate:               11.86 violations/min
+Kinematic Trajectory Accuracy:        99.35%
+Attribute & Morphological Stability:  94.56%
+Physical Commonsense Verdict:         LOW PHYSICAL ACCURACY (FREQUENT HALLUCINATIONS)
 ==================================================

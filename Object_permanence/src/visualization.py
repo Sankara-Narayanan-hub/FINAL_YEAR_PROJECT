@@ -67,23 +67,33 @@ class PermanenceVisualizer:
         return save_path
 
     def plot_metrics_summary(self, metrics_dict: dict) -> str:
-        """Plot 2: Object Permanence Score & Consistency Metrics Bar Chart."""
-        fig, ax = plt.subplots(figsize=(8, 5), dpi=300)
+        """Plot 2: Comprehensive Physical World Model Accuracy & Consistency Metrics."""
+        fig, ax = plt.subplots(figsize=(10, 5.5), dpi=300)
         
         metrics = metrics_dict.get('metrics', {})
-        categories = ['Detection\nConsistency', 'Identity\nConsistency', 'Object Permanence\nScore']
+        categories = [
+            'Detection\nConsistency',
+            'Identity\nConsistency',
+            'Permanence\nScore',
+            'Kinematic\nAccuracy',
+            'Attribute\nStability',
+            'World Model\nAccuracy (PWMA)'
+        ]
         values = [
             metrics.get('detection_consistency_pct', 0.0),
             metrics.get('identity_consistency_pct', 0.0),
-            metrics.get('object_permanence_score_pct', 0.0)
+            metrics.get('object_permanence_score_pct', 0.0),
+            metrics.get('kinematic_trajectory_accuracy_pct', 100.0),
+            metrics.get('attribute_stability_pct', 100.0),
+            metrics.get('physical_world_model_accuracy_pct', 0.0)
         ]
         
-        colors = ['#3498db', '#9b59b6', '#2ecc71']
+        colors = ['#3498db', '#9b59b6', '#2ecc71', '#1abc9c', '#f39c12', '#e74c3c']
         bars = ax.bar(categories, values, color=colors, width=0.55, edgecolor='black', linewidth=1.2)
         
-        ax.set_ylim(0, 115)
-        ax.set_ylabel("Percentage (%)", fontsize=11, fontweight='bold')
-        ax.set_title("Object Permanence Evaluation Metrics", fontsize=13, fontweight='bold', pad=12)
+        ax.set_ylim(0, 118)
+        ax.set_ylabel("Score / Percentage (%)", fontsize=11, fontweight='bold')
+        ax.set_title("Physical World Model Accuracy & Consistency Metrics", fontsize=13, fontweight='bold', pad=12)
         ax.grid(axis='y', linestyle='--', alpha=0.5)
 
         for bar in bars:
@@ -92,7 +102,7 @@ class PermanenceVisualizer:
                         xy=(bar.get_x() + bar.get_width() / 2, height),
                         xytext=(0, 5),
                         textcoords="offset points",
-                        ha='center', va='bottom', fontsize=11, fontweight='bold')
+                        ha='center', va='bottom', fontsize=10, fontweight='bold')
 
         plt.tight_layout()
         save_path = os.path.join(self.output_plots_dir, "permanence_metrics.png")

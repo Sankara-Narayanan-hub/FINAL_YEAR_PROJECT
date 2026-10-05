@@ -1,0 +1,12 @@
+event_id,object_class,original_track_id,last_visible_frame,first_reappeared_frame,missing_duration,new_track_id,event_type,reidentified,confidence_score,spatial_distance_norm
+1,person,1,78,112.0,33,1.0,SUCCESSFUL_REIDENTIFICATION,True,1.0,0.0
+2,person,3,104,110.0,5,3.0,SUCCESSFUL_REIDENTIFICATION,True,1.0,0.0
+3,person,5,52,57.0,4,5.0,SUCCESSFUL_REIDENTIFICATION,True,1.0,0.0
+4,person,6,4,20.0,15,6.0,SUCCESSFUL_REIDENTIFICATION,True,1.0,0.0
+5,person,7,84,119.0,34,7.0,SUCCESSFUL_REIDENTIFICATION,True,1.0,0.0
+6,ball,9,83,88.0,4,9.0,SUCCESSFUL_REIDENTIFICATION,True,1.0,0.0
+7,balloon,15,76,82.0,5,15.0,SUCCESSFUL_REIDENTIFICATION,True,1.0,0.0
+8,person,4,23,,127,,DISAPPEARANCE_WITHOUT_RECOVERY,False,0.0,
+9,ball,9,90,91.0,0,19.0,TRACK_ID_SWAP,False,0.975,0.0253
+10,person,10,103,,47,,DISAPPEARANCE_WITHOUT_RECOVERY,False,0.0,
+11,person,11,117,,33,,DISAPPEARANCE_WITHOUT_RECOVERY,False,0.0,

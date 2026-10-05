@@ -241,18 +241,35 @@ def process_single_video(
     if memory_metrics:
         print(f"Memory Lifecycle CSV:     {lifecycle_csv}")
         print(f"Memory Recoveries CSV:    {recoveries_csv}")
-    print(f"\nMetrics:")
+    print(f"\nObject Permanence & Tracking Metrics:")
     print(f"  Detection Consistency:  {m['detection_consistency_pct']:.2f}%")
     print(f"  Identity Consistency:   {m['identity_consistency_pct']:.2f}%")
     print(f"  Object Permanence Score: {m['object_permanence_score_pct']:.2f}%")
     if memory_metrics:
-        print(f"\n50% Milestone Memory Bank Metrics:")
+        print(f"\nPersistent Memory Bank Metrics:")
         print(f"  Occlusion Episodes:     {memory_metrics['total_occlusion_episodes']}")
         print(f"  Memory Recoveries:      {memory_metrics['successful_memory_recoveries']}")
         print(f"  Memory Recovery Rate:   {memory_metrics['memory_recovery_rate_pct']:.2f}%")
         print(f"  Mean Dead-Reckon Error: {memory_metrics['mean_trajectory_prediction_error_px']:.2f} px")
         print(f"  Max Occlusion Survived: {memory_metrics['max_occlusion_gap_survived_frames']} frames")
         print(f"  Mean Attribute Stability: {memory_metrics.get('mean_attribute_stability_pct', 100.0):.2f}%")
+
+    mta = summary_report.get('model_tracking_accuracy_metrics', {})
+    if mta:
+        print(f"\nModel Detection & Tracking Accuracy (Evaluator Performance):")
+        print(f"  Model Tracking Accuracy (MTA): {mta.get('model_tracking_accuracy_pct', 0.0):.2f}%")
+        print(f"  Bounding Box IoU Smoothness:   {mta.get('bbox_iou_smoothness_pct', 0.0):.2f}%")
+        print(f"  Mean Spatial Jitter:           {mta.get('bbox_spatial_jitter_px', 0.0):.2f} px/frame")
+        print(f"  Mean Detection Confidence:     {mta.get('mean_detection_confidence_pct', 0.0):.2f}% (±{mta.get('confidence_std_dev_pct', 0.0):.2f}%)")
+        print(f"  Track Lifespan Coverage:       {mta.get('track_lifespan_coverage_pct', 0.0):.2f}%")
+        print(f"  Track Fragmentations:          {mta.get('track_fragmentations', 0)}")
+        print(f"  Model Performance Grade:       {mta.get('model_performance_grade', 'N/A')}")
+
+    print(f"\nPhysical World Model Accuracy & Violation Evaluation (AI Video Quality):")
+    print(f"  Physical World Model Accuracy (PWMA): {m.get('physical_world_model_accuracy_pct', 0.0):.2f}%")
+    print(f"  Physical Violation Rate:              {m.get('physical_violation_rate_per_min', 0.0):.2f} violations/min")
+    print(f"  Kinematic Trajectory Accuracy:        {m.get('kinematic_trajectory_accuracy_pct', 100.0):.2f}%")
+    print(f"  Physical Commonsense Verdict:         {m.get('physical_commonsense_verdict', 'N/A')}")
 
     if memory_bank is not None:
         summaries = memory_bank.get_entity_attribute_summaries()

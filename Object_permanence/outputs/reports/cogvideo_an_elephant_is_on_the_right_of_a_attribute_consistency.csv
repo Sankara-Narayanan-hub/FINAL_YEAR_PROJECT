@@ -1,0 +1,3 @@
+frame,master_track_id,raw_tracker_id,class_name,occlusion_gap_frames,pre_size,post_size,size_consistency_pct,pre_shape,post_shape,shape_consistency_pct,pre_color,post_color,color_preserved,overall_attribute_score_pct,morphing_detected
+34,2,3,car,8,524.78x731.87 (384068px),581.82x733.96 (427031px),89.94,AR 0.72 (Vertical Oblong),AR 0.79 (Vertical Oblong),91.14,Blue,Blue,True,92.43,False
+47,2,4,car,3,552.2x733.95 (405284px),577.54x735.43 (424740px),95.42,AR 0.75 (Vertical Oblong),AR 0.79 (Vertical Oblong),94.94,Blue,Blue,True,96.14,False

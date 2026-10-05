@@ -1,0 +1,8 @@
+event_id,object_class,original_track_id,last_visible_frame,first_reappeared_frame,missing_duration,new_track_id,event_type,reidentified,confidence_score,spatial_distance_norm
+1,bird,1,24,64.0,39,1.0,SUCCESSFUL_REIDENTIFICATION,True,1.0,0.0
+2,balloon,2,17,41.0,23,2.0,SUCCESSFUL_REIDENTIFICATION,True,1.0,0.0
+3,balloon,2,55,104.0,48,2.0,SUCCESSFUL_REIDENTIFICATION,True,1.0,0.0
+4,table,4,57,135.0,77,4.0,SUCCESSFUL_REIDENTIFICATION,True,1.0,0.0
+5,desk,3,20,,130,,DISAPPEARANCE_WITHOUT_RECOVERY,False,0.0,
+6,bird,5,63,,87,,DISAPPEARANCE_WITHOUT_RECOVERY,False,0.0,
+7,desk,9,122,,28,,DISAPPEARANCE_WITHOUT_RECOVERY,False,0.0,

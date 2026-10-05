@@ -1,0 +1,2 @@
+frame,master_track_id,raw_tracker_id,class_name,occlusion_gap_frames,prediction_error_px,matching_cost,event,color_pre,color_post,color_preserved,size_consistency_pct,shape_consistency_pct
+131,2,3,chair,34,75.82,0.056,MEMORY_RECOVERY_SUCCESS,Red,Red,True,93.16,93.67

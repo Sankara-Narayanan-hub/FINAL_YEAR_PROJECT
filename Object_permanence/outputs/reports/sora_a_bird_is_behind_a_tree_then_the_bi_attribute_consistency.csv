@@ -1,0 +1,4 @@
+frame,master_track_id,raw_tracker_id,class_name,occlusion_gap_frames,pre_size,post_size,size_consistency_pct,pre_shape,post_shape,shape_consistency_pct,pre_color,post_color,color_preserved,overall_attribute_score_pct,morphing_detected
+37,2,3,bird,10,105.63x117.07 (12365px),251.21x230.87 (57998px),21.32,AR 0.90 (Spherical / Regular),AR 1.09 (Spherical / Regular),82.57,Blue,Blue,True,61.56,False
+51,2,4,bird,5,247.97x141.54 (35098px),226.94x142.91 (32432px),92.4,AR 1.75 (Horizontal Oblong),AR 1.59 (Horizontal Oblong),90.86,Cyan,Blue,True,93.3,False
+106,1,5,tree,4,109.12x478.14 (52174px),342.17x477.48 (163380px),31.93,AR 0.23 (Vertical Oblong),AR 0.72 (Vertical Oblong),31.94,Black,Green,False,25.55,True

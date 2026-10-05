@@ -1,0 +1,2 @@
+frame,master_track_id,raw_tracker_id,class_name,occlusion_gap_frames,pre_size,post_size,size_consistency_pct,pre_shape,post_shape,shape_consistency_pct,pre_color,post_color,color_preserved,overall_attribute_score_pct,morphing_detected
+56,1,2,person,4,74.14x136.48 (10119px),70.03x129.94 (9100px),89.93,AR 0.54 (Vertical Oblong),AR 0.54 (Vertical Oblong),100.0,Red,Red,True,95.97,False

@@ -1,0 +1,2 @@
+frame,master_track_id,raw_tracker_id,class_name,occlusion_gap_frames,pre_size,post_size,size_consistency_pct,pre_shape,post_shape,shape_consistency_pct,pre_color,post_color,color_preserved,overall_attribute_score_pct,morphing_detected
+71,1,4,box,11,336.69x353.24 (118933px),336.5x352.37 (118575px),99.7,AR 0.95 (Spherical / Regular),AR 0.95 (Spherical / Regular),100.0,Orange,Orange,True,99.88,False

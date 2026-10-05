@@ -1,0 +1,2 @@
+frame,master_track_id,raw_tracker_id,class_name,occlusion_gap_frames,pre_size,post_size,size_consistency_pct,pre_shape,post_shape,shape_consistency_pct,pre_color,post_color,color_preserved,overall_attribute_score_pct,morphing_detected
+120,2,5,desk,2,828.03x290.75 (240754px),813.87x293.84 (239150px),99.33,AR 2.85 (Horizontal Oblong),AR 2.77 (Horizontal Oblong),97.19,Orange,Orange,True,98.61,False

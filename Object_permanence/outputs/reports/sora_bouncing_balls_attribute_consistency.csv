@@ -1,0 +1,4 @@
+frame,master_track_id,raw_tracker_id,class_name,occlusion_gap_frames,pre_size,post_size,size_consistency_pct,pre_shape,post_shape,shape_consistency_pct,pre_color,post_color,color_preserved,overall_attribute_score_pct,morphing_detected
+99,3,4,balloon,16,46.77x61.23 (2864px),37.37x16.83 (629px),21.97,AR 0.76 (Vertical Oblong),AR 2.22 (Horizontal Oblong),34.23,Purple,Blue,False,22.48,True
+124,3,5,balloon,22,37.64x17.99 (677px),38.37x39.7 (1524px),44.45,AR 2.09 (Horizontal Oblong),AR 0.97 (Spherical / Regular),46.41,Blue,Blue,True,56.34,False
+138,3,6,toy,5,38.5x38.95 (1499px),38.19x37.07 (1416px),94.42,AR 0.99 (Spherical / Regular),AR 1.03 (Spherical / Regular),96.12,Blue,Blue,True,96.22,False

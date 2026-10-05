@@ -1,0 +1,8 @@
+frame,master_track_id,raw_tracker_id,class_name,occlusion_gap_frames,pre_size,post_size,size_consistency_pct,pre_shape,post_shape,shape_consistency_pct,pre_color,post_color,color_preserved,overall_attribute_score_pct,morphing_detected
+18,2,3,ball,4,91.53x102.96 (9424px),98.18x106.24 (10430px),90.35,AR 0.89 (Spherical / Regular),AR 0.92 (Spherical / Regular),96.74,Red,Red,True,94.84,False
+40,2,4,ball,17,94.92x109.84 (10426px),115.26x117.11 (13498px),77.24,AR 0.86 (Spherical / Regular),AR 0.98 (Spherical / Regular),87.76,Red,Red,True,86.0,False
+87,2,5,ball,42,116.32x114.25 (13290px),91.79x87.31 (8014px),60.3,AR 1.02 (Spherical / Regular),AR 1.05 (Spherical / Regular),97.14,Red,Red,True,82.98,False
+110,6,8,ball,4,70.21x67.92 (4768px),66.43x65.11 (4325px),90.71,AR 1.03 (Spherical / Regular),AR 1.02 (Spherical / Regular),99.03,White,Red,False,75.9,True
+133,7,9,balloon,19,82.15x80.65 (6625px),51.33x54.96 (2821px),42.58,AR 1.02 (Spherical / Regular),AR 0.93 (Spherical / Regular),91.18,Grey,Red,False,53.5,True
+136,6,10,ball,15,74.08x84.88 (6288px),50.22x47.23 (2372px),37.72,AR 0.87 (Spherical / Regular),AR 1.06 (Spherical / Regular),82.08,Grey,Red,False,47.92,True
+148,11,13,car,8,166.18x37.41 (6217px),108.59x39.37 (4275px),68.76,AR 4.44 (Horizontal Oblong),AR 2.76 (Horizontal Oblong),62.16,Cyan,Grey,False,52.37,True

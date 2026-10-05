@@ -1,0 +1,137 @@
+{
+  "video_file": "gemini_bike.mp4",
+  "total_frames": 240,
+  "duration_sec": 10.0,
+  "fps": 24.0,
+  "frames_with_detections": 239,
+  "tracked_objects_count": 10,
+  "disappearance_events_count": 19,
+  "reappearance_events_count": 17,
+  "successful_reidentifications": 16,
+  "identity_switches": 1,
+  "lost_without_recovery": 2,
+  "morphing_events_count": 15,
+  "total_physical_violations": 18,
+  "model_tracking_accuracy_metrics": {
+    "mean_detection_confidence_pct": 65.06,
+    "confidence_std_dev_pct": 25.3,
+    "bbox_iou_smoothness_pct": 82.8,
+    "bbox_spatial_jitter_px": 3.79,
+    "track_lifespan_coverage_pct": 72.85,
+    "track_fragmentations": 22,
+    "model_tracking_accuracy_pct": 73.61,
+    "model_performance_grade": "GOOD TRACKING ACCURACY (ACCEPTABLE)"
+  },
+  "occlusion_veracity_metrics": {
+    "total_disappearance_events": 19,
+    "verified_true_occlusions": 16,
+    "phantom_disappearances": 1,
+    "detector_dropouts": 2,
+    "occlusion_veracity_ratio_pct": 84.21,
+    "occlusion_veracity_verdict": "MODERATE OCCLUSION VERACITY (MIXED WITH DROPOUTS)"
+  },
+  "semantic_alignment_metrics": {
+    "semantic_class_stability_pct": 100.0,
+    "mean_class_entropy": 0.0,
+    "transient_label_flickers_count": 0,
+    "dominant_classes_identified": {
+      "1": {
+        "dominant_class": "person",
+        "stability_pct": 100.0,
+        "entropy": -0.0,
+        "total_frames": 231,
+        "flicker_frames": 0
+      },
+      "2": {
+        "dominant_class": "car",
+        "stability_pct": 100.0,
+        "entropy": -0.0,
+        "total_frames": 62,
+        "flicker_frames": 0
+      },
+      "3": {
+        "dominant_class": "car",
+        "stability_pct": 100.0,
+        "entropy": -0.0,
+        "total_frames": 162,
+        "flicker_frames": 0
+      },
+      "4": {
+        "dominant_class": "car",
+        "stability_pct": 100.0,
+        "entropy": -0.0,
+        "total_frames": 16,
+        "flicker_frames": 0
+      },
+      "5": {
+        "dominant_class": "can",
+        "stability_pct": 100.0,
+        "entropy": -0.0,
+        "total_frames": 40,
+        "flicker_frames": 0
+      },
+      "7": {
+        "dominant_class": "bicycle",
+        "stability_pct": 100.0,
+        "entropy": -0.0,
+        "total_frames": 78,
+        "flicker_frames": 0
+      },
+      "17": {
+        "dominant_class": "can",
+        "stability_pct": 100.0,
+        "entropy": -0.0,
+        "total_frames": 3,
+        "flicker_frames": 0
+      },
+      "21": {
+        "dominant_class": "car",
+        "stability_pct": 100.0,
+        "entropy": -0.0,
+        "total_frames": 75,
+        "flicker_frames": 0
+      },
+      "23": {
+        "dominant_class": "car",
+        "stability_pct": 100.0,
+        "entropy": -0.0,
+        "total_frames": 64,
+        "flicker_frames": 0
+      },
+      "24": {
+        "dominant_class": "can",
+        "stability_pct": 100.0,
+        "entropy": -0.0,
+        "total_frames": 109,
+        "flicker_frames": 0
+      }
+    },
+    "semantic_stability_grade": "EXCELLENT SEMANTIC STABILITY (INVARIANT LABELS)"
+  },
+  "metrics": {
+    "detection_consistency_pct": 99.58,
+    "identity_consistency_pct": 90.0,
+    "object_permanence_score_pct": 94.12,
+    "kinematic_trajectory_accuracy_pct": 88.47,
+    "attribute_stability_pct": 73.48,
+    "physical_world_model_accuracy_pct": 87.83,
+    "occlusion_veracity_ratio_pct": 84.21,
+    "semantic_class_stability_pct": 100.0,
+    "mean_class_entropy": 0.0,
+    "transient_label_flickers": 0,
+    "physical_violation_rate_per_min": 108.0,
+    "physical_commonsense_verdict": "LOW PHYSICAL ACCURACY (FREQUENT HALLUCINATIONS)",
+    "occlusion_veracity_verdict": "MODERATE OCCLUSION VERACITY (MIXED WITH DROPOUTS)",
+    "semantic_stability_grade": "EXCELLENT SEMANTIC STABILITY (INVARIANT LABELS)"
+  },
+  "memory_bank_metrics": {
+    "total_occlusion_episodes": 19,
+    "successful_memory_recoveries": 22,
+    "memory_recovery_rate_pct": 115.79,
+    "mean_trajectory_prediction_error_px": 84.69,
+    "max_occlusion_gap_survived_frames": 82,
+    "mean_attribute_stability_pct": 73.48,
+    "persistent_entities_count": 10,
+    "morphing_events_count": 15
+  }
+}

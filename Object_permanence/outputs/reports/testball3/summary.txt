@@ -1,0 +1,73 @@
+==================================================
+ OBJECT PERMANENCE & MODEL ACCURACY REPORT
+==================================================
+
+Video File:                  testball3.mp4
+Total Frames:                121 (5.04 sec @ 24.0 fps)
+Frames with Detections:      120
+Unique Tracked Objects:      2
+
+--------------------------------------------------
+ EVENT & ANOMALY BREAKDOWN
+--------------------------------------------------
+Total Disappearance Events:  1
+Reappearance Events:         1
+  - Successful Re-IDs:       1
+  - Identity Switches:       0
+Permanent Losses (Vanished): 0
+Attribute Morphing Events:   1
+TOTAL PHYSICAL VIOLATIONS:   1
+
+--------------------------------------------------
+ OBJECT PERMANENCE & IDENTITY METRICS
+--------------------------------------------------
+Detection Consistency:       99.17%
+Identity Consistency:        100.00%
+OBJECT PERMANENCE SCORE:     100.00%
+--------------------------------------------------
+ MODEL DETECTION & TRACKING ACCURACY METRICS
+--------------------------------------------------
+MODEL TRACKING ACCURACY (MTA):        76.74%
+Bounding Box IoU Smoothness:          94.06%
+Mean Spatial Jitter:                  2.82 px/frame
+Mean Detection Confidence:            56.62% (±11.09%)
+Track Lifespan Coverage Ratio:        80.00%
+Track Fragmentations:                 1
+Model Performance Grade:              GOOD TRACKING ACCURACY (ACCEPTABLE)
+
+--------------------------------------------------
+ OCCLUSION VERACITY & DROPOUT DIAGNOSTICS (OVR)
+--------------------------------------------------
+OCCLUSION VERACITY RATIO (OVR):       100.00%
+Verified True Physical Occlusions:    1
+Phantom Generative Vanishings:        0
+Transient Detector Dropouts:          0
+Veracity Diagnosis Verdict:           HIGH OCCLUSION VERACITY (PHYSICALLY GROUNDED)
+
+--------------------------------------------------
+ SEMANTIC LABEL CONSISTENCY & FLICKER METRICS (SAI)
+--------------------------------------------------
+SEMANTIC CLASS STABILITY:             77.08%
+Mean Class Entropy H(C):              0.497
+Transient Label Hallucinations:       33 frames
+Semantic Stability Grade:             LOW SEMANTIC STABILITY (FREQUENT LABEL HALLUCINATIONS)
+
+--------------------------------------------------
+ PERSISTENT MEMORY BANK METRICS
+--------------------------------------------------
+Persistent Entities Managed:   2
+Total Occlusion Episodes:      1
+Successful Memory Recoveries:  1
+MEMORY RECOVERY RATE:          100.00%
+Mean Dead-Reckoning Error:     217.61 px
+Max Occlusion Gap Survived:    48 frames
+
+--------------------------------------------------
+ PHYSICAL WORLD MODEL ACCURACY & VIOLATION METRICS
+--------------------------------------------------
+Physical World Model Accuracy (PWMA): 84.90%
+Physical Violation Rate:               11.90 violations/min
+Kinematic Trajectory Accuracy:        70.37%
+Attribute & Morphological Stability:  54.14%
+Physical Commonsense Verdict:         LOW PHYSICAL ACCURACY (FREQUENT HALLUCINATIONS)
+==================================================

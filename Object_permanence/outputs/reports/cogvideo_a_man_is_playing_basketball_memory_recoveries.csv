@@ -1,0 +1,8 @@
+frame,master_track_id,raw_tracker_id,class_name,occlusion_gap_frames,prediction_error_px,matching_cost,event,color_pre,color_post,color_preserved,size_consistency_pct,shape_consistency_pct
+18,2,3,ball,4,127.33,0.0891,MEMORY_RECOVERY_SUCCESS,Red,Red,True,90.35,96.74
+40,2,4,ball,17,104.02,0.1351,MEMORY_RECOVERY_SUCCESS,Red,Red,True,77.24,87.76
+87,2,5,ball,42,374.54,0.2869,MEMORY_RECOVERY_SUCCESS,Red,Red,True,60.3,97.14
+110,6,8,ball,4,28.66,0.0407,MEMORY_RECOVERY_SUCCESS,White,Red,False,90.71,99.03
+133,7,9,balloon,19,69.63,0.2035,MEMORY_RECOVERY_SUCCESS,Grey,Red,False,42.58,91.18
+136,6,10,ball,15,245.13,0.2967,MEMORY_RECOVERY_SUCCESS,Grey,Red,False,37.72,82.08
+148,11,13,car,8,15.3,0.1006,MEMORY_RECOVERY_SUCCESS,Cyan,Grey,False,68.76,62.16

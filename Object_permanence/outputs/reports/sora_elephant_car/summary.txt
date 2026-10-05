@@ -1,0 +1,73 @@
+==================================================
+ OBJECT PERMANENCE & MODEL ACCURACY REPORT
+==================================================
+
+Video File:                  sora_elephant_car.mp4
+Total Frames:                150 (5.0 sec @ 30.0 fps)
+Frames with Detections:      149
+Unique Tracked Objects:      3
+
+--------------------------------------------------
+ EVENT & ANOMALY BREAKDOWN
+--------------------------------------------------
+Total Disappearance Events:  0
+Reappearance Events:         0
+  - Successful Re-IDs:       0
+  - Identity Switches:       0
+Permanent Losses (Vanished): 0
+Attribute Morphing Events:   0
+TOTAL PHYSICAL VIOLATIONS:   0
+
+--------------------------------------------------
+ OBJECT PERMANENCE & IDENTITY METRICS
+--------------------------------------------------
+Detection Consistency:       99.33%
+Identity Consistency:        100.00%
+OBJECT PERMANENCE SCORE:     100.00%
+--------------------------------------------------
+ MODEL DETECTION & TRACKING ACCURACY METRICS
+--------------------------------------------------
+MODEL TRACKING ACCURACY (MTA):        85.83%
+Bounding Box IoU Smoothness:          99.57%
+Mean Spatial Jitter:                  0.40 px/frame
+Mean Detection Confidence:            59.94% (±20.96%)
+Track Lifespan Coverage Ratio:        100.00%
+Track Fragmentations:                 0
+Model Performance Grade:              EXCELLENT TRACKING ACCURACY (STABLE & PRECISE)
+
+--------------------------------------------------
+ OCCLUSION VERACITY & DROPOUT DIAGNOSTICS (OVR)
+--------------------------------------------------
+OCCLUSION VERACITY RATIO (OVR):       100.00%
+Verified True Physical Occlusions:    0
+Phantom Generative Vanishings:        0
+Transient Detector Dropouts:          0
+Veracity Diagnosis Verdict:           NO DISAPPEARANCES (CONTINUOUS)
+
+--------------------------------------------------
+ SEMANTIC LABEL CONSISTENCY & FLICKER METRICS (SAI)
+--------------------------------------------------
+SEMANTIC CLASS STABILITY:             100.00%
+Mean Class Entropy H(C):              0.000
+Transient Label Hallucinations:       0 frames
+Semantic Stability Grade:             EXCELLENT SEMANTIC STABILITY (INVARIANT LABELS)
+
+--------------------------------------------------
+ PERSISTENT MEMORY BANK METRICS
+--------------------------------------------------
+Persistent Entities Managed:   3
+Total Occlusion Episodes:      0
+Successful Memory Recoveries:  0
+MEMORY RECOVERY RATE:          100.00%
+Mean Dead-Reckoning Error:     0.00 px
+Max Occlusion Gap Survived:    0 frames
+
+--------------------------------------------------
+ PHYSICAL WORLD MODEL ACCURACY & VIOLATION METRICS
+--------------------------------------------------
+Physical World Model Accuracy (PWMA): 100.00%
+Physical Violation Rate:               0.00 violations/min
+Kinematic Trajectory Accuracy:        100.00%
+Attribute & Morphological Stability:  100.00%
+Physical Commonsense Verdict:         HIGH PHYSICAL ACCURACY (COMPLIANT)
+==================================================
