@@ -3,204 +3,164 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from matplotlib.patches import FancyBboxPatch, ArrowStyle
 
-def create_architecture_diagram():
-    # Set up high-resolution canvas
-    fig, ax = plt.subplots(figsize=(20, 11), dpi=300)
-    fig.patch.set_facecolor('#0B0F19') # Deep tech dark background
+def create_clean_architecture_diagram():
+    # Professional 16:9 canvas
+    fig, ax = plt.subplots(figsize=(19, 10), dpi=300)
+    fig.patch.set_facecolor('#0B0F19')
     ax.set_facecolor('#0B0F19')
     ax.set_xlim(0, 100)
     ax.set_ylim(0, 100)
     ax.axis('off')
 
-    # Color Palette - Professional Modern Research Theme
-    c_bg_dark = '#0B0F19'
-    c_card_bg = '#131B2E'
-    c_card_border = '#1E293B'
-    c_text_white = '#F8FAFC'
-    c_text_muted = '#94A3B8'
-    c_text_dim = '#64748B'
-
-    # Accent Colors for Layers
-    c_blue = '#38BDF8'      # Vision & Detection
-    c_indigo = '#818CF8'    # CLIP Foundation
+    # Color Palette - Minimalist Tech Theme
+    c_text_main = '#FFFFFF'
+    c_text_sub = '#94A3B8'
+    c_blue = '#38BDF8'      # Input / Detection
+    c_indigo = '#818CF8'    # CLIP Verifier
     c_teal = '#2DD4BF'      # Kalman Tracking
     c_purple = '#C084FC'    # Memory Bank
-    c_amber = '#FBBF24'     # 4-Tier Evaluation
-    c_emerald = '#34D399'   # Outputs & Audits
+    c_emerald = '#34D399'   # Evaluation Suite
+    c_slate = '#64748B'     # Outputs
 
-    # 1. Main Header
-    ax.text(50, 96.5, "PHYSICAL OBJECT PERMANENCE & ATTRIBUTE CONSISTENCY FRAMEWORK",
-            fontsize=20, weight='bold', color=c_text_white, ha='center', va='center', fontfamily='sans-serif')
-    ax.text(50, 93.8, "End-to-End Zero-Training System Architecture for Generative AI Video Auditing & Cognitive Memory Recovery",
-            fontsize=11, color=c_blue, ha='center', va='center', fontfamily='sans-serif')
+    # Header
+    ax.text(50, 95.5, "SYSTEM ARCHITECTURE", fontsize=22, weight='bold', color=c_text_main, ha='center', va='center')
+    ax.text(50, 92.5, "Physical Object Permanence & Memory Recovery Framework", fontsize=12, color=c_blue, ha='center', va='center')
 
-    # Helper function to draw rounded container cards
-    def draw_card(x, y, w, h, bg_color, border_color, border_width=1.5, radius=1.2, alpha=1.0):
+    # Helper: Draw Card
+    def draw_card(x, y, w, h, bg_color, border_color, border_width=1.5, radius=1.0):
         bbox = FancyBboxPatch((x, y), w, h,
                               boxstyle=f"round,pad={radius},rounding_size={radius}",
                               facecolor=bg_color, edgecolor=border_color,
-                              linewidth=border_width, alpha=alpha, zorder=2)
+                              linewidth=border_width, zorder=2)
         ax.add_patch(bbox)
         return bbox
 
-    # Helper function for arrows
-    def draw_arrow(x1, y1, x2, y2, color=c_blue, style='->', lw=2, dashed=False, label="", label_pos=(0.5, 0.5), label_col=c_text_muted):
-        ls = '--' if dashed else '-'
+    # Helper: Draw Arrow
+    def draw_arrow(x1, y1, x2, y2, color='#38BDF8', lw=2.0, label=""):
         arrow = patches.FancyArrowPatch(
             (x1, y1), (x2, y2),
-            arrowstyle=ArrowStyle("Simple", head_length=5, head_width=5, tail_width=1.2),
-            color=color, linewidth=lw, linestyle=ls, zorder=4
+            arrowstyle=ArrowStyle("Simple", head_length=5, head_width=5, tail_width=1.5),
+            color=color, linewidth=lw, zorder=4
         )
         ax.add_patch(arrow)
         if label:
-            lx = x1 + (x2 - x1) * label_pos[0]
-            ly = y1 + (y2 - y1) * label_pos[1]
-            ax.text(lx, ly, label, fontsize=8, color=label_col, weight='bold', ha='center', va='center',
-                    bbox=dict(boxstyle="round,pad=0.2", facecolor=c_bg_dark, edgecolor='none', alpha=0.85), zorder=5)
+            mx, my = (x1 + x2) / 2, (y1 + y2) / 2
+            ax.text(mx, my + 1.8, label, fontsize=8, weight='bold', color='#E2E8F0', ha='center', va='center',
+                    bbox=dict(boxstyle="round,pad=0.25", facecolor='#0B0F19', edgecolor=color, lw=0.8), zorder=5)
 
     # =========================================================================
-    # COLUMN 1: INPUT & MULTIMODAL INGESTION LAYER (X: 3 - 22)
+    # STAGE 1: INPUT LAYER (X: 4 - 20)
     # =========================================================================
-    draw_card(3, 10, 19, 79, '#111827', '#374151', border_width=1.5)
-    ax.text(12.5, 86.5, "1. INPUT INGESTION LAYER", fontsize=11, weight='bold', color=c_blue, ha='center', va='center')
-    ax.text(12.5, 84.5, "Video Stream & Conditioning", fontsize=8, color=c_text_muted, ha='center', va='center')
+    draw_card(4, 12, 16, 74, '#111827', '#1E293B', radius=1.2)
+    ax.text(12, 82, "1. INPUT", fontsize=13, weight='bold', color=c_blue, ha='center')
 
-    # Sub-card 1: Video Sources
-    draw_card(4.5, 62, 16, 19, '#1F2937', '#4B5563', radius=0.8)
-    ax.text(12.5, 78.5, "Generative Video Stream", fontsize=9.5, weight='bold', color=c_text_white, ha='center')
-    ax.text(12.5, 75.8, "• Sora • Kling • Hunyuan\n• Veo-3 • CogVideoX • Wanx\n• Real-World / CGI Baselines",
-            fontsize=8, color=c_text_muted, ha='center', va='top', linespacing=1.3)
-    ax.text(12.5, 64, "Raw Frames: 24-60 FPS", fontsize=7.5, color=c_blue, ha='center', weight='bold')
+    # Card 1.1: Video Input
+    draw_card(5.5, 52, 13, 23, '#1E293B', '#38BDF8', radius=0.8)
+    ax.text(12, 69, "AI Video Stream", fontsize=11, weight='bold', color=c_text_main, ha='center')
+    ax.text(12, 63, "• Sora • Kling • Hunyuan\n• Veo-3 • CogVideoX • Wanx", fontsize=8.5, color=c_text_sub, ha='center', linespacing=1.4)
+    ax.text(12, 56, "24-60 FPS MP4", fontsize=8, weight='bold', color=c_blue, ha='center')
 
-    # Sub-card 2: Prompt Conditioning
-    draw_card(4.5, 38, 16, 20, '#1F2937', '#4B5563', radius=0.8)
-    ax.text(12.5, 55.5, "Prompt Conditioning", fontsize=9.5, weight='bold', color=c_text_white, ha='center')
-    ax.text(12.5, 52.8, 'Text Prompt Specifier:\n"A dog is behind a chair,\nthen runs to the right..."',
-            fontsize=8, color='#FDE047', ha='center', va='top', style='italic', linespacing=1.2)
-    ax.text(12.5, 41, "Subject & Barrier Entities", fontsize=7.5, color=c_text_muted, ha='center')
-
-    # Sub-card 3: Video Processor
-    draw_card(4.5, 14, 16, 20, '#1F2937', '#4B5563', radius=0.8)
-    ax.text(12.5, 31.5, "OpenCV Video Engine", fontsize=9.5, weight='bold', color=c_text_white, ha='center')
-    ax.text(12.5, 28.5, "• Frame Decoder & Buffer\n• Dynamic Aspect Scaling\n• Resolution: 1080p / 720p\n• Timestamp Normalization",
-            fontsize=8, color=c_text_muted, ha='center', va='top', linespacing=1.3)
+    # Card 1.2: Prompt Input
+    draw_card(5.5, 18, 13, 27, '#1E293B', '#F59E0B', radius=0.8)
+    ax.text(12, 39, "Text Prompt", fontsize=11, weight='bold', color=c_text_main, ha='center')
+    ax.text(12, 33, '"A dog is behind a chair,\nthen runs to the right..."', fontsize=8.5, color='#FDE047', ha='center', style='italic', linespacing=1.3)
+    ax.text(12, 23, "Conditioning Specifier", fontsize=8, color=c_text_sub, ha='center')
 
     # =========================================================================
-    # COLUMN 2: PERCEPTION & FOUNDATION VERIFICATION (X: 25 - 46)
+    # STAGE 2: PERCEPTION & VERIFICATION (X: 24 - 44)
     # =========================================================================
-    draw_card(25, 10, 21, 79, '#0F172A', '#1E3A8A', border_width=1.5)
-    ax.text(35.5, 86.5, "2. PERCEPTION & FOUNDATION", fontsize=11, weight='bold', color=c_indigo, ha='center', va='center')
-    ax.text(35.5, 84.5, "Detection & Zero-Shot Verification", fontsize=8, color=c_text_muted, ha='center', va='center')
+    draw_card(24, 12, 20, 74, '#0F172A', '#1E3A8A', radius=1.2)
+    ax.text(34, 82, "2. PERCEPTION", fontsize=13, weight='bold', color=c_indigo, ha='center')
 
-    # Sub-card 1: YOLO Detector
-    draw_card(26.5, 53, 18, 28, '#1E293B', '#3B82F6', radius=0.8)
-    ax.text(35.5, 78.5, "YOLOv8 / YOLO-World", fontsize=10, weight='bold', color=c_text_white, ha='center')
-    ax.text(35.5, 76, "Open-Vocabulary Detector", fontsize=8, color=c_blue, ha='center')
-    ax.text(35.5, 72.5, "• Backbone: CSPDarknet\n• Candidate Bounding Boxes [B_t]\n• Confidence Scores [c_j]\n• Multi-Class Vocab Filter",
-            fontsize=8, color=c_text_muted, ha='center', va='top', linespacing=1.3)
-    ax.text(35.5, 56.5, "Confidence Threshold: 0.35 - 0.40", fontsize=7.5, color='#38BDF8', ha='center', weight='bold')
+    # Card 2.1: YOLO Detector
+    draw_card(25.5, 52, 17, 23, '#1E293B', '#3B82F6', radius=0.8)
+    ax.text(34, 69, "YOLOv8 / World", fontsize=11, weight='bold', color=c_text_main, ha='center')
+    ax.text(34, 64, "Open-Vocabulary Detector", fontsize=8.5, color=c_blue, ha='center')
+    ax.text(34, 57, "Bounding Boxes [B_t]\nConfidence Scores [c_j]", fontsize=8.5, color=c_text_sub, ha='center', linespacing=1.3)
 
-    # Sub-card 2: CLIP Verifier
-    draw_card(26.5, 14, 18, 35, '#1E293B', '#6366F1', radius=0.8)
-    ax.text(35.5, 46.5, "OpenAI CLIP Verifier", fontsize=10, weight='bold', color=c_text_white, ha='center')
-    ax.text(35.5, 44, "ViT-B/32 on CUDA", fontsize=8, color=c_indigo, ha='center')
-    ax.text(35.5, 40.5, "• Zero-Shot Visual Embedding\n• Cropped Entity Resolution\n• Cosine Similarity vs Prompts:\n  cos(e_img, e_txt) / tau\n• Prunes Misclassifications\n  (e.g., Cat vs Dog Hallucination)",
-            fontsize=8, color=c_text_muted, ha='center', va='top', linespacing=1.25)
-    ax.text(35.5, 17.5, "Taxonomic Consensus Gate", fontsize=7.5, color='#A5B4FC', ha='center', weight='bold')
+    # Card 2.2: CLIP Verifier
+    draw_card(25.5, 18, 17, 27, '#1E293B', '#6366F1', radius=0.8)
+    ax.text(34, 39, "OpenAI CLIP (CUDA)", fontsize=11, weight='bold', color=c_text_main, ha='center')
+    ax.text(34, 34, "ViT-B/32 Zero-Shot Verifier", fontsize=8.5, color=c_indigo, ha='center')
+    ax.text(34, 27, "Cosine Feature Matching\nPrunes Class Hallucinations\n(e.g., Cat vs Dog)", fontsize=8.5, color=c_text_sub, ha='center', linespacing=1.3)
 
     # =========================================================================
-    # COLUMN 3: KINEMATICS & MEMORY BANK (X: 49 - 72)
+    # STAGE 3: KINEMATICS & MEMORY (X: 48 - 68)
     # =========================================================================
-    draw_card(49, 10, 23, 79, '#1E1B4B', '#4C1D95', border_width=1.5)
-    ax.text(60.5, 86.5, "3. KINEMATICS & MEMORY BANK", fontsize=11, weight='bold', color=c_purple, ha='center', va='center')
-    ax.text(60.5, 84.5, "Zero-Training Tracking & State Machine", fontsize=8, color=c_text_muted, ha='center', va='center')
+    draw_card(48, 12, 20, 74, '#1E1B4B', '#4C1D95', radius=1.2)
+    ax.text(58, 82, "3. TRACKING & MEMORY", fontsize=13, weight='bold', color=c_purple, ha='center')
 
-    # Sub-card 1: Norfair 2D Kalman Filter
-    draw_card(50.5, 57, 20, 24, '#2E1065', '#7C3AED', radius=0.8)
-    ax.text(60.5, 78.5, "Norfair 2D Kalman Filter", fontsize=10, weight='bold', color=c_text_white, ha='center')
-    ax.text(60.5, 76, "Zero-Training Multi-Object Tracker", fontsize=8, color=c_teal, ha='center')
-    ax.text(60.5, 72.5, "• State Vector: [x, y, vx, vy]^T\n• IoU & Centroid Distance Metric\n• Hungarian Assignment Algorithm\n• Smooth Kalman Trajectories",
-            fontsize=8, color=c_text_muted, ha='center', va='top', linespacing=1.3)
-    ax.text(60.5, 60, "Zero Training Epochs Required", fontsize=7.5, color='#5EEAD4', ha='center', weight='bold')
+    # Card 3.1: Norfair Tracker
+    draw_card(49.5, 52, 17, 23, '#2E1065', '#8B5CF6', radius=0.8)
+    ax.text(58, 69, "Norfair 2D Kalman", fontsize=11, weight='bold', color=c_text_main, ha='center')
+    ax.text(58, 64, "Zero-Training Tracker", fontsize=8.5, color=c_teal, ha='center')
+    ax.text(58, 57, "Kalman State: [x, y, vx, vy]\nIoU Distance Matching", fontsize=8.5, color=c_text_sub, ha='center', linespacing=1.3)
 
-    # Sub-card 2: Persistent Memory Bank & State Machine
-    draw_card(50.5, 14, 20, 39, '#2E1065', '#9333EA', radius=0.8)
-    ax.text(60.5, 50.5, "Persistent Memory Bank Engine", fontsize=10, weight='bold', color=c_text_white, ha='center')
-    ax.text(60.5, 48, "4-State Physical Automaton", fontsize=8, color=c_purple, ha='center')
-    
-    # State pills
-    ax.text(60.5, 44, "[VISIBLE] ➔ [OCCLUDED] ➔ [LOST / OUT_OF_BOUNDS]", fontsize=7.5, color='#F3E8FF', ha='center', weight='bold')
-    
-    ax.text(60.5, 40.5, "1. Ballistic Dead-Reckoning:\n   P_pred(t) = P(t-1) + V_smooth * dt\n   (Renders Dashed Cyan Ghost HUD)\n\n2. Spatial-Scale Re-ID Cost:\n   Cost = 0.70*(Dist/Diag) + 0.30*(AreaDelta)\n   Threshold <= 0.45 ➔ Heals Master ID",
-            fontsize=7.8, color=c_text_muted, ha='center', va='top', linespacing=1.2)
-    ax.text(60.5, 17.5, "Heals Identity Across 30+ Frames", fontsize=7.5, color='#D8B4FE', ha='center', weight='bold')
+    # Card 3.2: Persistent Memory Bank
+    draw_card(49.5, 18, 17, 27, '#2E1065', '#A855F7', radius=0.8)
+    ax.text(58, 39, "Persistent Memory Bank", fontsize=11, weight='bold', color=c_text_main, ha='center')
+    ax.text(58, 34, "4-State Physical Automaton", fontsize=8.5, color=c_purple, ha='center')
+    ax.text(58, 26, "• Ballistic Dead-Reckoning\n  (Cyan Ghost Box HUD)\n• Re-ID Cost <= 0.45\n  (Master ID Recovery)",
+            fontsize=8.5, color=c_text_sub, ha='center', linespacing=1.3)
 
     # =========================================================================
-    # COLUMN 4: 4-TIER EVALUATION SUITE (X: 75 - 97)
+    # STAGE 4: 4-TIER EVALUATION (X: 72 - 96)
     # =========================================================================
-    draw_card(75, 10, 22, 79, '#14271E', '#065F46', border_width=1.5)
-    ax.text(86, 86.5, "4. 4-TIER EVALUATION & AUDIT", fontsize=11, weight='bold', color=c_emerald, ha='center', va='center')
-    ax.text(86, 84.5, "Quantitative Decoupling & Metrics", fontsize=8, color=c_text_muted, ha='center', va='center')
+    draw_card(72, 12, 24, 74, '#14271E', '#065F46', radius=1.2)
+    ax.text(84, 82, "4. 4-TIER EVALUATION", fontsize=13, weight='bold', color=c_emerald, ha='center')
 
-    # Sub-card: Tier 1 MTA
-    draw_card(76.5, 68, 19, 14, '#064E3B', '#059669', radius=0.6)
-    ax.text(86, 79.5, "Tier 1: Model Tracking Acc. (MTA)", fontsize=8.5, weight='bold', color=c_text_white, ha='center')
-    ax.text(86, 76.5, "MTA = 0.35(IoUS) + 0.35(Conf) + 0.30(LCR)", fontsize=7.5, color='#6EE7B7', ha='center', weight='bold')
-    ax.text(86, 71.5, "Evaluates Tracker Smoothness & Jitter", fontsize=7.5, color=c_text_muted, ha='center')
+    # Card 4.1: MTA
+    draw_card(73.5, 65, 21, 13, '#064E3B', '#10B981', radius=0.6)
+    ax.text(84, 74.5, "Tier 1: MTA (Tracking Accuracy)", fontsize=9.5, weight='bold', color=c_text_main, ha='center')
+    ax.text(84, 70.5, "MTA = 0.35(IoUS) + 0.35(Conf) + 0.30(LCR)", fontsize=8, weight='bold', color='#6EE7B7', ha='center')
+    ax.text(84, 67, "Evaluates Tracker Stability & Jitter", fontsize=7.5, color=c_text_sub, ha='center')
 
-    # Sub-card: Tier 2 PWMA
-    draw_card(76.5, 51.5, 19, 14.5, '#064E3B', '#10B981', radius=0.6)
-    ax.text(86, 63.5, "Tier 2: Physical World Acc. (PWMA)", fontsize=8.5, weight='bold', color=c_text_white, ha='center')
-    ax.text(86, 60.5, "PWMA = 0.35(OPS) + 0.25(ID) + 0.20(KTA) + 0.20(ASA)", fontsize=7, color='#A7F3D0', ha='center', weight='bold')
-    ax.text(86, 55.5, "Evaluates Mass/Permanence Conservation", fontsize=7.5, color=c_text_muted, ha='center')
+    # Card 4.2: PWMA
+    draw_card(73.5, 49.5, 21, 13.5, '#064E3B', '#10B981', radius=0.6)
+    ax.text(84, 59.5, "Tier 2: PWMA (Physical World Acc.)", fontsize=9.5, weight='bold', color=c_text_main, ha='center')
+    ax.text(84, 55.5, "0.35(OPS) + 0.25(ID) + 0.20(KTA) + 0.20(ASA)", fontsize=8, weight='bold', color='#A7F3D0', ha='center')
+    ax.text(84, 52, "Evaluates Mass & Permanence Laws", fontsize=7.5, color=c_text_sub, ha='center')
 
-    # Sub-card: Tier 3 OVR
-    draw_card(76.5, 35, 19, 14.5, '#064E3B', '#059669', radius=0.6)
-    ax.text(86, 47, "Tier 3: Occlusion Veracity (OVR)", fontsize=8.5, weight='bold', color=c_text_white, ha='center')
-    ax.text(86, 44, "3-Gate Physical Barrier Validation", fontsize=7.5, color='#FDE047', ha='center', weight='bold')
-    ax.text(86, 39, "Gate 1: Barrier Contact | Gate 2: Kinematics\nGate 3: Ballistic Trajectory Exit Check",
-            fontsize=7, color=c_text_muted, ha='center', linespacing=1.2)
+    # Card 4.3: OVR
+    draw_card(73.5, 34, 21, 13.5, '#064E3B', '#10B981', radius=0.6)
+    ax.text(84, 44, "Tier 3: OVR (Occlusion Veracity)", fontsize=9.5, weight='bold', color=c_text_main, ha='center')
+    ax.text(84, 40, "3-Gate Physical Barrier Validation", fontsize=8, weight='bold', color='#FDE047', ha='center')
+    ax.text(84, 36.5, "Filters Phantom Disappearances", fontsize=7.5, color=c_text_sub, ha='center')
 
-    # Sub-card: Tier 4 SAI
-    draw_card(76.5, 18.5, 19, 14.5, '#064E3B', '#10B981', radius=0.6)
-    ax.text(86, 30.5, "Tier 4: Semantic Integrity (SAI)", fontsize=8.5, weight='bold', color=c_text_white, ha='center')
-    ax.text(86, 27.5, "SAI = STA x Dominant Class Ratio", fontsize=7.5, color='#6EE7B7', ha='center', weight='bold')
-    ax.text(86, 22.5, "Shannon Entropy H(C) + CLIP Verification\nPrunes Animal/Object Morphing Events",
-            fontsize=7, color=c_text_muted, ha='center', linespacing=1.2)
-
-    # Sub-card: Artifact Outputs
-    draw_card(76.5, 12, 19, 5, '#1E293B', '#475569', radius=0.4)
-    ax.text(86, 14.5, "Outputs: CSV Logs • JSON Summary • HUD Video", fontsize=7.5, color='#CBD5E1', ha='center', weight='bold')
+    # Card 4.4: SAI
+    draw_card(73.5, 18.5, 21, 13.5, '#064E3B', '#10B981', radius=0.6)
+    ax.text(84, 28.5, "Tier 4: SAI (Semantic Integrity)", fontsize=9.5, weight='bold', color=c_text_main, ha='center')
+    ax.text(84, 24.5, "SAI = STA × Dominant Class Ratio", fontsize=8, weight='bold', color='#6EE7B7', ha='center')
+    ax.text(84, 21, "Detects Species / Attribute Morphing", fontsize=7.5, color=c_text_sub, ha='center')
 
     # =========================================================================
-    # CONNECTING ARROWS & DATA PIPELINES
+    # CONNECTING PIPELINES
     # =========================================================================
-    # Input -> YOLO
-    draw_arrow(20.5, 71.5, 26.5, 71.5, color=c_blue, lw=2.5, label="RGB Frames", label_pos=(0.4, 0.5))
-    # Input -> Prompt Conditioning -> YOLO & CLIP
-    draw_arrow(20.5, 48, 26.5, 35, color=c_indigo, lw=2, label="Text Prompts", label_pos=(0.5, 0.4))
-    
+    # Video -> YOLO
+    draw_arrow(18.5, 63.5, 25.5, 63.5, color=c_blue, lw=2.2, label="Frames")
+    # Prompt -> CLIP & YOLO
+    draw_arrow(18.5, 31.5, 25.5, 31.5, color='#F59E0B', lw=2.0, label="Prompts")
+
     # YOLO -> Norfair
-    draw_arrow(44.5, 69, 50.5, 69, color=c_teal, lw=2.5, label="[B_t, Conf]", label_pos=(0.5, 0.5))
-    # YOLO -> CLIP (Crops)
-    draw_arrow(35.5, 53, 35.5, 49, color=c_indigo, lw=2, label="BBox Crops", label_pos=(0.5, 0.5))
-    # CLIP -> Memory Bank & Metrics
-    draw_arrow(44.5, 31, 50.5, 31, color=c_purple, lw=2, label="Verified Class", label_pos=(0.5, 0.5))
+    draw_arrow(42.5, 63.5, 49.5, 63.5, color=c_teal, lw=2.2, label="Detections")
+    # YOLO -> CLIP (Crops) & CLIP -> Memory
+    draw_arrow(34, 52, 34, 45, color=c_indigo, lw=1.8, label="Crops")
+    draw_arrow(42.5, 31.5, 49.5, 31.5, color=c_purple, lw=2.0, label="Labels")
 
-    # Norfair -> Memory Bank
-    draw_arrow(60.5, 57, 60.5, 53, color=c_purple, lw=2.5, label="Track IDs & Velocity", label_pos=(0.5, 0.5))
+    # Norfair -> Memory
+    draw_arrow(58, 52, 58, 45, color=c_purple, lw=2.0, label="Tracks")
 
-    # Kinematics & Memory Bank -> Evaluation Suite
-    draw_arrow(70.5, 75, 76.5, 75, color=c_emerald, lw=2, label="IoU/Jitter", label_pos=(0.5, 0.5))
-    draw_arrow(70.5, 58, 76.5, 58, color=c_emerald, lw=2, label="Re-ID/OPS", label_pos=(0.5, 0.5))
-    draw_arrow(70.5, 41, 76.5, 41, color=c_emerald, lw=2, label="Occlusions", label_pos=(0.5, 0.5))
-    draw_arrow(70.5, 25, 76.5, 25, color=c_emerald, lw=2, label="Attributes", label_pos=(0.5, 0.5))
+    # Memory -> Evaluation Suite
+    draw_arrow(66.5, 71.5, 73.5, 71.5, color=c_emerald, lw=2.0)
+    draw_arrow(66.5, 56, 73.5, 56, color=c_emerald, lw=2.0)
+    draw_arrow(66.5, 40.5, 73.5, 40.5, color=c_emerald, lw=2.0)
+    draw_arrow(66.5, 25, 73.5, 25, color=c_emerald, lw=2.0)
 
-    # Bottom Footer Note
-    ax.text(50, 4.5, "Framework Key Advantage: Completely decouples Vision Evaluator Performance (MTA) from AI Generative Physical Realism (PWMA) with 0 Training Epochs.",
-            fontsize=9.5, color=c_text_muted, ha='center', style='italic')
+    # Bottom Footer
+    ax.text(50, 4.5, "Decoupled Architecture: Separates Evaluator Tracking Quality (MTA) from AI Physical Realism (PWMA) with 0 Training Epochs.",
+            fontsize=10, color=c_text_sub, ha='center', style='italic')
 
-    # Save outputs
+    # Save
     out_dir = os.path.join("Object_permanence", "outputs", "plots")
     os.makedirs(out_dir, exist_ok=True)
     out_path = os.path.join(out_dir, "system_architecture_diagram.png")
@@ -211,7 +171,7 @@ def create_architecture_diagram():
     plt.savefig(root_out_path, dpi=300, bbox_inches='tight', facecolor='#0B0F19')
     plt.close()
 
-    print(f"[SUCCESS] Architecture diagram generated at:\n  - {out_path}\n  - {root_out_path}")
+    print(f"[SUCCESS] Clean architecture diagram generated at:\n  - {out_path}\n  - {root_out_path}")
 
 if __name__ == "__main__":
-    create_architecture_diagram()
+    create_clean_architecture_diagram()
