@@ -1,280 +1,545 @@
 import os
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
-from matplotlib.patches import FancyBboxPatch, Circle, Rectangle, Polygon
+from matplotlib.offsetbox import OffsetImage, AnnotationBbox
+from PIL import Image
 
-def generate_sih_modular_architecture():
-    # Presentation-ready 16:9 canvas (300 DPI)
-    fig, ax = plt.subplots(figsize=(22, 11), dpi=300)
-    fig.patch.set_facecolor('#F8FAFC')
-    ax.set_facecolor('#F8FAFC')
+def build_sih_architecture_diagram(output_path, dark_mode=True):
+    # Set up high-res 16:9 canvas (20 x 11.25 inches @ 200 DPI = 4000 x 2250 px)
+    fig_w, fig_h = 20.0, 11.25
+    fig, ax = plt.subplots(figsize=(fig_w, fig_h), dpi=200)
     ax.set_xlim(0, 100)
     ax.set_ylim(0, 100)
-    ax.axis('off')
+    ax.axis("off")
 
     # Color Palette
-    c_card = '#FFFFFF'
-    c_text_dark = '#0F172A'
-    c_text_muted = '#475569'
+    if dark_mode:
+        bg_color = "#0B1120"        # Deep slate navy
+        header_text = "#FFFFFF"     # Crisp white
+        sub_text = "#94A3B8"        # Slate light
+        card_bg = "#111A2E"         # Slate card fill
+        card_border = "#1E293B"     # Card border
+        text_primary = "#F8FAFC"
+        text_secondary = "#94A3B8"
+        divider_color = "#1E293B"
+        pill_bg = "#1A243B"
+        sih_pill_bg = "#1E293B"
+        sih_pill_border = "#38BDF8"
+        sih_pill_text = "#38BDF8"
+        bar_bg = "#111A2E"
+        bar_border = "#38BDF8"
+        bar_badge_bg = "#1A243B"
+        bar_badge_border = "#0284C7"
+    else:
+        bg_color = "#F8FAFC"        # Crisp studio white / light slate
+        header_text = "#0F172A"     # Deep slate
+        sub_text = "#475569"        # Charcoal
+        card_bg = "#FFFFFF"         # Pure white cards
+        card_border = "#E2E8F0"     # Light grey border
+        text_primary = "#0F172A"
+        text_secondary = "#475569"
+        divider_color = "#E2E8F0"
+        pill_bg = "#F1F5F9"
+        sih_pill_bg = "#EEF2FF"
+        sih_pill_border = "#6366F1"
+        sih_pill_text = "#4338CA"
+        bar_bg = "#F0F9FF"
+        bar_border = "#38BDF8"
+        bar_badge_bg = "#E0F2FE"
+        bar_badge_border = "#7DD3FC"
 
-    # Module Accent Colors
-    c_blue = '#0284C7'      # 1. Ingestion
-    c_indigo = '#4F46E5'    # 2. Perception
-    c_purple = '#7C3AED'    # 3. Kinematics & Memory
-    c_emerald = '#059669'   # 4. Evaluation Engine
-    c_rose = '#E11D48'      # 5. Presentation & Audit
+    fig.patch.set_facecolor(bg_color)
+    ax.set_facecolor(bg_color)
 
-    # -------------------------------------------------------------
-    # 1. TITLE & SUBTITLE
-    # -------------------------------------------------------------
-    ax.text(50, 96.6, "SYSTEM ARCHITECTURE PIPELINE",
-            fontsize=23, weight='bold', color=c_text_dark, ha='center', va='center')
-    ax.text(50, 93.4, "Physical Object Permanence & Attribute Consistency Framework for Generative AI Video",
-            fontsize=11.5, weight='medium', color=c_indigo, ha='center', va='center')
+    icons_dir = os.path.join(os.path.dirname(__file__), "assets", "icons")
+    os.makedirs(icons_dir, exist_ok=True)
 
-    # -------------------------------------------------------------
-    # 2. ICON DRAWING HELPERS (Clean vector glyphs)
-    # -------------------------------------------------------------
-    def draw_icon_avatar(cx, cy, icon_type, fill_color):
-        # Circle badge
-        ax.add_patch(Circle((cx, cy), 1.5, facecolor=fill_color, edgecolor='none', zorder=5))
-        
-        if icon_type == 'video':
-            # Video camera
-            ax.add_patch(FancyBboxPatch((cx - 0.75, cy - 0.5), 1.0, 1.0, boxstyle="round,pad=0.04", facecolor='#FFFFFF', zorder=6))
-            pts = [[cx + 0.35, cy - 0.4], [cx + 0.85, cy - 0.65], [cx + 0.85, cy + 0.65], [cx + 0.35, cy + 0.4]]
-            ax.add_patch(Polygon(pts, facecolor='#FFFFFF', zorder=6))
-        elif icon_type == 'ai':
-            # Neural network
-            p1, p2, p3, p4 = (cx-0.55, cy), (cx+0.55, cy-0.45), (cx+0.55, cy+0.45), (cx, cy+0.65)
-            for p in [p1, p2, p3, p4]:
-                ax.add_patch(Circle(p, 0.22, facecolor='#FFFFFF', zorder=7))
-            ax.plot([p1[0], p2[0]], [p1[1], p2[1]], color='#FFFFFF', lw=1.2, zorder=6)
-            ax.plot([p1[0], p3[0]], [p1[1], p3[1]], color='#FFFFFF', lw=1.2, zorder=6)
-            ax.plot([p1[0], p4[0]], [p1[1], p4[1]], color='#FFFFFF', lw=1.2, zorder=6)
-            ax.plot([p4[0], p2[0]], [p4[1], p2[1]], color='#FFFFFF', lw=1.2, zorder=6)
-            ax.plot([p4[0], p3[0]], [p4[1], p3[1]], color='#FFFFFF', lw=1.2, zorder=6)
-        elif icon_type == 'radar':
-            # Crosshair
-            ax.add_patch(Circle((cx, cy), 0.8, facecolor='none', edgecolor='#FFFFFF', lw=1.3, zorder=6))
-            ax.add_patch(Circle((cx, cy), 0.3, facecolor='none', edgecolor='#FFFFFF', lw=1.0, zorder=6))
-            ax.plot([cx-1.0, cx+1.0], [cy, cy], color='#FFFFFF', lw=1.2, zorder=6)
-            ax.plot([cx, cx], [cy-1.0, cy+1.0], color='#FFFFFF', lw=1.2, zorder=6)
-        elif icon_type == 'chart':
-            # Bar chart
-            ax.add_patch(Rectangle((cx - 0.7, cy - 0.6), 0.32, 0.7, facecolor='#FFFFFF', zorder=6))
-            ax.add_patch(Rectangle((cx - 0.22, cy - 0.6), 0.32, 1.1, facecolor='#FFFFFF', zorder=6))
-            ax.add_patch(Rectangle((cx + 0.26, cy - 0.6), 0.32, 1.4, facecolor='#FFFFFF', zorder=6))
-        elif icon_type == 'report':
-            # Document
-            ax.add_patch(FancyBboxPatch((cx - 0.55, cy - 0.75), 1.1, 1.5, boxstyle="round,pad=0.04", facecolor='#FFFFFF', zorder=6))
-            ax.plot([cx - 0.3, cx + 0.3], [cy + 0.3, cy + 0.3], color=fill_color, lw=1.4, zorder=7)
-            ax.plot([cx - 0.3, cx + 0.3], [cy - 0.05, cy - 0.05], color=fill_color, lw=1.4, zorder=7)
-            ax.plot([cx - 0.3, cx + 0.1], [cy - 0.4, cy - 0.4], color=fill_color, lw=1.4, zorder=7)
+    icon_urls = {
+        "video": "https://img.icons8.com/fluency/96/video.png",
+        "prompt": "https://img.icons8.com/fluency/96/speech-bubble.png",
+        "yolo": "https://img.icons8.com/fluency/96/visible.png",
+        "clip": "https://img.icons8.com/fluency/96/brain.png",
+        "ai": "https://img.icons8.com/fluency/96/artificial-intelligence.png",
+        "tracker": "https://img.icons8.com/fluency/96/radar.png",
+        "memory": "https://img.icons8.com/fluency/96/database.png",
+        "accuracy": "https://img.icons8.com/fluency/96/checked-checkbox.png",
+        "speedometer": "https://img.icons8.com/fluency/96/speedometer.png",
+        "output": "https://img.icons8.com/fluency/96/monitor.png",
+        "report": "https://img.icons8.com/fluency/96/summary-list.png",
+        "gpu": "https://img.icons8.com/fluency/96/processor.png",
+        "server": "https://img.icons8.com/fluency/96/server.png"
+    }
 
-    # -------------------------------------------------------------
-    # 3. MODULE CONTAINER BUILDER
-    # -------------------------------------------------------------
-    def draw_module(x, y, w, h, mod_num, title, accent_color, icon_name):
-        # Drop shadow
-        ax.add_patch(FancyBboxPatch((x + 0.3, y - 0.3), w, h,
-                                    boxstyle="round,pad=0.7,rounding_size=0.9",
-                                    facecolor='#E2E8F0', edgecolor='none', zorder=1))
-        # Container body
-        ax.add_patch(FancyBboxPatch((x, y), w, h,
-                                    boxstyle="round,pad=0.7,rounding_size=0.9",
-                                    facecolor=c_card, edgecolor='#CBD5E1', lw=1.4, zorder=2))
-        
-        # Header banner
-        banner_h = 5.2
-        ax.add_patch(FancyBboxPatch((x + 0.9, y + h - banner_h - 0.6), w - 1.8, banner_h,
-                                    boxstyle="round,pad=0.3,rounding_size=0.5",
-                                    facecolor=accent_color, edgecolor='none', zorder=3))
-        
-        # Icon inside header
-        draw_icon_avatar(x + 2.7, y + h - 3.2, icon_name, '#0F172A')
-        
-        # Header titles
-        ax.text(x + 4.8, y + h - 2.3, f"MODULE {mod_num}", fontsize=7.5, weight='bold', color='#FFFFFF', alpha=0.9, zorder=4)
-        ax.text(x + 4.8, y + h - 4.2, title, fontsize=10.0, weight='bold', color='#FFFFFF', zorder=4)
+    def get_icon(name, zoom=0.40):
+        path = os.path.join(icons_dir, f"{name}.png")
+        if not os.path.exists(path) and name in icon_urls:
+            try:
+                import urllib.request
+                req = urllib.request.Request(icon_urls[name], headers={"User-Agent": "Mozilla/5.0"})
+                with urllib.request.urlopen(req) as resp:
+                    with open(path, "wb") as f:
+                        f.write(resp.read())
+            except Exception:
+                pass
+        if os.path.exists(path):
+            img = Image.open(path)
+            return OffsetImage(img, zoom=zoom)
+        return None
 
-    # -------------------------------------------------------------
-    # 4. COMPONENT CARD BUILDER (Clean title + badge below title)
-    # -------------------------------------------------------------
-    def draw_component_card(x, y, w, h, title, badge_tag, accent_color, bullet_lines=[]):
-        # Card body
-        ax.add_patch(FancyBboxPatch((x, y), w, h,
-                                    boxstyle="round,pad=0.3,rounding_size=0.5",
-                                    facecolor='#F8FAFC', edgecolor='#E2E8F0', lw=1.2, zorder=3))
-        # Left colored indicator bar
-        ax.add_patch(FancyBboxPatch((x + 0.35, y + 0.6), 0.5, h - 1.2,
-                                    boxstyle="round,pad=0.08", facecolor=accent_color, edgecolor='none', zorder=4))
-        
-        # Title (Line 1)
-        ax.text(x + 1.4, y + h - 2.0, title, fontsize=9.0, weight='bold', color=c_text_dark, zorder=4)
-        
-        # Badge Pill (Line 2)
-        bw = len(badge_tag) * 0.55 + 1.2
-        ax.add_patch(FancyBboxPatch((x + 1.4, y + h - 4.0), bw, 1.5,
-                                    boxstyle="round,pad=0.1,rounding_size=0.3",
-                                    facecolor='#EEF2F6', edgecolor='#CBD5E1', lw=0.7, zorder=4))
-        ax.text(x + 1.4 + bw/2, y + h - 3.25, badge_tag, fontsize=6.5, weight='bold', color=accent_color, ha='center', va='center', zorder=5)
+    # ----------------------------------------------------
+    # 1. TOP HEADER BANNER (SIH PRESENTATION BLUEPRINT)
+    # ----------------------------------------------------
+    # SIH Competition Pill Tag
+    sih_pill = patches.FancyBboxPatch(
+        (3.5, 93.6), 28.0, 3.2,
+        boxstyle="round,pad=0.2,rounding_size=1.2",
+        facecolor=sih_pill_bg,
+        edgecolor=sih_pill_border,
+        linewidth=1.2,
+        zorder=3
+    )
+    ax.add_patch(sih_pill)
+    ax.text(
+        17.5, 95.2, "SMART INDIA HACKATHON  •  SYSTEM ARCHITECTURE",
+        fontsize=9, weight="bold", color=sih_pill_text,
+        ha="center", va="center", zorder=4
+    )
 
-        # Bullets (Lines 3+)
-        start_y = y + h - 5.6
-        for line in bullet_lines:
-            ax.text(x + 1.4, start_y, line, fontsize=7.4, color=c_text_muted, zorder=4)
-            start_y -= 1.6
+    # Main Title & Subtitle
+    ax.text(
+        3.5, 90.3, "REAL-TIME OBJECT PERMANENCE TRACKING ARCHITECTURE",
+        fontsize=21, weight="bold", color=header_text, va="center", zorder=3
+    )
+    ax.text(
+        3.5, 87.0, "Zero-Shot Multi-Modal Perception • Kinematic Kalman MOT • 4-State Ephemeral Memory • 4-Tier Accuracy Engine",
+        fontsize=11.5, weight="normal", color=sub_text, va="center", zorder=3
+    )
 
-    # =========================================================================
-    # 5 MODULES SETUP
-    # =========================================================================
-    mod_w = 17.5
-    gap = 2.0
-    start_x = 2.25
+    # Header Divider Line
+    ax.plot([3.5, 96.5], [84.6, 84.6], color=divider_color, linewidth=1.5, zorder=2)
 
-    # -------------------------------------------------------------
-    # MODULE 1: DATA INGESTION
-    # -------------------------------------------------------------
-    m1_x = start_x
-    draw_module(m1_x, 9, mod_w, 79, 1, "DATA INGESTION", c_blue, 'video')
-    
-    draw_component_card(m1_x + 1.0, 62.5, mod_w - 2.0, 20.5,
-                        "Video Stream Source", "MP4 24-60 FPS", c_blue,
-                        ["• Sora, Kling, Hunyuan", "• Veo-3, CogVideo, Wanx", "• VBench-2.0 Suite"])
+    # ----------------------------------------------------
+    # 2. THE 5 PIPELINE MODULE STAGES (COLUMNS)
+    # ----------------------------------------------------
+    stages = [
+        {
+            "id": "STAGE 01",
+            "name": "INPUT & INGESTION",
+            "accent": "#0284C7",      # Cyan
+            "icon_bg": "#0C2340" if dark_mode else "#E0F2FE",
+            "x": 3.5,
+            "width": 16.5,
+            "cards": [
+                {
+                    "title": "Video Ingestion",
+                    "badge": "OpenCV • RTSP / MP4",
+                    "icon": "video",
+                    "bullets": [
+                        "High-FPS video frame buffer",
+                        "Temporal frame de-queuing",
+                        "Resolution normalization"
+                    ]
+                },
+                {
+                    "title": "Prompt Query",
+                    "badge": "Open-Vocabulary Text",
+                    "icon": "prompt",
+                    "bullets": [
+                        "Natural language target prompt",
+                        "Dynamic tokenization pipeline",
+                        "Zero-shot class conditioning"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "STAGE 02",
+            "name": "PERCEPTION ENGINE",
+            "accent": "#6366F1",      # Indigo
+            "icon_bg": "#1E1B4B" if dark_mode else "#EEF2FF",
+            "x": 22.25,
+            "width": 16.5,
+            "cards": [
+                {
+                    "title": "YOLO-World Detector",
+                    "badge": "Ultralytics v8-L • FP16",
+                    "icon": "yolo",
+                    "bullets": [
+                        "Zero-shot candidate localization",
+                        "Confidence threshold gating (0.35)",
+                        "Real-time bounding box stream"
+                    ]
+                },
+                {
+                    "title": "CLIP Verifier",
+                    "badge": "OpenAI ViT-B/32 • CUDA",
+                    "icon": "clip",
+                    "bullets": [
+                        "512-d visual embedding extraction",
+                        "Cross-modal cosine verification",
+                        "False-positive crop rejection"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "STAGE 03",
+            "name": "KINEMATICS & MOT",
+            "accent": "#10B981",      # Emerald
+            "icon_bg": "#064E3B" if dark_mode else "#ECFDF5",
+            "x": 41.0,
+            "width": 16.5,
+            "cards": [
+                {
+                    "title": "Norfair Kalman MOT",
+                    "badge": "Constant-Velocity Model",
+                    "icon": "tracker",
+                    "bullets": [
+                        "State vector [x, y, vx, vy] filtering",
+                        "Euclidean distance cost matrix",
+                        "Blind-spot track extrapolation"
+                    ]
+                },
+                {
+                    "title": "Kinematic Cache",
+                    "badge": "Temporal Motion Bank",
+                    "icon": "server",
+                    "bullets": [
+                        "Historical velocity vector log",
+                        "Motion momentum smoothing",
+                        "Plausible occlusion exit vectors"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "STAGE 04",
+            "name": "MEMORY AUTOMATON",
+            "accent": "#F59E0B",      # Amber
+            "icon_bg": "#451A03" if dark_mode else "#FEF3C7",
+            "x": 59.75,
+            "width": 16.5,
+            "cards": [
+                {
+                    "title": "4-State Automaton",
+                    "badge": "FSM State Controller",
+                    "icon": "memory",
+                    "bullets": [
+                        "VISIBLE ⇄ OCCLUDED → LOST",
+                        "Adaptive occlusion grace window",
+                        "Deterministic ghost-track purge"
+                    ]
+                },
+                {
+                    "title": "Zero-Shot Re-ID",
+                    "badge": "Dual Cosine Re-ID",
+                    "icon": "ai",
+                    "bullets": [
+                        "Ephemeral feature bank matching",
+                        "Re-identification cost gating",
+                        "Zero-shot target re-acquisition"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "STAGE 05",
+            "name": "AUDIT & PRESENTATION",
+            "accent": "#F43F5E",      # Rose
+            "icon_bg": "#4C0519" if dark_mode else "#FFE4E6",
+            "x": 78.5,
+            "width": 17.5,
+            "cards": [
+                {
+                    "title": "4-Tier Accuracy",
+                    "badge": "Benchmark Engine",
+                    "icon": "accuracy",
+                    "bullets": [
+                        "MTA (Kinematics) & PWMA (Recall)",
+                        "OVR (Spatial IoU) & SAI (Semantics)",
+                        "Autonomous audit validation"
+                    ]
+                },
+                {
+                    "title": "HUD & Telemetry",
+                    "badge": "Annotated Video & CSV",
+                    "icon": "output",
+                    "bullets": [
+                        "Color-coded state bounding boxes",
+                        "Live occlusion counter HUD",
+                        "Frame-level telemetry CSV logs"
+                    ]
+                }
+            ]
+        }
+    ]
 
-    draw_component_card(m1_x + 1.0, 38.5, mod_w - 2.0, 21.0,
-                        "Prompt Conditioner", "Text NLP Tokenizer", c_blue,
-                        ["• Target Subject Extraction", "• Barrier / Obstacle Specifier", "• Candidate Vocab Parsing"])
+    card_h = 28.5
+    y_card1 = 51.5
+    y_card2 = 19.5
 
-    draw_component_card(m1_x + 1.0, 14.0, mod_w - 2.0, 21.5,
-                        "OpenCV Preprocessor", "RGB Normalizer", c_blue,
-                        ["• Frame Buffer Decoder", "• Aspect Ratio Normalization", "• 1080p Stream Synchronization"])
+    # ----------------------------------------------------
+    # 3. DRAW STAGE CONTAINERS & CARDS
+    # ----------------------------------------------------
+    for stage in stages:
+        sx = stage["x"]
+        sw = stage["width"]
+        accent = stage["accent"]
 
-    # -------------------------------------------------------------
-    # MODULE 2: AI PERCEPTION & FOUNDATION
-    # -------------------------------------------------------------
-    m2_x = m1_x + mod_w + gap
-    draw_module(m2_x, 9, mod_w, 79, 2, "AI PERCEPTION", c_indigo, 'ai')
+        # Stage Column Header Pill
+        stage_pill = patches.FancyBboxPatch(
+            (sx, 80.2), sw, 3.2,
+            boxstyle="round,pad=0.2,rounding_size=0.8",
+            facecolor="#151E33" if dark_mode else "#F1F5F9",
+            edgecolor=accent,
+            linewidth=1.2,
+            zorder=3
+        )
+        ax.add_patch(stage_pill)
 
-    draw_component_card(m2_x + 1.0, 49.5, mod_w - 2.0, 33.5,
-                        "YOLO-World Detector", "Ultralytics Open-Vocab", c_indigo,
-                        ["• Zero-Shot Open Inference", "• Candidate BBoxes [B_t]", "• Neural Confidence [c_j]", "• Threshold Gate: 0.35 - 0.40", "• Real-Time GPU Detection"])
+        # Stage Tag & Title
+        ax.text(
+            sx + 1.2, 81.8, stage["id"],
+            fontsize=8, weight="bold", color=accent,
+            va="center", zorder=4
+        )
+        ax.text(
+            sx + sw - 1.2, 81.8, stage["name"],
+            fontsize=8.5, weight="bold", color=text_primary,
+            ha="right", va="center", zorder=4
+        )
 
-    draw_component_card(m2_x + 1.0, 14.0, mod_w - 2.0, 32.5,
-                        "OpenAI CLIP Verifier", "ViT-B/32 on CUDA", c_indigo,
-                        ["• Zero-Shot Visual Embedding", "• Visual-Prompt Cosine Match", "• Eliminates Morph Glitches", "  (e.g., Cat vs Dog Morph)", "• Ground-Truth Verification"])
+        # Draw the 2 Cards per stage
+        card_ys = [y_card1, y_card2]
+        for i, card in enumerate(stage["cards"]):
+            cy = card_ys[i]
 
-    # -------------------------------------------------------------
-    # MODULE 3: TRACKING & MEMORY CORE
-    # -------------------------------------------------------------
-    m3_x = m2_x + mod_w + gap
-    draw_module(m3_x, 9, mod_w, 79, 3, "TRACKING & MEMORY", c_purple, 'radar')
+            # Main Card Box with clean rounded borders
+            card_box = patches.FancyBboxPatch(
+                (sx, cy), sw, card_h,
+                boxstyle="round,pad=0.3,rounding_size=1.2",
+                facecolor=card_bg,
+                edgecolor=card_border,
+                linewidth=1.3,
+                zorder=3
+            )
+            ax.add_patch(card_box)
 
-    draw_component_card(m3_x + 1.0, 49.5, mod_w - 2.0, 33.5,
-                        "Norfair 2D Kalman Filter", "Zero-Training MOT", c_purple,
-                        ["• State: [x, y, vx, vy]^T", "• Consecutive IoU Association", "• Hungarian Distance Match", "• Kalman Trajectory Smoothing", "• Zero Epochs Needed"])
+            # Left Accent Strip
+            accent_strip = patches.FancyBboxPatch(
+                (sx, cy + 1.2), 0.5, card_h - 2.4,
+                boxstyle="round,pad=0.1,rounding_size=0.25",
+                facecolor=accent,
+                edgecolor=accent,
+                linewidth=0,
+                zorder=4
+            )
+            ax.add_patch(accent_strip)
 
-    draw_component_card(m3_x + 1.0, 14.0, mod_w - 2.0, 32.5,
-                        "Persistent Memory Bank", "4-State Automaton", c_purple,
-                        ["• [VISIBLE ➔ OCCLUDED ➔ LOST]", "• Ballistic Dead-Reckoning", "  (P_pred = P_last + v*dt)", "• Cyan Ghost Box HUD", "• Re-ID Cost Match <= 0.45"])
+            # Circular Icon Container Badge at top-left
+            icon_cx = sx + 2.7
+            icon_cy = cy + card_h - 4.5
+            icon_badge = patches.Circle(
+                (icon_cx, icon_cy), radius=1.9,
+                facecolor=stage["icon_bg"],
+                edgecolor=accent,
+                linewidth=1.2,
+                zorder=4
+            )
+            ax.add_patch(icon_badge)
 
-    # -------------------------------------------------------------
-    # MODULE 4: ACCURACY EVALUATION ENGINE
-    # -------------------------------------------------------------
-    m4_x = m3_x + mod_w + gap
-    draw_module(m4_x, 9, mod_w, 79, 4, "EVALUATION ENGINE", c_emerald, 'chart')
+            # Centered Icon inside Badge
+            icon_obj = get_icon(card["icon"], zoom=0.40)
+            if icon_obj:
+                ab = AnnotationBbox(
+                    icon_obj, (icon_cx, icon_cy),
+                    frameon=False, zorder=5
+                )
+                ax.add_artist(ab)
 
-    draw_component_card(m4_x + 1.0, 68.0, mod_w - 2.0, 15.0,
-                        "Tier 1: MTA", "Tracker Quality", c_emerald,
-                        ["0.35(IoUS) + 0.35(c) + 0.30(LCR)", "Evaluates Tracking Jitter"])
+            # Card Title next to icon
+            ax.text(
+                sx + 5.3, cy + card_h - 3.6, card["title"],
+                fontsize=11.0, weight="bold", color=text_primary,
+                va="center", zorder=5
+            )
 
-    draw_component_card(m4_x + 1.0, 50.0, mod_w - 2.0, 15.0,
-                        "Tier 2: PWMA", "Physical Realism", c_emerald,
-                        ["0.35(OPS) + 0.25(ID) + 0.20(KTA)", "Evaluates Mass & Permanence"])
+            # Tech Badge Pill below title
+            badge_w = len(card["badge"]) * 0.44 + 1.6
+            badge_pill = patches.FancyBboxPatch(
+                (sx + 5.3, cy + card_h - 6.6), badge_w, 2.0,
+                boxstyle="round,pad=0.1,rounding_size=0.5",
+                facecolor=pill_bg,
+                edgecolor=accent,
+                linewidth=0.8,
+                zorder=4
+            )
+            ax.add_patch(badge_pill)
+            ax.text(
+                sx + 5.3 + badge_w / 2.0, cy + card_h - 5.6, card["badge"],
+                fontsize=7.5, weight="bold", color=accent if dark_mode else accent,
+                ha="center", va="center", zorder=5
+            )
 
-    draw_component_card(m4_x + 1.0, 32.0, mod_w - 2.0, 15.0,
-                        "Tier 3: OVR", "3 Physical Gates", c_emerald,
-                        ["Barrier Contact & Kinematics", "Filters Phantom Disappearances"])
+            # Inner Divider Line
+            ax.plot([sx + 1.5, sx + sw - 1.5], [cy + card_h - 8.6, cy + card_h - 8.6],
+                    color=divider_color, linewidth=0.8, zorder=4)
 
-    draw_component_card(m4_x + 1.0, 14.0, mod_w - 2.0, 15.0,
-                        "Tier 4: SAI", "Taxonomic Audit", c_emerald,
-                        ["STA x Dominant Class Ratio", "Detects Species Morphing"])
+            # Clean bullet points
+            by = cy + card_h - 12.2
+            for bullet in card["bullets"]:
+                # Custom bullet icon / dot
+                ax.plot(sx + 2.5, by, marker="o", markersize=3.2, color=accent, zorder=5)
+                # Bullet text
+                ax.text(
+                    sx + 3.6, by, bullet,
+                    fontsize=8.5, color=text_secondary,
+                    va="center", zorder=5
+                )
+                by -= 4.6
 
-    # -------------------------------------------------------------
-    # MODULE 5: OUTPUTS & AUDIT DOSSIER
-    # -------------------------------------------------------------
-    m5_x = m4_x + mod_w + gap
-    draw_module(m5_x, 9, mod_w, 79, 5, "OUTPUTS & AUDIT", c_rose, 'report')
+    # ----------------------------------------------------
+    # 4. DATA FLOW INTER-STAGE ARROWS & LABELS
+    # ----------------------------------------------------
+    flows = [
+        # Stage 1 -> Stage 2
+        {"x1": 20.0, "x2": 22.25, "y": 65.5, "accent": "#0284C7"},
+        {"x1": 20.0, "x2": 22.25, "y": 33.5, "accent": "#0284C7"},
 
-    draw_component_card(m5_x + 1.0, 62.5, mod_w - 2.0, 20.5,
-                        "Annotated Video HUD", "Rendered MP4", c_rose,
-                        ["• Dashed Cyan Ghost HUD", "• Occlusion Alert Banner", "• Re-ID Track Trajectories"])
+        # Stage 2 -> Stage 3
+        {"x1": 38.75, "x2": 41.0, "y": 65.5, "accent": "#6366F1"},
+        {"x1": 38.75, "x2": 41.0, "y": 33.5, "accent": "#6366F1"},
 
-    draw_component_card(m5_x + 1.0, 38.5, mod_w - 2.0, 21.0,
-                        "Telemetry CSV Audits", "DataFrames", c_rose,
-                        ["• Frame Detections Log", "• State Machine Transitions", "• Re-ID Recovery History"])
+        # Stage 3 -> Stage 4
+        {"x1": 57.5, "x2": 59.75, "y": 65.5, "accent": "#10B981"},
+        {"x1": 57.5, "x2": 59.75, "y": 33.5, "accent": "#10B981"},
 
-    draw_component_card(m5_x + 1.0, 14.0, mod_w - 2.0, 21.5,
-                        "Methodology Dossier", "Master PDF Dossier", c_rose,
-                        ["• 7-Page Academic Report", "• 25-Video Benchmark Suite", "• Piagetian Permanence Test"])
+        # Stage 4 -> Stage 5
+        {"x1": 76.25, "x2": 78.5, "y": 65.5, "accent": "#F59E0B"},
+        {"x1": 76.25, "x2": 78.5, "y": 33.5, "accent": "#F59E0B"},
+    ]
 
-    # =========================================================================
-    # PIPELINE CONNECTING BUSES (SIH Bus Lines)
-    # =========================================================================
-    def draw_bus(x1, y1, x2, y2, color, label=""):
+    for flow in flows:
         arrow = patches.FancyArrowPatch(
-            (x1, y1), (x2, y2),
-            arrowstyle=patches.ArrowStyle("Simple", head_length=4.0, head_width=4.0, tail_width=1.5),
-            color=color, linewidth=1.5, zorder=5
+            (flow["x1"], flow["y"]), (flow["x2"], flow["y"]),
+            arrowstyle="-|>",
+            mutation_scale=15,
+            linewidth=2.2,
+            color=flow["accent"],
+            zorder=4
         )
         ax.add_patch(arrow)
-        if label:
-            mx, my = (x1 + x2) / 2, (y1 + y2) / 2
-            ax.text(mx, my + 1.1, label, fontsize=6.8, weight='bold', color=color, ha='center', va='center',
-                    bbox=dict(boxstyle="round,pad=0.2", facecolor='#FFFFFF', edgecolor=color, lw=0.8), zorder=6)
 
-    # Ingestion -> Perception
-    draw_bus(m1_x + mod_w, 72.5, m2_x, 72.5, c_blue, "Frames")
-    draw_bus(m1_x + mod_w, 48.0, m2_x, 30.0, c_blue, "Prompts")
+    # Re-ID Feedback Loop Arrow (Stage 4 to Stage 3 / 2)
+    reid_arrow = patches.FancyArrowPatch(
+        (68.0, 19.5), (30.5, 19.5),
+        connectionstyle="arc3,rad=-0.22",
+        arrowstyle="-|>",
+        mutation_scale=14,
+        linewidth=2.0,
+        linestyle="--",
+        color="#F59E0B",
+        zorder=4
+    )
+    ax.add_patch(reid_arrow)
 
-    # Perception -> Tracking
-    draw_bus(m2_x + mod_w, 66.0, m3_x, 66.0, c_indigo, "BBoxes")
-    draw_bus(m2_x + mod_w, 30.0, m3_x, 30.0, c_indigo, "Classes")
+    # Pill for Re-ID feedback loop
+    reid_pill = patches.FancyBboxPatch(
+        (42.5, 11.2), 18.0, 2.6,
+        boxstyle="round,pad=0.1,rounding_size=0.6",
+        facecolor="#1A243B" if dark_mode else "#FEF3C7",
+        edgecolor="#F59E0B",
+        linewidth=1.0,
+        zorder=5
+    )
+    ax.add_patch(reid_pill)
+    ax.text(
+        51.5, 12.5, "↺ Zero-Shot Re-ID Feature Bank Matching Loop",
+        fontsize=7.8, weight="bold", color="#F59E0B" if dark_mode else "#B45309",
+        ha="center", va="center", zorder=6
+    )
 
-    # Tracking -> Evaluation
-    draw_bus(m3_x + mod_w, 75.5, m4_x, 75.5, c_purple, "IoU/Jitter")
-    draw_bus(m3_x + mod_w, 57.5, m4_x, 57.5, c_purple, "Re-IDs")
-    draw_bus(m3_x + mod_w, 39.5, m4_x, 39.5, c_purple, "States")
-    draw_bus(m3_x + mod_w, 21.5, m4_x, 21.5, c_purple, "Attributes")
+    # ----------------------------------------------------
+    # 5. BOTTOM FOUNDATION & HARDWARE ACCELERATION BAR
+    # ----------------------------------------------------
+    bar_y = 3.5
+    bar_h = 6.0
+    bar_box = patches.FancyBboxPatch(
+        (3.5, bar_y), 93.0, bar_h,
+        boxstyle="round,pad=0.2,rounding_size=1.0",
+        facecolor=bar_bg,
+        edgecolor=bar_border,
+        linewidth=1.2,
+        zorder=3
+    )
+    ax.add_patch(bar_box)
 
-    # Evaluation -> Outputs
-    draw_bus(m4_x + mod_w, 72.5, m5_x, 72.5, c_emerald, "HUD Overlay")
-    draw_bus(m4_x + mod_w, 49.0, m5_x, 49.0, c_emerald, "Logs")
-    draw_bus(m4_x + mod_w, 24.5, m5_x, 24.5, c_emerald, "Metrics")
+    # GPU / Hardware Icon Container
+    gpu_badge = patches.Circle(
+        (6.5, bar_y + bar_h / 2.0), radius=2.0,
+        facecolor="#0C2340" if dark_mode else "#E0F2FE",
+        edgecolor="#38BDF8",
+        linewidth=1.2,
+        zorder=4
+    )
+    ax.add_patch(gpu_badge)
 
-    # -------------------------------------------------------------
-    # FOOTER KEY TAKEAWAYS BAR
-    # -------------------------------------------------------------
-    foot_bg = FancyBboxPatch((2.25, 2.5), 95.5, 4.5, boxstyle="round,pad=0.3,rounding_size=0.6",
-                             facecolor='#FFFFFF', edgecolor='#CBD5E1', lw=1.2, zorder=2)
-    ax.add_patch(foot_bg)
-    ax.text(4.0, 4.75, "KEY INNOVATIONS:", fontsize=8.5, weight='bold', color=c_indigo, va='center')
-    ax.text(15.5, 4.75, "Decoupled Evaluation (Evaluator MTA vs Generative Physics PWMA)  •  Zero-Training Kalman MOT (Norfair)  •  Ballistic Memory Automaton",
-            fontsize=8, weight='medium', color=c_text_dark, va='center')
+    gpu_icon = get_icon("gpu", zoom=0.42)
+    if gpu_icon:
+        ab = AnnotationBbox(gpu_icon, (6.5, bar_y + bar_h / 2.0), frameon=False, zorder=5)
+        ax.add_artist(ab)
 
-    # Save
-    out_dir = os.path.join("Object_permanence", "outputs", "plots")
-    os.makedirs(out_dir, exist_ok=True)
-    out_path = os.path.join(out_dir, "system_architecture_diagram.png")
-    root_out_path = "system_architecture_diagram.png"
+    # Hardware Bar Content Title
+    ax.text(
+        9.6, bar_y + bar_h / 2.0 + 1.2,
+        "HARDWARE ACCELERATION & HIGH-PERFORMANCE RUNTIME FOUNDATION",
+        fontsize=10.2, weight="bold", color="#38BDF8" if dark_mode else "#0284C7",
+        va="center", zorder=5
+    )
 
-    plt.tight_layout()
-    plt.savefig(out_path, dpi=300, bbox_inches='tight', facecolor='#F8FAFC')
-    plt.savefig(root_out_path, dpi=300, bbox_inches='tight', facecolor='#F8FAFC')
+    # Hardware Badges
+    pills = [
+        "NVIDIA CUDA 12.x Core Acceleration",
+        "PyTorch 2.x Deep Learning",
+        "Ultralytics YOLO-World FP16",
+        "OpenAI ViT-B/32 Zero-Shot",
+        "Sub-30ms Real-Time Inference"
+    ]
+    px = 9.6
+    for ptext in pills:
+        pw = len(ptext) * 0.38 + 1.6
+        pbox = patches.FancyBboxPatch(
+            (px, bar_y + 1.0), pw, 1.8,
+            boxstyle="round,pad=0.1,rounding_size=0.5",
+            facecolor=bar_badge_bg,
+            edgecolor=bar_badge_border,
+            linewidth=0.8,
+            zorder=4
+        )
+        ax.add_patch(pbox)
+        ax.text(
+            px + pw / 2.0, bar_y + 1.9, ptext,
+            fontsize=7.2, weight="bold", color=text_primary,
+            ha="center", va="center", zorder=5
+        )
+        px += pw + 1.2
+
+    # Save outputs
+    plt.subplots_adjust(left=0, right=1, top=1, bottom=0)
+    plt.savefig(output_path, dpi=200, facecolor=bg_color, edgecolor="none", bbox_inches="tight", pad_inches=0.1)
     plt.close()
-
-    print(f"[SUCCESS] SIH-Style Architecture Diagram generated successfully at:\n  - {out_path}\n  - {root_out_path}")
+    print(f"Architecture diagram successfully generated: {output_path}")
 
 if __name__ == "__main__":
-    generate_sih_modular_architecture()
+    dark_out1 = os.path.join(os.path.dirname(__file__), "system_architecture_diagram.png")
+    dark_out2 = os.path.join(os.path.dirname(__file__), "Object_permanence", "outputs", "plots", "system_architecture_diagram.png")
+    light_out = os.path.join(os.path.dirname(__file__), "system_architecture_diagram_light.png")
+
+    os.makedirs(os.path.dirname(dark_out2), exist_ok=True)
+    
+    # 1. Primary SIH PPT Dark Mode version
+    build_sih_architecture_diagram(dark_out1, dark_mode=True)
+    build_sih_architecture_diagram(dark_out2, dark_mode=True)
+
+    # 2. Report / Paper Light Mode version
+    build_sih_architecture_diagram(light_out, dark_mode=False)
