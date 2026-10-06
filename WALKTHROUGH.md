@@ -49,6 +49,8 @@ This framework resolves traditional tracking limitations and introduces an objec
 
 ## 🧠 High-Level Architecture & Dataflow
 
+![System Architecture Diagram](file:///d:/projects/gpu%20ml%20model/FINAL_YEAR_PROJECT-main/system_architecture_diagram.png)
+
 ```mermaid
 graph TD
     A["Raw AI Video Stream (.mp4)"] --> B["YOLOv8 / YOLO-World Detector"]
